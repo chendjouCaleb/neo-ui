@@ -1,0 +1,9 @@
+﻿<div class="text-field-label-box" [class.focused]="focused" [class.floating]="floatingLabel">
+  <ng-content select="TextFieldLabel, [TextFieldLabel]"></ng-content>
+</div>
+
+<div class="text-field-input-box">
+  <ng-content></ng-content>
+</div>
+
+<div class="text-field-underline" [class.focused]="focused"></div>

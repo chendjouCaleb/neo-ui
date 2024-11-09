@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/cdk/overlay-prebuilt.css';
+
+html {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+body {
+  color: #242424;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.horizontal-pager {
+  border: 1px solid red;
+
+}

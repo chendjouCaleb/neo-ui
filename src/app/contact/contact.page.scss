@@ -1,0 +1,42 @@
+﻿.contact-page {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../public/assets/image.png");
+}
+
+.background-container {
+  background-color: #ffffff7d;
+  backdrop-filter: blur(33px);
+  background-blend-mode: overlay;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.contact-form {
+  background-color: #ffffff7d;
+  margin: 64px;
+  border-radius: 8px;
+  padding: 32px;
+  width: 500px
+}
+
+.row {
+  display: flex;
+}
+
+.flex-group-1 {
+  flex-grow: 1;
+}
+
+.flex-group-2 {
+  flex-grow: 2;
+}
+
+.width-100 {
+  width: 100%;
+}

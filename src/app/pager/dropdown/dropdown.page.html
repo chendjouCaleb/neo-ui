@@ -1,0 +1,9 @@
+﻿
+<Dropdown #dropdown [trigger]="trigger"
+          [visible]="dropdownVisible"
+          (onBackdropClick)="dropdownVisible = false"
+>
+  bonjour à tous
+</Dropdown>
+
+<button #trigger (click)="dropdownVisible = !dropdownVisible">Open</button>

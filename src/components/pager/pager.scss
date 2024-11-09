@@ -1,0 +1,28 @@
+﻿.horizontal-pager {
+  display: block;
+
+  & .horizontal-pager-box {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+}
+
+.page-content {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+  border: 1px solid blue;
+  width: 100%;
+
+  &.hidden {
+    opacity: 0;
+    z-index: -1;
+    color: red;
+  }
+
+
+}

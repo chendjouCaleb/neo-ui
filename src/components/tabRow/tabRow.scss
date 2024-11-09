@@ -1,0 +1,35 @@
+﻿.tab-row {
+  position: relative;
+}
+
+.tab-row-thumb {
+  background-color: #0A78D5;
+  border-radius: 8px;
+  height: 4px;
+  width: 96px;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  transition: left 200ms ease-in-out, width 200ms ease-in-out;
+}
+
+.tab-row-item {
+  background-color: transparent;
+  border: none;
+  padding: 12px 16px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+  font-family: "Noto Sans", sans-serif;
+  &.active {
+    font-weight: 500;
+    color: #0A78D5;
+  }
+
+  &:hover {
+    background-color: rgba(10, 120, 2013, .1);
+  }
+}
