@@ -1,19 +1,6 @@
 ﻿import {Component, ViewEncapsulation} from '@angular/core';
-import {
-  LucideAngularModule,
-  UserRoundIcon,
-  LanguagesIcon,
-  StickyNoteIcon,
-  BriefcaseBusinessIcon,
-  BuildingIcon,
-  MailIcon,
-  PhoneIcon,
-  PlaneIcon,
-  MapPinIcon,
-  UniversityIcon,
-  UsersRoundIcon, PinIcon
-} from 'lucide-angular';
-import {TextField, TextFieldInput, TextFieldLabel} from '../../components';
+import {LucideAngularModule, MailIcon, MapPinIcon, PhoneIcon, UniversityIcon, UserRoundIcon} from 'lucide-angular';
+import {TextField, TextFieldInput, TextFieldLabel} from '../../NeoUI';
 
 @Component({
   templateUrl: 'contact.page.html',

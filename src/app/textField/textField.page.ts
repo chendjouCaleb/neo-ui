@@ -1,6 +1,6 @@
 ﻿import {Component} from '@angular/core';
-import {TextField, TextFieldLabel} from '../../components';
-import {TextFieldInput} from '../../components';
+import {TextField, TextFieldLabel} from '../../NeoUI';
+import {TextFieldInput} from '../../NeoUI';
 
 @Component({
   selector: 'TextFieldPage',

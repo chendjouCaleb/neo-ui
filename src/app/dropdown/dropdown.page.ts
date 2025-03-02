@@ -1,5 +1,5 @@
 ﻿import {Component} from '@angular/core';
-import {Dropdown} from '../../../components';
+import {Dropdown} from '../../NeoUI';
 
 @Component({
   templateUrl: 'dropdown.page.html',

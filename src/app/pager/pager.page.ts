@@ -1,5 +1,5 @@
 ﻿import {Component} from '@angular/core';
-import {HorizontalPager, PageContentDef, TabRow, TabRowItem} from '../../components';
+import {HorizontalPager, PageContentDef, TabRow, TabRowItem} from '../../NeoUI';
 
 @Component({
   selector: 'PagerPage',

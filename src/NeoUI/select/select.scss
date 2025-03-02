@@ -1,0 +1,81 @@
+.my-select-field {
+  display: inline-block;
+  min-width: 160px;
+  position: relative;
+  //border: 1px solid blue;
+  height: 40px;
+  text-overflow: ellipsis;
+}
+
+.my-select-field-label-box {
+  //border: 1px solid red;
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  height: 20px;
+  width: 100%;
+  text-overflow: ellipsis;
+  transition: font-size 200ms ease-in-out, bottom 200ms ease-in-out;
+
+  &.focused {
+    color: #0A78D5;
+  }
+
+  &.floating {
+    font-size: 12px;
+
+    bottom: 20px;
+  }
+}
+
+.my-select-field-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  padding: 0;
+  border: none;
+  outline: none;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 4px;
+  height: 24px;
+  background: transparent;
+  box-sizing: border-box;
+
+
+  .my-select-field-content-value {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+
+.my-select-field-underline {
+  height: .5px;
+  border: none;
+  background-color: #707070;
+  left: 0;
+  bottom: 2px;
+  width: 100%;
+  position: absolute;
+  z-index: 4;
+
+  transition: height 200ms ease-in-out;
+
+  &.focused {
+    height: 1px;
+    background-color: #0A78D5;
+  }
+}
+
+.my-select-dropdown-panel {
+  border: 1px solid red;
+  max-height: 400px;
+  overflow-y: auto;
+}

@@ -1,29 +1,34 @@
-﻿import {
-  AfterContentInit,
-  AfterViewInit,
+import {
+  ChangeDetectionStrategy,
   Component,
-  ElementRef, EventEmitter,
-  Input, Output,
+  EventEmitter,
+  Input,
+  Output,
   ViewChild,
   ViewEncapsulation
-} from '@angular/core';
-import {CdkPortal} from '@angular/cdk/portal';
+} from "@angular/core";
 import {Overlay, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
+import {CdkPortal} from '@angular/cdk/portal';
 
 @Component({
-  templateUrl: 'dropdown.html',
-  selector: 'Dropdown',
-  standalone: true,
-  styleUrl: 'dropdown.scss',
+  selector: 'SelectDropdown',
   encapsulation: ViewEncapsulation.None,
+  template: `
+    <ng-template cdkPortal class="my-select-dropdown-container">
+      <ng-content></ng-content>
+    </ng-template>
+  `,
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CdkPortal
   ],
   host: {
-    'class': 'dropdown'
+    class: 'my-select-dropdown',
   }
+
 })
-export class Dropdown implements AfterViewInit {
+export class SelectDropdown {
   private  overlayRef!: OverlayRef;
   private initialized: boolean = false;
 
@@ -47,9 +52,6 @@ export class Dropdown implements AfterViewInit {
   get visible(): boolean { return this._visible }
   private _visible: boolean = false
 
-  @Output()
-  readonly onBackdropClick: EventEmitter<void> = new EventEmitter();
-
 
   constructor(private overlay: Overlay) {}
 
@@ -61,8 +63,11 @@ export class Dropdown implements AfterViewInit {
   public open(): void {
     this.overlayRef = this.overlay.create(this.getOverlayConfig());
     this.overlayRef.attach(this.contentTemplate);
-    // this.syncWidth();
-     this.overlayRef.backdropClick().subscribe(() => this.onBackdropClick.emit());
+    this.overlayRef.addPanelClass('my-select-dropdown-panel')
+    this.overlayRef.overlayElement.style.width = this.trigger.offsetWidth + 'px'
+    this.overlayRef.backdropClick().subscribe(() => {
+      this.close()
+    });
     this._visible = true;
   }
 
@@ -94,7 +99,9 @@ export class Dropdown implements AfterViewInit {
       scrollStrategy: scrollStrategy,
       hasBackdrop: true,
       backdropClass: 'cdk-overlay-transparent-backdrop',
-      panelClass: 'dropdown-panel'
+      panelClass: 'my-select-dropdown-panel'
     });
   }
+
+
 }
