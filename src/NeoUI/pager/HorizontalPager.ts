@@ -19,6 +19,7 @@ import {MsMotionFunction} from './pager-motion';
   standalone: true,
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['pager.scss'],
+  exportAs: 'pager',
   host: {
     class: 'horizontal-pager'
   }

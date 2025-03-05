@@ -4,7 +4,7 @@ import {HorizontalPager, PageContentDef, TabRow, TabRowItem} from '../../NeoUI';
 @Component({
   selector: 'PagerPage',
   standalone: true,
-  templateUrl: 'pager.page.ts',
+  templateUrl: 'pager.page.html',
   imports: [ TabRow, TabRowItem, HorizontalPager, PageContentDef]
 })
 export class PagerPage {

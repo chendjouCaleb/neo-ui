@@ -1,5 +1,5 @@
 ﻿<div>
-  <TabRow #tabRow [selectedIndex]="2">
+  <TabRow #tabRow="tabRow" [selectedIndex]="2">
     <button TabRowItem
             (click)="tabRow.selectIndex(0, true); pager.selectIndex(0)"
             (mouseenter)="tabRow.activateHover(0)"
@@ -45,7 +45,7 @@
   </TabRow>
 </div>
 
-<HorizontalPager #pager [selectedIndex]="2">
+<HorizontalPager #pager="pager" [selectedIndex]="2">
   <div *PageDef>
     <span>0</span>
   </div>

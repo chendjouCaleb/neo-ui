@@ -7,6 +7,7 @@ import {TabRowItem} from './tabRowItem';
   standalone: true,
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['tabRow.scss'],
+  exportAs: 'tabRow',
   host: {
     class: 'tab-row'
   }

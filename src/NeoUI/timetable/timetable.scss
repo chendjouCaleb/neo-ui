@@ -1,0 +1,66 @@
+.timetable {
+  display: flex;
+  flex-direction: column;
+  //height: 600px;
+  //border: 1px solid #3399FF;
+}
+
+.timetable-header {
+  box-sizing: border-box;
+  display: grid;
+
+  //grid-template-columns: 128px 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.timetable-header-item {
+  padding: 16px;
+  line-height: 20px;
+  box-sizing: border-box;
+}
+
+.timetable-header-item-day {
+  border-left: 1px solid #d6d6d6;
+}
+
+
+.timetable-columns {
+  box-sizing: border-box;
+  display: grid;
+
+  //grid-template-columns: 128px 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  flex-grow: 1;
+  position: relative;
+}
+
+.timetable-column {
+  border-left: 1px solid #d6d6d6;
+}
+
+
+.timetable-column-timeline {
+  position: relative;
+}
+
+.timetable-timeline-hour {
+  position: absolute;
+  right: 24px;
+}
+
+.timetable-hour-line {
+  height: 1px;
+  background-color: #d6d6d6;
+  //left: 112px;
+  right: 0;
+  position: absolute;
+}
+
+.timetable-item {
+  padding: 4px;
+  background-color: #0A78D5;
+  font-size: 12px;
+  position: absolute;
+  box-sizing: border-box;
+  color: #FFF;
+  border-radius: 4px;
+}
