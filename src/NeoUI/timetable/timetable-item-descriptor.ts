@@ -22,7 +22,7 @@ export const dayOfWeeks = [
 
 export const DayOfWeeksFrIntl = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
 
-export class TimetableItem {
+export class TimetableItemDescriptor {
   title: string
   color?: string
   dayOfWeek: DayOfWeek

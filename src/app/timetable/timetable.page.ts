@@ -1,15 +1,16 @@
-﻿import {Component} from '@angular/core';
-import {DayOfWeek, Timetable, TimetableItem} from '../../NeoUI';
-import {LocalTime} from '@js-joda/core';
+﻿import {Component, Input} from '@angular/core';
+import {DayOfWeek, Timetable, TimetableItemDescriptor} from '../../NeoUI';
+import {DateTimeFormatter, LocalTime} from '@js-joda/core';
+import {TimetableItemDef} from '../../NeoUI/timetable/timetable-item-def';
 
 @Component({
   templateUrl: 'timetable.page.html',
   standalone: true,
-  imports: [ Timetable ],
+  imports: [Timetable, TimetableItemDef],
   selector: 'TimetablePage'
 })
 export class TimetablePage {
-  items: TimetableItem[] = [
+  items: TimetableItemDescriptor[] = [
     {
       title: "Analyse 101",
       dayOfWeek: DayOfWeek.Monday,
@@ -117,4 +118,7 @@ export class TimetablePage {
       color: "#6d2064"
     },
   ]
+
+
+  hourFormatter = DateTimeFormatter.ofPattern('HH:mm')
 }

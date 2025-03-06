@@ -1,5 +1,11 @@
 ﻿<h1>Emploi du temps</h1>
 
 <Timetable [items]="items">
+  <div *TimetableItemDef="let item=descriptor"
+       [style.background-color]="item.color">
 
+
+    <div>{{item.title}}</div>
+    <div>{{item.startAt.format(hourFormatter)}} - {{item.endAt.format(hourFormatter)}}</div>
+  </div>
 </Timetable>

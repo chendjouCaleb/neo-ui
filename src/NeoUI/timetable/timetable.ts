@@ -1,7 +1,18 @@
-﻿import {Component, Input, ViewEncapsulation} from '@angular/core';
-import {DayOfWeek, dayOfWeeks, DayOfWeeksFrIntl, TimetableItem} from './timetable-item';
+﻿import {
+  Component,
+  ContentChild,
+  ElementRef,
+  Injector,
+  Input, QueryList,
+  StaticProvider,
+  ViewChildren, ViewContainerRef,
+  ViewEncapsulation
+} from '@angular/core';
+import {DayOfWeek, dayOfWeeks, DayOfWeeksFrIntl, TimetableItemDescriptor} from './timetable-item-descriptor';
 import {ChronoUnit, DateTimeFormatter, LocalTime} from '@js-joda/core';
 import {min} from 'rxjs';
+import {TimetableItem, TimetableItemDef} from './timetable-item-def';
+import {PageContentDef, PageContext} from '../pager';
 
 @Component({
   selector: 'Timetable',
@@ -9,6 +20,9 @@ import {min} from 'rxjs';
   styleUrl: 'timetable.scss',
   encapsulation: ViewEncapsulation.None,
   standalone: true,
+  imports: [
+    TimetableItem
+  ],
   host: {
     class: 'timetable',
     '[style.height.px]': 'getHourOffsetY(lastHour) + 60'
@@ -43,7 +57,7 @@ export class Timetable {
   hourHeight = 48;
 
   @Input()
-  items: TimetableItem[] = []
+  items: TimetableItemDescriptor[] = []
 
   @Input()
   hourFormatter = DateTimeFormatter.ofPattern('HH:mm')
@@ -51,17 +65,24 @@ export class Timetable {
   @Input()
   timelineWidth: number = 96
 
+  @ContentChild(TimetableItemDef)
+  itemTemplateDef: TimetableItemDef
+
+  @ViewChildren(ElementRef)
+  columns :QueryList<ElementRef<HTMLElement>>
+
   get gridTemplateColumns(): string {
-    return `${this.timelineWidth}px 1fr 1fr 1fr 1fr 1fr 1fr 1fr`
+    return `${this.timelineWidth}px 1fr 1fr 1fr 1fr 1fr 1fr 1fr`;
   }
 
-  getDayItems(day: DayOfWeek) : TimetableItem[] {
+  constructor(private parentInjector: Injector) {}
+
+  getDayItems(day: DayOfWeek) : TimetableItemDescriptor[] {
     return this.items.filter(i => i.dayOfWeek === day);
   }
 
   getHourOffsetY(hour: LocalTime) {
     const minutes = this.startHour.until(hour, ChronoUnit.MINUTES);
-    console.log(minutes)
     return minutes * this.hourHeight / 60;
   }
 
@@ -73,4 +94,5 @@ export class Timetable {
   dayOfWeekIntl(dayOfWeek: DayOfWeek) {
     return DayOfWeeksFrIntl[dayOfWeek - 1]
   }
+
 }

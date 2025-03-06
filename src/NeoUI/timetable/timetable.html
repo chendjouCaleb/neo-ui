@@ -1,15 +1,14 @@
 ﻿<div class="timetable-header" [style.grid-template-columns]="gridTemplateColumns">
- <div class="timetable-header-item"></div>
-  @for ( dayOfWeek of dayOfWeeks; track dayOfWeek) {
+  <div class="timetable-header-item"></div>
+  @for (dayOfWeek of dayOfWeeks; track dayOfWeek) {
     <div class="timetable-header-item timetable-header-item-day">
-      {{dayOfWeekIntl(dayOfWeek)}}
+      {{ dayOfWeekIntl(dayOfWeek) }}
     </div>
   }
 </div>
 
 
 <div class="timetable-columns" [style.grid-template-columns]="gridTemplateColumns">
-
 
 
   @for (hour of timelineHours; track hour) {
@@ -22,26 +21,24 @@
   <div class="timetable-column timetable-column-timeline">
     @for (hour of timelineHours; track hour) {
       <div class="timetable-timeline-hour"
-      [style.top.px]="getHourOffsetY(hour) - 10"
-      >{{hour.format(hourFormatter)}} </div>
+           [style.top.px]="getHourOffsetY(hour) - 10"
+      >{{ hour.format(hourFormatter) }}
+      </div>
     }
   </div>
 
 
 
-  @for ( dayOfWeek of dayOfWeeks; track dayOfWeek) {
-    <div class="timetable-column timetable-column-day">
+  @for (dayOfWeek of dayOfWeeks; track dayOfWeek) {
+    <div class="timetable-column timetable-column-day" #dayColum>
+
 
       @for (item of getDayItems(dayOfWeek); track item) {
-        <div class="timetable-item"
-             [style.background-color]="item.color"
-             [style.top.px]="getHourOffsetY(item.startAt)"
-             [style.height.px]="getHourOffsetY(item.endAt) - getHourOffsetY(item.startAt)"
-
-        >
-          <div>{{item.title}}</div>
-          <div>{{item.startAt.format(hourFormatter)}} - {{item.endAt.format(hourFormatter)}}</div>
-        </div>
+        <TimetableItem [contentDef]="itemTemplateDef" [context]="item"
+                       [style.background-color]="item.color"
+                       [style.top.px]="getHourOffsetY(item.startAt)"
+                       [style.height.px]="getHourOffsetY(item.endAt) - getHourOffsetY(item.startAt)"
+        ></TimetableItem>
       }
 
     </div>
