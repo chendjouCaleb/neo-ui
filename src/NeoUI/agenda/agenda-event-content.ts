@@ -1,18 +1,17 @@
 ﻿import {Directive, TemplateRef} from '@angular/core';
-import {TimetableItemDefContext} from '../timetable/timetable-item-def';
 import {LocalTime, ZonedDateTime} from '@js-joda/core';
 import {AgendaEventDescriptor} from './agenda-event-descriptor';
 
-export interface AgendaEventContentDef {
-  descriptor: AgendaEventDescriptor
+export interface AgendaEventContentDefContext {
+  event: AgendaEventDescriptor
 }
 
 @Directive({
-  selector: 'AgendaEventContentDef',
+  selector: '[AgendaEventContentDef]',
   standalone: true
 })
 export class AgendaEventContentDef {
-  constructor(public template: TemplateRef<AgendaEventDescriptor>) {}
+  constructor(public template: TemplateRef<AgendaEventContentDefContext>) {}
 }
 
 export interface AgendaHeaderCellDefContext {
@@ -20,7 +19,7 @@ export interface AgendaHeaderCellDefContext {
 }
 
 @Directive({
-  selector: 'AgendaHeaderCellDef',
+  selector: '[AgendaHeaderCellDef]',
   standalone: true
 })
 export class AgendaHeaderCellDef {
@@ -33,7 +32,7 @@ export interface AgendaHourDefContext {
   hour: LocalTime
 }
 @Directive({
-  selector: 'AgendaHourDef',
+  selector: '[AgendaHourDef]',
   standalone: true
 })
 export class AgendaHourDef {

@@ -29,12 +29,18 @@
           <div class="my-agenda-event-container"
                [style.top.px]="_getHourTop(event.startHour)"
                [style.height.px]="_getRangeHeight(event.startHour, event.endHour)">
-            <div class="my-agenda-event" [style.background-color]="event.color">
-              <div>{{event.title}}</div>
-              <div>
-                {{event.startHour.format(hourFormatter)}} - {{event.endHour.format(hourFormatter)}}
+            @if(eventTemplateDef) {
+              <ng-container
+                *ngTemplateOutlet="eventTemplateDef.template; context: _getEventTemplateContext(event)"></ng-container>
+            } @else {
+              <div class="my-agenda-event" [style.background-color]="event.color">
+                <div>{{event.title}}</div>
+                <div>
+                  {{event.startHour.format(hourFormatter)}} - {{event.endHour.format(hourFormatter)}}
+                </div>
               </div>
-            </div>
+            }
+
           </div>
 
         }

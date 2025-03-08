@@ -1,8 +1,13 @@
 ﻿import {AfterViewInit, Component, ContentChild, ElementRef, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {ChronoUnit, DateTimeFormatter, LocalTime, ZonedDateTime} from '@js-joda/core';
 import {AgendaEventDescriptor} from './agenda-event-descriptor';
-import {AgendaEventContentDef, AgendaHeaderCellDef, AgendaHourDef} from './agenda-event-content';
-import {NgIf} from '@angular/common';
+import {
+  AgendaEventContentDef,
+  AgendaEventContentDefContext,
+  AgendaHeaderCellDef,
+  AgendaHourDef
+} from './agenda-event-content';
+import {NgIf, NgTemplateOutlet} from '@angular/common';
 
 @Component({
   templateUrl: 'agenda.html',
@@ -11,7 +16,8 @@ import {NgIf} from '@angular/common';
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [
-    NgIf
+    NgIf,
+    NgTemplateOutlet
   ],
   host: {
     class: 'my-agenda'
@@ -65,13 +71,13 @@ export class Agenda implements AfterViewInit, OnInit {
   events: AgendaEventDescriptor[] = []
 
   @ContentChild(AgendaHeaderCellDef)
-  headerCellDef: AgendaHeaderCellDef
+  headerCellTemplateDef: AgendaHeaderCellDef
 
   @ContentChild(AgendaHourDef)
-  hourDef: AgendaHourDef
+  hourTemplateDef: AgendaHourDef
 
   @ContentChild(AgendaEventContentDef)
-  eventDef: AgendaEventContentDef
+  eventTemplateDef: AgendaEventContentDef
 
   ngAfterViewInit() {
 
@@ -103,6 +109,12 @@ export class Agenda implements AfterViewInit, OnInit {
 
   _getRangeHeight(from: LocalTime, to: LocalTime): number {
     return this._getHourTop(to) - this._getHourTop(from)
+  }
+
+  _getEventTemplateContext(event: AgendaEventDescriptor): AgendaEventContentDefContext {
+    return {
+      event: event
+    }
   }
 
   async _getElementBoxHeight1(elementRef: HTMLElement): Promise<number> {

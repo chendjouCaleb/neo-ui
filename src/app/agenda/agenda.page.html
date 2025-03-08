@@ -1,3 +1,10 @@
 ﻿<div style="padding: 32px; background-color: #FFFFFF">
-  <MyAgenda [events]="items"></MyAgenda>
+  <MyAgenda [events]="items">
+    <div *AgendaEventContentDef="let event=event" class="my-agenda-event" [style.background-color]="event.color">
+      <div>{{event.title}}</div>
+      <div>
+        {{event.startHour.format(hourFormatter)}} - {{event.endHour.format(hourFormatter)}}
+      </div>
+    </div>
+  </MyAgenda>
 </div>

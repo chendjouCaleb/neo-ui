@@ -1,11 +1,18 @@
 ﻿import {Component} from '@angular/core';
-import {convert, LocalDate, LocalTime, ZonedDateTime} from '@js-joda/core';
-import {Agenda, AgendaEventDescriptor, DayOfWeek, MonthRange, TimetableItemDescriptor} from '../../NeoUI';
+import {convert, DateTimeFormatter, LocalDate, LocalTime, ZonedDateTime} from '@js-joda/core';
+import {
+  Agenda,
+  AgendaEventContentDef,
+  AgendaEventDescriptor,
+  DayOfWeek,
+  MonthRange,
+  TimetableItemDescriptor
+} from '../../NeoUI';
 
 @Component({
   templateUrl: 'agenda.page.html',
   standalone: true,
-  imports: [Agenda],
+  imports: [Agenda, AgendaEventContentDef],
   selector: 'AgendaPage'
 })
 export class AgendaPage {
@@ -120,4 +127,6 @@ export class AgendaPage {
   toJsDate(date: LocalDate): Date {
     return convert(date).toDate()
   }
+
+  hourFormatter = DateTimeFormatter.ofPattern('HH:mm')
 }
