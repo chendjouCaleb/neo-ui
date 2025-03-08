@@ -1,0 +1,19 @@
+﻿<h1>Mois</h1>
+
+<button (click)="prev()"> prev</button>
+<button (click)="next()">next </button>
+<div>
+<!--  <div>{{monthRange.first.monthValue()}}</div>-->
+
+<!--  @for (day of monthRange.range; track day.dayOfMonth()) {-->
+<!--    {{day.dayOfMonth()}}-->
+<!--  }-->
+</div>
+
+<div style="background-color: #fafafa; border-radius: 4px; padding: 16px">
+  <MyCalendarMonth #calendarMonth>
+    <span class="my-calendar-month-day"
+      [class.outside]="item.monthValue() != calendarMonth.month"
+      *CalendarMonthDayDef="let item=day">{{item.dayOfMonth()}}</span>
+  </MyCalendarMonth>
+</div>

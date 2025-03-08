@@ -1,0 +1,62 @@
+﻿.my-agenda {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #0e4775;
+}
+
+.my-agenda-header {
+  display: grid;
+}
+
+.my-agenda-header-cell-day-container {
+  border-left: 1px solid #dbdbdb;
+}
+
+.my-agenda-body {
+  flex-grow: 1;
+  position: relative;
+  border: 1px solid #d13438;
+}
+
+.my-agenda-body-columns {
+  height: 100%;
+  display: grid;
+}
+
+.my-agenda-column-timeline {
+  position: relative;
+}
+.my-agenda-timeline-hour {
+  position: absolute;
+  left: 24px
+}
+
+.my-agenda-column-day {
+  height: 100%;
+  border-left: 1px solid red;
+
+}
+
+.my-agenda-hour-line {
+  background-color: #052505;
+  height: 1px;
+  position: absolute;
+  right: 0;
+
+}
+
+.my-agenda-event-container {
+  display: block;
+  position: absolute;
+  z-index: 5;
+}
+
+.my-agenda-event {
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #0e4775;
+  color: #FFFFFF;
+  height: 100%;
+  box-sizing: border-box;
+}

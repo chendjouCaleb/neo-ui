@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
     "@js-joda/core": "^5.6.4",
+    "@js-joda/locale_fr": "^4.15.1",
     "lucide-angular": "^0.455.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

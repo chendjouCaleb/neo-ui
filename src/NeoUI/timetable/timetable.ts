@@ -3,16 +3,14 @@
   ContentChild,
   ElementRef,
   Injector,
-  Input, QueryList,
-  StaticProvider,
-  ViewChildren, ViewContainerRef,
+  Input,
+  QueryList,
+  ViewChildren,
   ViewEncapsulation
 } from '@angular/core';
 import {DayOfWeek, dayOfWeeks, DayOfWeeksFrIntl, TimetableItemDescriptor} from './timetable-item-descriptor';
 import {ChronoUnit, DateTimeFormatter, LocalTime} from '@js-joda/core';
-import {min} from 'rxjs';
 import {TimetableItem, TimetableItemDef} from './timetable-item-def';
-import {PageContentDef, PageContext} from '../pager';
 
 @Component({
   selector: 'Timetable',

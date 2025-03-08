@@ -54,15 +54,15 @@ export class MonthRange {
   }
 
   nextMonth(): MonthRange {
-    if (this.month === 11) {
-      return new MonthRange(this.year + 1, 0);
+    if (this.month === 12) {
+      return new MonthRange(this.year + 1, 1);
     }
     return new MonthRange(this.year, this.month + 1);
   }
 
   prevMonth(): MonthRange {
-    if (this.month === 0) {
-      return new MonthRange(this.year - 1, 11);
+    if (this.month === 1) {
+      return new MonthRange(this.year - 1, 12);
     }
     return new MonthRange(this.year, this.month - 1);
   }
