@@ -21,7 +21,9 @@
     "@angular/router": "^18.2.0",
     "@js-joda/core": "^5.6.4",
     "@js-joda/locale_fr": "^4.15.1",
+    "@types/luxon": "^3.4.2",
     "lucide-angular": "^0.455.0",
+    "luxon": "^3.5.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"

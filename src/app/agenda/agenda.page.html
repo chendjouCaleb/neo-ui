@@ -1,5 +1,15 @@
 ﻿<div style="padding: 32px; background-color: #FFFFFF">
   <MyAgenda [events]="items">
+
+    <div *AgendaHeaderCellDef="let day=day">
+      <div style="text-align: center; font-size: 16px; line-height: 20px">
+        {{toDateTime(day).toLocaleString({weekday: 'short'})}}
+      </div>
+      <div style="text-align: center; font-size: 18px; line-height: 24px">
+        {{toDateTime(day).toLocaleString({day: 'numeric'})}}
+      </div>
+    </div>
+
     <div *AgendaEventContentDef="let event=event" class="my-agenda-event" [style.background-color]="event.color">
       <div>{{event.title}}</div>
       <div>

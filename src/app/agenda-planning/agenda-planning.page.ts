@@ -1,16 +1,22 @@
 ﻿import {Component} from '@angular/core';
 import {convert, DateTimeFormatter, LocalDate, ZonedDateTime} from '@js-joda/core';
-import {Agenda, AgendaEventContentDef, AgendaHeaderCellDef} from '../../NeoUI';
+import {Agenda, AgendaEventContentDef, AgendaHeaderCellDef, AgendaHourDef} from '../../NeoUI';
 import {DateTime} from 'luxon';
 import {eventList} from '../event-list';
+import {
+  AgendaPlanning,
+  AgendaPlanningDayDef,
+  AgendaPlanningEventContentDef,
+  AgendaPlanningHourDef
+} from '../../NeoUI/agenda-planning';
 
 @Component({
-  templateUrl: 'agenda.page.html',
+  templateUrl: 'agenda-planning.page.html',
   standalone: true,
-  imports: [Agenda, AgendaEventContentDef, AgendaHeaderCellDef],
+  imports: [Agenda, AgendaEventContentDef, AgendaHeaderCellDef, AgendaPlanning, AgendaHourDef, AgendaPlanningDayDef, AgendaPlanningHourDef, AgendaPlanningEventContentDef],
   selector: 'AgendaPage'
 })
-export class AgendaPage {
+export class AgendaPlanningPage {
   items = eventList
 
   toJsDate(date: LocalDate): Date {

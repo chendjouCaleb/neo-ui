@@ -4,8 +4,8 @@ import {AgendaEventDescriptor} from './agenda-event-descriptor';
 import {
   AgendaEventContentDef,
   AgendaEventContentDefContext,
-  AgendaHeaderCellDef,
-  AgendaHourDef
+  AgendaHeaderCellDef, AgendaHeaderCellDefContext,
+  AgendaHourDef, AgendaHourDefContext
 } from './agenda-event-content';
 import {NgIf, NgTemplateOutlet} from '@angular/common';
 
@@ -114,6 +114,18 @@ export class Agenda implements AfterViewInit, OnInit {
   _getEventTemplateContext(event: AgendaEventDescriptor): AgendaEventContentDefContext {
     return {
       event: event
+    }
+  }
+
+  _getHeaderTemplateContext(day: ZonedDateTime): AgendaHeaderCellDefContext {
+    return {
+      day
+    }
+  }
+
+  _getHourTemplateContext(hour: LocalTime): AgendaHourDefContext {
+    return {
+      hour
     }
   }
 

@@ -1,0 +1,63 @@
+$sizes: 0, 2, 4, 6, 8, 10, 12, 16, 20, 24, 28, 32, 36, 40, 48, 52, 56;
+
+@each $size in $sizes {
+  .paddingTop-#{$size} {
+    padding-top: #{$size}px;
+  }
+  .paddingBottom-#{$size} {
+    padding-bottom: #{$size}px;
+  }
+
+  .paddingStart-#{$size} {
+    padding-left: #{$size}px;
+  }
+
+  .paddingEnd-#{$size} {
+    padding-right: #{$size}px;
+  }
+
+  .paddingVertical-#{$size} {
+    padding-top: #{$size}px;
+    padding-bottom: #{$size}px;
+  }
+
+  .paddingHorizontal-#{$size} {
+    padding-left: #{$size}px;
+    padding-right: #{$size}px;
+  }
+
+  .padding-#{$size} {
+    padding: #{$size}px;
+  }
+
+
+  .marginTop-#{$size} {
+    margin-top: #{$size}px;
+  }
+  .marginBottom-#{$size} {
+    margin-bottom: #{$size}px;
+  }
+
+  .marginStart-#{$size} {
+    margin-left: #{$size}px;
+  }
+
+  .marginEnd-#{$size} {
+    margin-right: #{$size}px;
+  }
+
+  .marginVertical-#{$size} {
+    margin-top: #{$size}px;
+    margin-bottom: #{$size}px;
+  }
+
+  .marginHorizontal-#{$size} {
+    margin-left: #{$size}px;
+    margin-right: #{$size}px;
+  }
+
+  .margin-#{$size} {
+    margin: #{$size}px;
+  }
+
+}

@@ -1,0 +1,39 @@
+﻿@for (day of days; track day) {
+  <div class="my-agenda-planning-group">
+    <div class="my-agenda-planning-group-day-container">
+      @if (dayTemplateDef) {
+        <ng-container *ngTemplateOutlet="dayTemplateDef.template; context: _getDayTemplateContext(day)">
+
+        </ng-container>
+      }
+    </div>
+
+    <div class="my-agenda-planning-group-events">
+
+      @for (event of getDayEvents(day); track event) {
+        <div class="my-agenda-planning-line">
+          <div class="my-agenda-planning-hour-container">
+            @if (hourTemplateDef) {
+              <ng-container *ngTemplateOutlet="hourTemplateDef.template; context: _getHourTemplateContext(event)">
+
+              </ng-container>
+            } @else {
+              {{ event.startHour }}
+            }
+          </div>
+          <div class="my-agenda-planning-event-container">
+            @if (eventTemplateDef) {
+              <ng-container *ngTemplateOutlet="eventTemplateDef.template; context: _getEventTemplateContext(event)">
+
+              </ng-container>
+            } @else {
+              {{ event.title }}
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+
+  </div>
+}

@@ -4,7 +4,11 @@
   @for (day of days; track day){
   <div class="my-agenda-header-cell-day-container">
     <div class="my-agenda-header-cell-day">
-      <div>{{  day.dayOfMonth() }}</div>
+      @if(headerCellTemplateDef) {
+        <ng-container *ngTemplateOutlet="headerCellTemplateDef.template; context:_getHeaderTemplateContext(day)"></ng-container>
+      }@else {
+        <div>{{  day.dayOfMonth() }}</div>
+      }
     </div>
   </div>
   }

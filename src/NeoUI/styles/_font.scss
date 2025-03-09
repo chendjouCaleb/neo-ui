@@ -1,0 +1,92 @@
+﻿$fontSizes: 10, 12, 14, 16, 18, 20, 24, 28, 32, 40, 68;
+
+@each $size in $fontSizes {
+  .fontSize-#{$size} {
+    font-size: #{$size}px;
+  }
+}
+
+.fontWeight-light {font-weight: 200}
+.fontWeight-regular {font-weight: 400}
+.fontWeight-semibold {font-weight: 500 }
+.fontWeight-bold { font-weight: 600; }
+
+.textStyle-display {
+  font-weight: 600;
+  font-size: 68px;
+  line-height: 92px;
+}
+
+.textStyle-largeTitle {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 52px;
+}
+
+
+
+.textStyle-title1 {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+
+.textStyle-title2 {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 36px;
+}
+
+.textStyle-title3Strong {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.textStyle-title3 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.textStyle-subtitle1 {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.textStyle-subtitle2 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.textStyle-body1 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.textStyle-body1Stronger {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.textStyle-body1Strong {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.textStyle-caption1 { font-weight: 400; font-size: 12px; line-height: 16px; }
+.textStyle-caption1Strong { font-weight: 500; font-size: 12px; line-height: 16px; }
+.textStyle-caption1Stronger { font-weight: 500; font-size: 12px; line-height: 16px; }
+
+.textStyle-caption2 { font-weight: 400; font-size: 10px; line-height: 14px; }
+.textStyle-caption2Strong { font-weight: 500; font-size: 10px; line-height: 14px; }
+
+.align-end {
+  text-align: right !important;
+}
