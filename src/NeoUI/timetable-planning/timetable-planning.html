@@ -1,0 +1,40 @@
+﻿@for (dayOfWeek of dayOfWeeks; track dayOfWeek; let dayIndex=$index) {
+  <div class="my-timetable-planning-dayOfWeek" [class.bordered]="dayIndex > 0">
+    @for (event of getDayItems(dayOfWeek); track event; let i=$index) {
+      <div class="my-timetable-planning-line">
+        <div class="my-timetable-planning-line-dayOfWeek-container">
+          @if(i == 0) {
+            @if(dayTemplateDef) {
+              <ng-container *ngTemplateOutlet="dayTemplateDef.template; context: _getDayOfWeekContext(dayOfWeek)">
+
+              </ng-container>
+            }@else {
+              {{dayOfWeek}}
+            }
+          }
+        </div>
+
+        <div class="my-timetable-planning-line-hour-container">
+          @if(hourTemplateDef) {
+            <ng-container *ngTemplateOutlet="hourTemplateDef.template; context: _getHourContext(event)">
+
+            </ng-container>
+          }@else {
+
+          }
+        </div>
+
+        <div class="my-timetable-planning-line-content-container">
+          @if(contentDef) {
+            <ng-container *ngTemplateOutlet="contentDef.template; context: _getContentContext(event)">
+
+            </ng-container>
+          }@else {
+
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+}

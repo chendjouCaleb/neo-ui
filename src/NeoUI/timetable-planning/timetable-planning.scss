@@ -1,0 +1,32 @@
+﻿:root {
+  --my-timetablePlanning-borderColor: #d6d6d6;
+}
+
+.my-timetable-planning {
+  display: block;
+}
+
+.my-timetable-planning-dayOfWeek {
+
+  &.bordered {
+    border-top: 1px solid #d6d6d6;
+  }
+}
+
+.my-timetable-planning-line {
+  display: grid;
+  grid-template-columns: 128px 200px 1fr;
+  grid-column-gap: 16px;
+}
+
+.my-timetable-planning-line-dayOfWeek-container {
+
+}
+
+.my-timetable-planning-line-hour-container {
+
+}
+
+.my-timetable-planning-line-content-container {
+
+}

@@ -22,6 +22,27 @@ export const dayOfWeeks = [
 
 export const DayOfWeeksFrIntl = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
 
+
+export function formatDayOfWeek(dayOfWeek: DayOfWeek, format: string = 'cccc'): string {
+  const formatted = DayOfWeeksFrIntl[dayOfWeek - 1];
+
+  if(format === 'cccc') {
+    return formatted
+  }
+  if(format === 'ccc') {
+    return formatted.substring(0, 3)
+  }
+
+  if(format === 'cc') {
+    return formatted.substring(0, 2)
+  }
+  if(format === 'c') {
+    return formatted.substring(0, 1)
+  }
+
+  throw new Error(`Unknown day of week format ${format}`)
+}
+
 export class TimetableItemDescriptor {
   title: string
   color?: string

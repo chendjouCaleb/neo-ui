@@ -1,0 +1,22 @@
+﻿<div style="padding: 32px; background-color: #FFFFFF">
+  <MyTimetablePlanning [events]="items">
+
+    <div *TimetablePlanningDayDef="let day=dayOfWeek">
+      <span style="text-transform: uppercase; font-size: 16px; line-height: 32px; ">
+        {{formatDayOfWeek(day, 'ccc')}}.
+      </span>
+
+    </div>
+
+    <div *TimetablePlanningHourDef="let event=event" style="height: 32px; line-height: 32px">
+      <span
+        [style.background-color]="event.color"
+        style="width: 12px; height: 12px; display: inline-block; border-radius: 50%; margin-right: 16px"></span>
+      {{event.startAt.format(hourFormatter)}} - {{event.endAt.format(hourFormatter)}}
+    </div>
+
+    <div *TimetablePlanningEventContentDef="let event=event" style="height: 32px; line-height: 32px">
+      {{event.title}}
+    </div>
+  </MyTimetablePlanning>
+</div>
