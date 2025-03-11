@@ -1,0 +1,54 @@
+﻿$myCheckbox_borderColor: #616161;
+$myCheckbox_borderColor__hover:#c7c7c7;
+$myCheckbox_borderColor__checked:transparent;
+
+$myCheckbox_pathColor: transparent;
+$myCheckbox_pathColor__checked: #FFF;
+$myCheckbox_pathColor__hover:#c7c7c7;
+
+$myCheckbox_bgColor: transparent;
+$myCheckbox_bgColor__hover: transparent;
+$myCheckbox_bgColor__checked: #0f6cbd;
+
+
+
+.my-checkbox {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid $myCheckbox_borderColor;
+  border-radius: 2px;
+  background-color: $myCheckbox_bgColor;
+  cursor: pointer;
+
+  &.my-disabled {
+    opacity: .6;
+    pointer-events: none;
+  }
+
+  &.my-checked {
+    background-color: $myCheckbox_bgColor__checked;
+    border-color: $myCheckbox_borderColor__checked;
+  }
+
+  .my-checkbox-nativeInput {
+    display: none;
+  }
+}
+
+.my-checkbox-thumb path{
+  stroke: $myCheckbox_pathColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+.my-checkbox:hover .my-checkbox-thumb path{
+  stroke: $myCheckbox_pathColor__hover;
+}
+
+.my-checkbox.my-checked .my-checkbox-thumb path{
+  stroke: $myCheckbox_pathColor__checked;
+}

@@ -7,10 +7,12 @@ import {AgendaPage} from './agenda/agenda.page';
 
 import {TimetablePlanningPage} from './timetable-planning/timetable-planning.page';
 import {AgendaPlanningPage} from './agenda-planning/agenda-planning.page';
+import {CheckboxPage} from './checkbox/checkbox.page';
 
 export const routes: Routes = [
-  {path: '', component: AgendaMonthPage },
+  {path: '', component: CheckboxPage },
   {path: 'timetable', component: TimetablePage},
+  {path: 'checkbox', component: CheckboxPage},
   {path: 'dropdown', component: DropdownPage},
   {path: 'pager', component: PagerPage},
   {path: 'month-calendar', component: AgendaMonthPage},
