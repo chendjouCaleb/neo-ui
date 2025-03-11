@@ -17,6 +17,12 @@
   display: grid;
   grid-template-columns: 128px 200px 1fr;
   grid-column-gap: 16px;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: #d6d6d6;
+    cursor: pointer;
+  }
 }
 
 .my-timetable-planning-line-dayOfWeek-container {
