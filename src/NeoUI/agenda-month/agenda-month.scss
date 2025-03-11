@@ -1,0 +1,50 @@
+﻿.my-calendar-month {
+  border: 1px solid #dbdbdb;
+  display: block;
+}
+
+.my-agenda-month-line {
+  height: 128px;
+  border-bottom: 1px solid #dbdbdb;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.my-agenda-month-day-container {
+  font-size: 14px;
+  box-sizing: border-box;
+  border-left: 1px solid #dbdbdb;
+  padding: 4px;
+
+  &.outside-month {
+    opacity: .6;
+  }
+}
+
+.my-agenda-month-day-header {
+  padding: 8px
+}
+
+.my-agenda-month-day {
+  display: flex; align-items: center; gap: 8px;
+  padding: 1px 4px ;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 2px;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+}
+
+.my-calendar-month-dayOfWeek {
+  opacity: .8;
+  font-weight: 500;
+  font-size: 14px;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+}

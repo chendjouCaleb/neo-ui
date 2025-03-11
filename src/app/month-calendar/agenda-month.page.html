@@ -1,0 +1,17 @@
+﻿<h1>Mois</h1>
+
+<button (click)="prev()"> prev</button>
+<button (click)="next()">next </button>
+<div>
+<!--  <div>{{monthRange.first.monthValue()}}</div>-->
+
+<!--  @for (day of monthRange.range; track day.dayOfMonth()) {-->
+<!--    {{day.dayOfMonth()}}-->
+<!--  }-->
+</div>
+
+<div >
+  <MyAgendaMonth [events]="items" #calendarMonth>
+
+  </MyAgendaMonth>
+</div>

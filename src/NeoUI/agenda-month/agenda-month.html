@@ -1,0 +1,44 @@
+<div>{{monthRange.month}}</div>
+@for (weekRange of weekRanges; track weekRange; let line=$index) {
+  <div class="my-agenda-month-line">
+    @for (day of weekRange; track day; ) {
+      <div class="my-agenda-month-day-container">
+        @if (dayTemplateDef) {
+          <ng-container *ngTemplateOutlet="dayTemplateDef.template; context:getDayContext(day)"></ng-container>
+        } @else {
+          <div style=" font-size: 12px; font-weight: 600">
+            @if(line == 0){
+              <div style="text-align: center; text-transform: uppercase;" >
+                {{toDatetime(day).toFormat('ccc')}}
+              </div>
+            }
+
+            @if (line == 0 && day.dayOfMonth() == 1) {
+              <div style="text-align: center">{{toDatetime(day).toFormat('d MMM.')}}</div>
+            }@else if (line == 5 && day.dayOfMonth() == 1) {
+            <div style="text-align: center">{{toDatetime(day).toFormat('d MMM.')}}</div>
+          } @else {
+              <div style="text-align: center">{{day.dayOfMonth()}}</div>
+            }
+
+
+          </div>
+
+
+          <div>
+            @for (event of getDayEvents(day); track event) {
+              <div class="my-agenda-month-day" >
+
+                <span
+                  [style.background-color]="event.color"
+                  style="width: 12px; height: 12px; display: inline-block; border-radius: 50%; "></span>
+                {{event.title}}
+              </div>
+            }
+          </div>
+        }
+      </div>
+
+    }
+  </div>
+}
