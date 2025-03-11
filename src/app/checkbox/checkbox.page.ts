@@ -7,15 +7,18 @@ import {SelectDropdown} from '../../NeoUI/select/select-dropdown';
 import {SelectMenu} from '../../NeoUI/select/select-menu';
 import {SelectMenuItem} from '../../NeoUI/select/select-menu-item';
 import {NgForOf, NgIf} from '@angular/common';
+import {MyRadio} from '../../NeoUI/radio/radio';
 
 @Component({
   templateUrl: 'checkbox.page.html',
   standalone: true,
-  imports: [SelectField, SelectFieldLabel, Select, SelectDropdown, SelectMenu, SelectMenuItem, NgForOf, NgIf, TextField, TextFieldInput, TextFieldLabel, MyCheckbox],
+  imports: [SelectField, SelectFieldLabel, Select, SelectDropdown, SelectMenu, SelectMenuItem, NgForOf, NgIf, TextField, TextFieldInput, TextFieldLabel, MyCheckbox, MyRadio],
   selector: 'SelectPage'
 })
 export class CheckboxPage {
   dropdownVisible: boolean = false
+
+  selectedOption: string = 'option1'
 
   countries: Country[] = [
     {code: 'CM', name: 'Cameroun'},

@@ -1,0 +1,59 @@
+﻿$myRadio_borderColor: #616161;
+$myRadio_borderColor__hover: #c7c7c7;
+$myRadio_borderColor__checked: #0f6cbd;
+
+$myRadio_pathColor: transparent;
+$myRadio_pathColor__checked: #FFF;
+$myRadio_pathColor__hover: #c7c7c7;
+
+$myRadio_bgColor: transparent;
+$myRadio_bgColor__hover: #c7c7c7;
+$myRadio_bgColor__checked: #0f6cbd;
+
+.my-radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid $myRadio_borderColor;
+  cursor: pointer;
+}
+
+.my-radio-nativeInput {
+  display: none;
+}
+
+.my-radio-thumb {
+  display: inline-block;
+  height: 0;
+  width: 0;
+  border-radius: 50%;
+
+  transition: width 200ms ease-in-out, height 200ms ease-in-out;
+}
+
+
+.my-radio.checked {
+  border: 2px solid $myRadio_borderColor__checked;
+
+  .my-radio-thumb {
+    width: 12px;
+    height: 12px;
+    background-color: $myRadio_bgColor__checked;
+  }
+}
+
+.my-radio:hover {
+  .my-radio-thumb {
+    width: 12px;
+    height: 12px;
+    background-color: $myRadio_bgColor__hover;
+  }
+}
+
+.my-radio.checked:hover .my-radio-thumb {
+  background-color: $myRadio_bgColor__checked;
+}
