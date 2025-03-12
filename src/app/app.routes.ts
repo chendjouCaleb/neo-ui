@@ -8,11 +8,13 @@ import {AgendaPage} from './agenda/agenda.page';
 import {TimetablePlanningPage} from './timetable-planning/timetable-planning.page';
 import {AgendaPlanningPage} from './agenda-planning/agenda-planning.page';
 import {CheckboxPage} from './checkbox/checkbox.page';
+import {PersonaPage} from './persona/persona.page';
 
 export const routes: Routes = [
-  {path: '', component: CheckboxPage },
+  {path: '', component: PersonaPage },
   {path: 'timetable', component: TimetablePage},
   {path: 'checkbox', component: CheckboxPage},
+  {path: 'persona', component: PersonaPage},
   {path: 'dropdown', component: DropdownPage},
   {path: 'pager', component: PagerPage},
   {path: 'month-calendar', component: AgendaMonthPage},
