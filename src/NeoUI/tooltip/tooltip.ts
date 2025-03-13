@@ -11,9 +11,15 @@ import {ComponentPortal} from '@angular/cdk/portal';
 import {TooltipPanel} from './tooltip-panel';
 
 
+export interface BeakPosition {
+  x: number,
+  y: number
+}
+
 @Directive({
   selector: '[MyTooltip]',
   standalone: true,
+
   host: {
     '(mouseenter)': 'show()',
     '(mouseleave)': '_mouseleave($event)'
@@ -50,6 +56,8 @@ export class Tooltip implements OnInit {
   private _componentRef: ComponentRef<TooltipPanel>
   private _overlayRef: OverlayRef
 
+  beakPosition: BeakPosition = {x: 0, y: 0}
+
   constructor(private elementRef: ElementRef<HTMLElement>,
               private overlay: Overlay) {
   }
@@ -83,6 +91,10 @@ export class Tooltip implements OnInit {
       if(!this.elementRef.nativeElement.contains(event.relatedTarget as Node)) {
         this.hide()
       }
+    })
+
+    positionStrategy.positionChanges.subscribe(value => {
+      console.log(value.connectionPair)
     })
   }
 
@@ -124,7 +136,7 @@ const bottomPosition: ConnectedPosition = {
   overlayX: 'center',
   originY: 'bottom',
   overlayY: 'top',
-  panelClass: 'tooltip-panel-bottom'
+  panelClass: 'my-tooltip-panel-bottom'
 };
 
 const topPosition: ConnectedPosition = {
@@ -132,7 +144,7 @@ const topPosition: ConnectedPosition = {
   overlayX: 'center',
   originY: 'top',
   overlayY: 'bottom',
-  panelClass: 'tooltip-panel-top'
+  panelClass: 'my-tooltip-panel-top'
 }
 
 const leftPosition: ConnectedPosition = {
@@ -140,7 +152,7 @@ const leftPosition: ConnectedPosition = {
   overlayX: 'end',
   originY: 'center',
   overlayY: 'center',
-  panelClass: 'tooltip-panel-start'
+  panelClass: 'my-tooltip-panel-start'
 }
 
 const rightPosition: ConnectedPosition = {
@@ -148,5 +160,5 @@ const rightPosition: ConnectedPosition = {
   overlayX: 'start',
   originY: 'center',
   overlayY: 'center',
-  panelClass: 'tooltip-panel-end'
+  panelClass: 'my-tooltip-panel-end'
 }

@@ -1,21 +1,63 @@
 ﻿.my-tooltip-container {
+  background-color: transparent;
+  position: relative;
+}
+
+.my-tooltip-content {
   background-color: #242424;
   color: #ebebeb;
   padding: 8px;
   border-radius: 4px;
   font-size: 14px;
-  position: relative;
 }
 
 .my-tooltip-beak {
+  background-color: #242424;
   position: absolute;
   display: inline-block;
   width:  12px;
   height: 12px;
-  top: -4px;
-  left: 50%;
-  background-color: inherit;
-  border-radius: 2px;
+  border-radius: 1px;
   z-index: -5;
   transform: rotate(45deg);
+
+}
+
+
+.my-tooltip-panel-start {
+  margin-right: 10px;
+
+  .my-tooltip-beak {
+    right: 0;
+    top: 50%;
+    transform: rotate(45deg) translate(0, -50%);
+  }
+}
+
+.my-tooltip-panel-end {
+  margin-left: 10px;
+  .my-tooltip-beak {
+    left: -8px;
+    top: 50%;
+    transform: rotate(45deg) translate(0, -50%);
+  }
+}
+
+.my-tooltip-panel-top {
+  margin-bottom: 10px;
+  .my-tooltip-beak {
+    left: 50%;
+    bottom: -8px;
+    transform: rotate(45deg) translate(-50%, 0);
+  }
+}
+
+.my-tooltip-panel-bottom {
+  margin-top: 10px;
+
+  .my-tooltip-beak {
+    top: 0px;
+    left: 50%;
+    transform: rotate(45deg) translate(-50%, 0);
+  }
 }

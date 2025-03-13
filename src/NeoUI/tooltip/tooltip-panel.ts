@@ -1,5 +1,6 @@
 ﻿import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {TooltipPosition} from './tooltip-options';
+import {BeakPosition} from './tooltip';
 
 @Component({
   templateUrl: 'tooltip-panel.html',
@@ -14,6 +15,8 @@ export class TooltipPanel {
 
   message: string
   position: TooltipPosition
+
+  beakPosition: BeakPosition
 
   constructor() {
   }
