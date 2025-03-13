@@ -2,14 +2,42 @@
 $myPersona-borderRadius: 50%;
 $myPersona-statusBorderColor: #FFF;
 
-$myPersona-size-24:( "size": 24, "fontSize": 11px, "iconSize": 10px);
-$myPersona-size-32:( "size": 32, "fontSize": 14px, "iconSize": 10px);
-$myPersona-size-40:( "size": 40, "fontSize": 16px, "iconSize": 10px);
-$myPersona-size-48:( "size": 48, "fontSize": 18px, "iconSize": 12px);
-$myPersona-size-56:( "size": 56, "fontSize": 20px, "iconSize": 12px);
-$myPersona-size-72:( "size": 72, "fontSize": 24px, "iconSize": 24px);
-$myPersona-size-100:( "size": 100, "fontSize": 32px, "iconSize": 32px);
-$myPersona-size-128:( "size": 128, "fontSize": 48px, "iconSize": 48px);
+$myPersona-size-24:( size: 24, fontSize: 11px, iconSize: 12px);
+$myPersona-size-32:( size: 32, fontSize: 14px, iconSize: 16px);
+$myPersona-size-40:( size: 40, fontSize: 16px, iconSize: 20px);
+$myPersona-size-48: ( size: 48,   fontSize: 18px, iconSize: 28px);
+$myPersona-size-56: ( size: 56,   fontSize: 20px, iconSize: 32px);
+$myPersona-size-72: ( size: 72,   fontSize: 24px, iconSize: 48px);
+$myPersona-size-100:( size: 100,  fontSize: 32px, iconSize: 56px);
+$myPersona-size-128:( size: 128,  fontSize: 48px, iconSize: 72px);
+
+$myPersona-color-neutral: (name: neutral, bgColor: #e6e6e6, color: #616161);
+$myPersona-color-lavender: (name: lavender, bgColor: #d2ccf8, color: #3f3682);
+$myPersona-color-lavenderDark: (name: lavenderDark, bgColor: #3f3682, color: #d2ccf8);
+$myPersona-color-red: (name: red, bgColor: #f1bbbc, color: #751d1f);
+$myPersona-color-green: (name: green, bgColor: #9fd89f, color: #107c10);
+$myPersona-color-orange: (name: orange, bgColor: #f4bfab, color: #da3b01);
+$myPersona-color-yellow: (name: yellow, bgColor: #fef7b2, color: #fde300);
+$myPersona-color-berry: (name: berry, bgColor: #edbbe7, color: #af33a1);
+$myPersona-color-berry2: (name: berry2, bgColor: #edbbe7, color: #6d2064);
+$myPersona-color-magenta: (name: magenta, bgColor: #eca5d1, color: #6b0043);
+$myPersona-color-lilac: (name: lilac, bgColor: #e6bfed, color: #63276d);
+$myPersona-color-pink: (name: pink, bgColor: #f7c0e3, color: #80215d);
+
+$myPersona-sizes : $myPersona-size-24
+,$myPersona-size-32
+,$myPersona-size-40
+,$myPersona-size-48
+,$myPersona-size-56
+,$myPersona-size-72
+,$myPersona-size-100
+,$myPersona-size-128;
+
+$myPersona-colors: $myPersona-color-neutral, $myPersona-color-lavender, $myPersona-color-lavenderDark,
+$myPersona-color-red, $myPersona-color-green, $myPersona-color-orange, $myPersona-color-yellow,
+$myPersona-color-berry, $myPersona-color-berry2, $myPersona-color-magenta, $myPersona-color-lilac,
+$myPersona-color-pink
+;
 
 .my-persona {
   width: 32px;
@@ -69,7 +97,37 @@ $myPersona-size-128:( "size": 128, "fontSize": 48px, "iconSize": 48px);
   justify-content: center;
 }
 
-.my-persona.size24 {
-  width: 24px;
-  height: 24px;
+
+@each $size in $myPersona-sizes {
+  .my-persona.size#{map.get($size, size)} {
+    width: #{map.get($size, size)}px;
+    height: #{map.get($size, size)}px;
+
+    .my-persona-icon {
+      svg {
+        width: map.get($size, iconSize);
+        height: map.get($size, iconSize);
+      }
+    }
+
+    .my-persona-text {
+      font-size: map.get($size, fontSize)
+    }
+  }
+}
+
+@each $color in $myPersona-colors {
+  .my-persona.color-#{map.get($color, name)} {
+    .my-persona-text {
+      color: map.get($color, color)
+    }
+    .my-persona-icon {
+      svg { stroke: map.get($color, color); }
+    }
+
+    .my-persona-content {
+      background-color: map.get($color, bgColor);
+    }
+
+  }
 }
