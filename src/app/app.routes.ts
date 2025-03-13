@@ -9,9 +9,11 @@ import {TimetablePlanningPage} from './timetable-planning/timetable-planning.pag
 import {AgendaPlanningPage} from './agenda-planning/agenda-planning.page';
 import {CheckboxPage} from './checkbox/checkbox.page';
 import {PersonaPage} from './persona/persona.page';
+import {TooltipPage} from './tooltip/tooltip.page';
 
 export const routes: Routes = [
-  {path: '', component: PersonaPage },
+  {path: '', component: TooltipPage },
+  {path: 'tooltip', component: TooltipPage },
   {path: 'timetable', component: TimetablePage},
   {path: 'checkbox', component: CheckboxPage},
   {path: 'persona', component: PersonaPage},

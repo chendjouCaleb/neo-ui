@@ -1,0 +1,21 @@
+﻿.my-tooltip-container {
+  background-color: #242424;
+  color: #ebebeb;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  position: relative;
+}
+
+.my-tooltip-beak {
+  position: absolute;
+  display: inline-block;
+  width:  12px;
+  height: 12px;
+  top: -4px;
+  left: 50%;
+  background-color: inherit;
+  border-radius: 2px;
+  z-index: -5;
+  transform: rotate(45deg);
+}
