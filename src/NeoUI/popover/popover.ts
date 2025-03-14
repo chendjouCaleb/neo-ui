@@ -34,7 +34,7 @@ export class Popover {
     const container = this._attachPopoverContainer(overlayRef, options);
     const popoverRef = this._attachPopoverContainerContent(content, container);
 
-    const contentTemplatePortal = new TemplatePortal(content as TemplateRef<T>, null!, {});
+
 
   }
 
@@ -45,18 +45,31 @@ export class Popover {
                                             container: PopoverContainer,
                                             options: PopoverOptions): PopoverRef<any> {
 
-    const popoverRef = new PopoverRef(overlayRef, options, trigger)
+    const popoverRef = new PopoverRef<T>(overlayRef, options, trigger)
 
-    instance.attachTemplatePortal(contentTemplatePortal)
+    if(content instanceof TemplateRef) {
+      const context = {$implicit: options.data, popoverRef };
+      const templatePortal = new TemplatePortal(content as TemplateRef<T>, null!, <any> context);
+      popoverRef.embeddedViewRef = container.attachTemplatePortal(templatePortal);
+    }else {
+      const injector =this._createInjector<T>(options, popoverRef, container);
+      const componentPortal = new ComponentPortal(content, options.viewContainerRef, injector);
+      const componentRef = container.attachComponentPortal(componentPortal);
+      popoverRef.componentInstance = componentRef.instance
+    }
+
+    popoverRef.updateSize()
+
+    return popoverRef;
   }
 
 
   private _createInjector<T>(options: PopoverOptions,
-                          popoverRef: PopoverRef<T>,
+                             popoverRef: PopoverRef<T>,
                              container: PopoverContainer): Injector {
     const userInjector = options && options.viewContainerRef && options.viewContainerRef.injector;
-    const providers : StaticProvider[] = [
-      {provide: POPOVER_DATA, useValue: options.data },
+    const providers: StaticProvider[] = [
+      {provide: POPOVER_DATA, useValue: options.data},
       {provide: PopoverContainer, useValue: container},
       {provide: PopoverRef, useValue: popoverRef}
     ]
@@ -69,8 +82,9 @@ export class Popover {
       });
     }
 
-    return Injector.create({ parent: userInjector || this._injector, providers})
+    return Injector.create({parent: userInjector || this._injector, providers})
   }
+
   /**
    * Attaches a popover container to a popover's already-created overlay.
    * @param overlayRef Reference to the popover's underlying overlay.

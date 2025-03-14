@@ -1,5 +1,6 @@
 ﻿import {OverlayRef} from '@angular/cdk/overlay';
 import {PopoverOptions} from './popover-options';
+import {EmbeddedViewRef} from '@angular/core';
 
 let uniqueId = 0;
 
@@ -7,6 +8,9 @@ export class PopoverRef<T, R = any> {
 
   /** The instance of component opened into the toast. */
   componentInstance: T
+
+  /** The viewRef of template opened into the popover. */
+  embeddedViewRef: EmbeddedViewRef<any>
 
   /** Result to be passed to afterClosed. */
   private _result: R | undefined;
