@@ -1,18 +1,23 @@
-﻿.my-tooltip-container {
+﻿$my-tooltip-padding: 4px;
+$my-tooltip-fontSize: 12px;
+$my-tooltip-color: #ebf3fc;
+$my-tooltip-bgColor: #0f6cbd;
+
+.my-tooltip-container {
   background-color: transparent;
   position: relative;
 }
 
 .my-tooltip-content {
-  background-color: #242424;
-  color: #ebebeb;
-  padding: 8px;
+  background-color: $my-tooltip-bgColor;
+  color: $my-tooltip-color;
+  padding: $my-tooltip-padding;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: $my-tooltip-fontSize;
 }
 
 .my-tooltip-beak {
-  background-color: #242424;
+  background-color: $my-tooltip-bgColor;
   position: absolute;
   display: inline-block;
   width:  12px;

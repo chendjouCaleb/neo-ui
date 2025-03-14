@@ -94,7 +94,7 @@ export class Tooltip implements OnInit {
     })
 
     positionStrategy.positionChanges.subscribe(value => {
-      console.log(value.connectionPair)
+
     })
   }
 

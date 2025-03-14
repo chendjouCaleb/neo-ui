@@ -15,3 +15,5 @@ export * from './timetable-planning'
 export * from './persona'
 export * from './radio';
 export * from './checkbox'
+export * from './tooltip';
+export * from './popover';
