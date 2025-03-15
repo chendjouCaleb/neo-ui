@@ -1,12 +1,23 @@
-﻿import {Component, ComponentRef, EmbeddedViewRef, ViewChild, ViewEncapsulation} from '@angular/core';
-import {
-  BasePortalOutlet,
-  CdkPortalOutlet,
-  ComponentPortal,
-  DomPortal,
-  Portal,
-  TemplatePortal
-} from '@angular/cdk/portal';
+﻿import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ComponentRef,
+  EmbeddedViewRef, Inject,
+  ViewChild,
+  ViewEncapsulation
+} from '@angular/core';
+import {CdkPortalOutlet, ComponentPortal, Portal, TemplatePortal} from '@angular/cdk/portal';
+import {POPOVER_TRIGGER, PopoverOptions} from './popover-options';
+import {ConnectionPositionPair, FlexibleConnectedPositionStrategy, OverlayRef} from '@angular/cdk/overlay';
+
+export interface BeakPosition {
+  start?: number,
+  end?: number,
+  top?: number,
+  bottom?: number,
+
+}
 
 @Component({
   templateUrl: 'popover-container.html',
@@ -20,11 +31,31 @@ import {
     class: 'my-popover-container'
   }
 })
-export class PopoverContainer {
+export class PopoverContainer implements AfterViewInit {
   @ViewChild(CdkPortalOutlet, {static: true})
   _portalHost: CdkPortalOutlet;
 
-  constructor() {
+  position: ConnectionPositionPair
+
+  beakPosition: BeakPosition = {}
+
+  constructor(private _options: PopoverOptions,
+              private _overlayRef: OverlayRef,
+              private _changeDetector: ChangeDetectorRef,
+              @Inject(POPOVER_TRIGGER) private _trigger: HTMLElement) {
+
+  }
+
+  ngAfterViewInit() {
+    const position = this._overlayRef.getConfig().positionStrategy as FlexibleConnectedPositionStrategy
+    position.positionChanges.subscribe(p => {
+      this.position = p.connectionPair
+      setTimeout(() => {
+        this.updateBeakPosition()
+        this._changeDetector.detectChanges()
+      }, 10)
+    })
+
   }
 
   protected _attachedPortal: Portal<any>;
@@ -44,4 +75,30 @@ export class PopoverContainer {
     return this._portalHost.attachTemplatePortal(portal)
   }
 
+
+  getBeakWidth(): number {
+    const r = this._options.beakRadius;
+    return Math.sqrt(2 * r * r);
+  }
+
+  updateBeakPosition() {
+    if (!this.position) return
+    const triggerRect = this._trigger.getBoundingClientRect()
+    const overlayRect = this._overlayRef.overlayElement.getBoundingClientRect();
+    if (this.position.originY == 'top' && this.position.overlayY == 'bottom') {
+      console.log('top')
+      const start = triggerRect.left + triggerRect.width/2 - overlayRect.left - this.getBeakWidth()/2
+        this.beakPosition = {bottom: -this.getBeakWidth() / 2, start: start}
+    }
+
+  }
+
+  getContentMargin(): number {
+    return this._options.beakRadius;
+  }
+
+  getBeakTop(): number {
+    //return  ((this._options.beakRadius * 2) - this.getBeakWith())/2;
+    return -this.getBeakWidth() / 2;
+  }
 }

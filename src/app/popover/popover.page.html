@@ -1,7 +1,32 @@
-﻿<div class="padding-24">
-    <button #trigger (click)="open()" > Open template</button>
+﻿<div class="padding-56">
+    <button #trigger (click)="open()" class="marginStart-56"> Open template</button>
 </div>
 
 <ng-template #templateRef>
-  first popover
+  <div class="padding-16">
+    Lorem ipsum dolor sit amet,<br>  consectetur adipisicing elit.<br>
+    Aperiam beatae culpa cum dolorem
+  </div>
 </ng-template>
+
+
+<div style="display: flex; align-items: center; justify-content: center; margin-top: 100px">
+  <div class="buttons-grid">
+    <button style="grid-column-start: 2" (click)="openAt($event, 'top-start')">Top-start</button>
+    <button style="grid-column-start: 3" (click)="openAt($event, 'top-center')">Top-center</button>
+    <button style="grid-column-start: 4" (click)="openAt($event, 'top-end')">Top-end</button>
+
+    <button style="grid-column-start: 1" (click)="openAt($event, 'start-top')">Left-Top</button>
+    <button style="grid-column-start: 1" (click)="openAt($event, 'start-center')">Left-Center</button>
+    <button style="grid-column-start: 1" (click)="openAt($event, 'start-bottom')">Left-Bottom</button>
+
+    <button style="grid-column-start: 5; grid-row-start: 2" (click)="openAt($event, 'end-top')">Right-Top</button>
+    <button style="grid-column-start: 5; grid-row-start: 3" (click)="openAt($event, 'end-center')">Right-Center</button>
+    <button style="grid-column-start: 5; grid-row-start: 4" (click)="openAt($event, 'end-bottom')">Right-Bottom</button>
+
+    <button style="grid-column-start: 2; grid-row-start: 5" (click)="openAt($event, 'bottom-start')">Bottom-start</button>
+    <button style="grid-column-start: 3; grid-row-start: 5" (click)="openAt($event, 'bottom-center')">Bottom-center</button>
+    <button style="grid-column-start: 4; grid-row-start: 5" (click)="openAt($event, 'bottom-end')">Bottom-end</button>
+
+  </div>
+</div>

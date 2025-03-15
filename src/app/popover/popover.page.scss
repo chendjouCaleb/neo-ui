@@ -1,0 +1,19 @@
+﻿:host {
+  display: block;
+  .buttons-grid {
+    display: grid;
+    grid-template-columns: 64px 64px 64px 64px 64px;
+    grid-template-rows: 64px 64px 64px 64px 64px;
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+    width: auto;
+
+    button {
+      padding: 16px;
+      border-radius: 2px;
+      width: 64px;
+      border: 1px solid #bdbdbd;
+      box-sizing: border-box;
+    }
+  }
+}

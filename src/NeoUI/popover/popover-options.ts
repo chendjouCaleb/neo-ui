@@ -1,13 +1,27 @@
-﻿import {ComponentFactoryResolver, ViewContainerRef} from '@angular/core';
-import {ComponentType} from '@angular/cdk/overlay';
+﻿import {ComponentType} from '@angular/cdk/overlay';
 import {PopoverContainer} from './popover-container';
 import {Direction} from '@angular/cdk/bidi';
+import {InjectionToken, ViewContainerRef} from '@angular/core';
 
-export type PopoverPosition = 'bottom' | 'top' | 'start' | 'end';
+/** Injection token that can be used to access the data that was passed in to a dialog. */
+export const POPOVER_DATA = new InjectionToken<any>('MyPopoverData');
+export const POPOVER_TRIGGER = new InjectionToken<any>('MyPopoverTrigger');
+
+export type PopoverPosition =
+  'top-start' | 'top-center' | 'top-end' |
+  'start-top' | 'start-center' | 'start-bottom' |
+  'end-top' | 'end-center' | 'end-bottom' |
+  'bottom-start' | 'bottom-center' | 'bottom-end';
 
 export class PopoverOptions<D = any> {
   /** Data to be injected into the popover content. */
   data?: D | null = null;
+
+  /** The radius in px of the beak. */
+  beakRadius?: number = 16;
+
+  /** Space in px between the trigger element and the popover. */
+  gap?: number = 8
 
   /** Custom class(es) for the overlay panel. */
   panelClass?: string | string[] = 'my-popover-panel';
@@ -16,10 +30,10 @@ export class PopoverOptions<D = any> {
   hasBackdrop?: boolean = false;
 
   /** Custom class(es) for the popover. */
-  backdropClass?: string | string[]  | undefined = '';
+  backdropClass?: string | string[] | undefined = '';
 
   /** The Popover position relative to her target. */
-  position?: PopoverPosition = 'bottom';
+  position?: PopoverPosition = 'bottom-center';
 
   /** ID of the element that describes the dialog. */
   ariaDescribedBy?: string | null = null;
@@ -56,8 +70,6 @@ export class PopoverOptions<D = any> {
   /** The maximum height of the popover. */
   maxHeight?: string | number = '';
 
-  /** The size in pixel of the popover beak. */
-  beakWidth?: number = 10;
 
   closeOnNavigation?: boolean = true;
 

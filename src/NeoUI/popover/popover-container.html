@@ -1,3 +1,16 @@
-﻿<h1>Popover</h1>
+﻿<span class="my-popover-beak"
+      [style.height.px]="getBeakWidth()"
+      [style.width.px]="getBeakWidth()"
 
-<div *cdkPortalOutlet=""></div>
+      [style.top.px]="beakPosition.top"
+      [style.bottom.px]="beakPosition.bottom"
+      [style.left.px]="beakPosition.start"
+      [style.right.px]="beakPosition.end"
+
+></span>
+
+
+<div class="my-popover-portal" >
+  <div class="" *cdkPortalOutlet></div>
+</div>
+
