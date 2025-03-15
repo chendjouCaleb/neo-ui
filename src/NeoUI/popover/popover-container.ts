@@ -101,9 +101,9 @@ export class PopoverContainer implements AfterViewInit {
       this.beakPosition = {top: top, end: -this.getBeakWidth() / 2}
     }
 
-    if (this.position.originX == 'start' && this.position.overlayX == 'end') {
+    if (this.position.originX == 'end' && this.position.overlayX == 'start') {
       const top = triggerRect.top + triggerRect.width/2 - overlayRect.top - this.getBeakWidth()/2
-      this.beakPosition = {top: top, end: -this.getBeakWidth() / 2}
+      this.beakPosition = {top: top, start: -this.getBeakWidth() / 2}
     }
   }
 
