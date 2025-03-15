@@ -21,6 +21,6 @@ export class PopoverPage {
   }
 
   open() {
-    this.popover.open(this.trigger.nativeElement, this.templateRef)
+    this.popover.open(this.trigger.nativeElement, this.templateRef, {})
   }
 }

@@ -32,10 +32,10 @@ export class Popover {
     options = this._applyOptionsDefaults(options);
     const overlayRef = this._createOverlayRef(trigger, options);
     const container = this._attachPopoverContainer(overlayRef, options);
-    const popoverRef = this._attachPopoverContainerContent(content, container);
+    const popoverRef = this._attachPopoverContainerContent(content, overlayRef, trigger,
+      container, options);
 
-
-
+    return popoverRef
   }
 
 
@@ -47,12 +47,12 @@ export class Popover {
 
     const popoverRef = new PopoverRef<T>(overlayRef, options, trigger)
 
-    if(content instanceof TemplateRef) {
-      const context = {$implicit: options.data, popoverRef };
-      const templatePortal = new TemplatePortal(content as TemplateRef<T>, null!, <any> context);
+    if (content instanceof TemplateRef) {
+      const context = {$implicit: options.data, popoverRef};
+      const templatePortal = new TemplatePortal(content as TemplateRef<T>, null!, <any>context);
       popoverRef.embeddedViewRef = container.attachTemplatePortal(templatePortal);
-    }else {
-      const injector =this._createInjector<T>(options, popoverRef, container);
+    } else {
+      const injector = this._createInjector<T>(options, popoverRef, container);
       const componentPortal = new ComponentPortal(content, options.viewContainerRef, injector);
       const componentRef = container.attachComponentPortal(componentPortal);
       popoverRef.componentInstance = componentRef.instance
