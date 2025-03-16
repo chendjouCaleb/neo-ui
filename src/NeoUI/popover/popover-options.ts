@@ -2,16 +2,13 @@
 import {PopoverContainer} from './popover-container';
 import {Direction} from '@angular/cdk/bidi';
 import {InjectionToken, ViewContainerRef} from '@angular/core';
+import {TooltipPosition} from '../toolttip-position';
 
 /** Injection token that can be used to access the data that was passed in to a dialog. */
 export const POPOVER_DATA = new InjectionToken<any>('MyPopoverData');
 export const POPOVER_TRIGGER = new InjectionToken<any>('MyPopoverTrigger');
 
-export type PopoverPosition =
-  'top-start' | 'top-center' | 'top-end' |
-  'start-top' | 'start-center' | 'start-bottom' |
-  'end-top' | 'end-center' | 'end-bottom' |
-  'bottom-start' | 'bottom-center' | 'bottom-end';
+
 
 export class PopoverOptions<D = any> {
   /** Data to be injected into the popover content. */
@@ -33,7 +30,7 @@ export class PopoverOptions<D = any> {
   backdropClass?: string | string[] | undefined = '';
 
   /** The Popover position relative to her target. */
-  position?: PopoverPosition = 'bottom-center';
+  position?: TooltipPosition = 'bottom-center';
 
   /** ID of the element that describes the dialog. */
   ariaDescribedBy?: string | null = null;

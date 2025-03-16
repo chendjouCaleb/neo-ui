@@ -1,6 +1,7 @@
 ﻿import {Component, ElementRef, TemplateRef, ViewChild} from '@angular/core';
 import {Tooltip} from '../../NeoUI/tooltip';
-import {Popover, PopoverPosition} from '../../NeoUI';
+import {Popover} from '../../NeoUI';
+import {TooltipPosition} from '../../NeoUI/toolttip-position';
 
 @Component({
   templateUrl: 'popover.page.html',
@@ -25,7 +26,7 @@ export class PopoverPage {
     this.popover.open(this.trigger.nativeElement, this.templateRef, { beakRadius: 16, gap: 8 })
   }
 
-  openAt(event: Event, position: PopoverPosition) {
+  openAt(event: Event, position: TooltipPosition) {
     this.popover.open(event.target as HTMLElement, this.templateRef, { position })
   }
 

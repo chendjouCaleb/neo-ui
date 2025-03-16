@@ -12,6 +12,7 @@ import {POPOVER_DATA, POPOVER_TRIGGER, PopoverOptions} from './popover-options';
 import {PopoverRef} from './popover-ref';
 import {Directionality} from '@angular/cdk/bidi';
 import {of} from 'rxjs';
+import {getTooltipConnectedPositions} from '../toolttip-position';
 
 
 
@@ -136,21 +137,12 @@ export class Popover {
   }
 
   getPosition(trigger: HTMLElement, options: PopoverOptions): FlexibleConnectedPositionStrategy {
-    const position = POPOVER_POSITIONS[options.position]
 
-    if(options.position.startsWith('top-')) {
-      position.offsetY = -options.beakRadius
-    }else if(options.position.startsWith('bottom-')) {
-      position.offsetY = options.beakRadius
-    }else if(options.position.startsWith('start-')) {
-      position.offsetX = -options.beakRadius
-    }else if(options.position.startsWith('end-')) {
-      position.offsetX = options.beakRadius
-    }
+    const positions = getTooltipConnectedPositions(options.position, options.beakRadius)
 
     return this._overlay.position()
       .flexibleConnectedTo(trigger)
-      .withPositions([position]);
+      .withPositions(positions);
   }
 
 

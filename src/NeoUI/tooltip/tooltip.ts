@@ -1,5 +1,4 @@
 ﻿import {ComponentRef, Directive, ElementRef, Input, OnInit} from '@angular/core';
-import {TooltipPosition} from './tooltip-options';
 import {
   ConnectedPosition,
   FlexibleConnectedPositionStrategy,
@@ -9,6 +8,7 @@ import {
 } from '@angular/cdk/overlay';
 import {ComponentPortal} from '@angular/cdk/portal';
 import {TooltipPanel} from './tooltip-panel';
+import {TooltipPosition} from '../toolttip-position';
 
 
 export interface BeakPosition {
@@ -85,7 +85,7 @@ export class Tooltip implements OnInit {
 
     this._componentRef = this._overlayRef.attach(panel);
     this._componentRef.instance.message = this.message;
-    this._componentRef.instance.position = this.position;
+    //this._componentRef.instance.position = this.position;
 
     this._overlayRef.overlayElement.addEventListener('mouseleave', (event: MouseEvent) => {
       if(!this.elementRef.nativeElement.contains(event.relatedTarget as Node)) {
@@ -118,13 +118,13 @@ export class Tooltip implements OnInit {
 
   getPositionStrategy(): FlexibleConnectedPositionStrategy {
     let connectedPosition: ConnectedPosition[] = [bottomPosition, topPosition];
-    if (this.position === 'left') {
-      connectedPosition = [leftPosition, rightPosition];
-    } else if (this.position === 'top') {
-      connectedPosition = [topPosition, bottomPosition]
-    } else if (this.position === 'right') {
-      connectedPosition = [rightPosition, leftPosition]
-    }
+    // if (this.position === 'left') {
+    //   connectedPosition = [leftPosition, rightPosition];
+    // } else if (this.position === 'top') {
+    //   connectedPosition = [topPosition, bottomPosition]
+    // } else if (this.position === 'right') {
+    //   connectedPosition = [rightPosition, leftPosition]
+    // }
     return this.overlay.position()
       .flexibleConnectedTo(this.elementRef)
       .withPositions(connectedPosition);

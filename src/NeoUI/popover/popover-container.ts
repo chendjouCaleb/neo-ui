@@ -47,8 +47,12 @@ export class PopoverContainer implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const position = this._overlayRef.getConfig().positionStrategy as FlexibleConnectedPositionStrategy
-    position.positionChanges.subscribe(p => {
+    const positionStrategy = this._overlayRef.getConfig().positionStrategy as FlexibleConnectedPositionStrategy
+    // this.position = positionStrategy._preferredPositions[0]
+    // this.updateBeakPosition()
+    // this._changeDetector.detectChanges()
+
+    positionStrategy.positionChanges.subscribe(p => {
       this.position = p.connectionPair
       setTimeout(() => {
         this.updateBeakPosition()
@@ -85,8 +89,9 @@ export class PopoverContainer implements AfterViewInit {
     if (!this.position) return
     const triggerRect = this._trigger.getBoundingClientRect()
     const overlayRect = this._overlayRef.overlayElement.getBoundingClientRect();
+    console.log(this.position)
     if (this.position.originY == 'top' && this.position.overlayY == 'bottom') {
-      console.log('top')
+
       const start = triggerRect.left + triggerRect.width/2 - overlayRect.left - this.getBeakWidth()/2
         this.beakPosition = {bottom: -this.getBeakWidth() / 2, start: start}
     }

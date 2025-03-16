@@ -1,9 +1,6 @@
 import {InjectionToken} from '@angular/core';
+import {TooltipPosition} from '../toolttip-position';
 
-/**
- * Possible positions for a tooltip.
- */
-export type TooltipPosition = 'left' | 'right' | 'top' | 'bottom' | 'before' | 'after';
 
 export interface MyTooltipDefaultOptions {
 
@@ -33,7 +30,7 @@ export function MY_TOOLTIP_DEFAULT_OPTIONS_FACTORY(): MyTooltipDefaultOptions {
   return {
     hideDelay: 100,
     showDelay: 100,
-    position: 'bottom',
+    position: 'bottom-center',
     tooltipClass: 'my-tooltip'
   };
 }
