@@ -54,7 +54,7 @@ export class Popover {
                                             container: PopoverContainer,
                                             options: PopoverOptions): PopoverRef<any> {
 
-    const popoverRef = new PopoverRef<T>(overlayRef, options, trigger)
+    const popoverRef = new PopoverRef<T>(overlayRef, options, trigger, container)
 
     if (content instanceof TemplateRef) {
       const context = {$implicit: options.data, popoverRef};

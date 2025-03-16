@@ -23,7 +23,18 @@ export class PopoverPage {
   }
 
   open() {
-    this.popover.open(this.trigger.nativeElement, this.templateRef, { beakRadius: 16, gap: 8 })
+    const popoverRef = this.popover.open(this.trigger.nativeElement, this.templateRef, { beakRadius: 16, gap: 8 })
+    popoverRef.afterClosed().subscribe(() => {
+      console.log('Popover closed')
+    })
+
+    popoverRef.beforeClosed().subscribe(() => {
+      console.log('Popover launch close')
+    })
+
+    popoverRef.afterOpened().subscribe(() => {
+      console.log('Popover opened')
+    })
   }
 
   openAt(event: Event, position: TooltipPosition) {

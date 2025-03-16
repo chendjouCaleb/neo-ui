@@ -23,11 +23,20 @@ export class PopoverOptions<D = any> {
   /** Custom class(es) for the overlay panel. */
   panelClass?: string | string[] = 'my-popover-panel';
 
+  /** ID for the dialog. If omitted, a unique one will be generated. */
+  id?: string;
+
+  /** The ARIA role of the popover element. */
+  role?: string = 'popover';
+
   /** Whether the popover has a background. */
   hasBackdrop?: boolean = false;
 
   /** Custom class(es) for the popover. */
   backdropClass?: string | string[] | undefined = '';
+
+  /** Whether the user can use escape or clicking on the backdrop or outside to close the modal. */
+  disableClose?: boolean = false;
 
   /** The Popover position relative to her target. */
   position?: TooltipPosition = 'bottom-center';
@@ -35,8 +44,21 @@ export class PopoverOptions<D = any> {
   /** ID of the element that describes the dialog. */
   ariaDescribedBy?: string | null = null;
 
+  /** ID of the element that labels the dialog. */
+  ariaLabelledBy?: string | null = null;
+
+
   /** Aria label to assign to the dialog element */
   ariaLabel?: string | null = null;
+
+  /** Whether the dialog should focus the first focusable element on open. */
+  autoFocus?: boolean = true;
+
+  /**
+   * Whether the dialog should restore focus to the
+   * previously-focused element, after it's closed.
+   */
+  restoreFocus?: boolean = true;
 
   /** Component to use as the container for the dialog. */
   containerComponent?: ComponentType<PopoverContainer>;
