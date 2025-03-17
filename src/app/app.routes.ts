@@ -10,12 +10,13 @@ import {AgendaPlanningPage} from './agenda-planning/agenda-planning.page';
 import {CheckboxPage} from './checkbox/checkbox.page';
 import {PersonaPage} from './persona/persona.page';
 import {TooltipPage} from './tooltip/tooltip.page';
-import {Popover} from '../NeoUI';
 import {PopoverPage} from './popover/popover.page';
+import {ToastPage} from './toast/toast.page';
 
 export const routes: Routes = [
-  {path: '', component: PopoverPage },
+  {path: '', component: ToastPage },
   {path: 'tooltip', component: TooltipPage },
+  {path: 'toast', component: ToastPage },
   {path: 'popover', component: PopoverPage },
   {path: 'timetable', component: TimetablePage},
   {path: 'checkbox', component: CheckboxPage},

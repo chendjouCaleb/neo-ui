@@ -14,9 +14,6 @@ import {Directionality} from '@angular/cdk/bidi';
 import {of} from 'rxjs';
 import {getTooltipConnectedPositions} from '../toolttip-position';
 
-
-
-
 @Injectable({
   providedIn: 'root'
 })

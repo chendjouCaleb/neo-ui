@@ -1,0 +1,16 @@
+﻿<div class="padding-56">
+    <button #trigger (click)="open()" > Open toast</button>
+</div>
+
+<ng-template #templateRef let-toastRef="toastRef">
+  <div class="messageBar color-green" style="width: 400px">
+    <div class="messageBar-title">Message title</div>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam assumenda beatae cupiditate esse fugit, hic illo inventore ipsam ipsum
+    molestias necessitatibus optio quasi repellendus rerum! Delectus eveniet molestiae repudiandae!
+
+    <button (click)="toastRef.close()">Fermer</button>
+  </div>
+
+
+</ng-template>
+

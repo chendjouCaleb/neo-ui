@@ -1,24 +1,23 @@
-﻿import {OverlayRef} from '@angular/cdk/overlay';
-import {PopoverOptions} from './popover-options';
+﻿import {OverlayRef, PositionStrategy} from '@angular/cdk/overlay';
+import {ToastOptions} from './toast-options';
 import {EmbeddedViewRef} from '@angular/core';
 import {filter, Observable, Subject, take} from 'rxjs';
-import {PopoverContainer} from './popover-container';
-import {ESCAPE, hasModifierKey} from '@angular/cdk/keycodes';
+import {ToastContainer} from './toast-container';
 import {FocusOrigin} from '@angular/cdk/a11y';
 
 let uniqueId = 0;
+let counter = 0;
 
 /** Possible states of the lifecycle of a dialog. */
-export type PopoverState = 'open' | 'closing' | 'closed';
+export type ToastState = 'open' | 'closing' | 'closed';
 
-export class PopoverRef<T, R = any> {
+export class ToastRef<T, R = any> {
 
   /** The instance of component opened into the toast. */
   componentInstance: T
 
 
-
-  /** The viewRef of template opened into the popover. */
+  /** The viewRef of template opened into the toast. */
   embeddedViewRef: EmbeddedViewRef<any>
 
   /** Subject for notifying the user that the dialog has finished opening. */
@@ -36,19 +35,20 @@ export class PopoverRef<T, R = any> {
   /** Handle to the timeout that's running as a fallback in case the exit animation doesn't fire. */
   private _closeFallbackTimeout: any;
 
-  /** Current state of the popover. */
-  private _state: PopoverState = 'open'
+  /** Current state of the toast. */
+  private _state: ToastState = 'open'
 
 
+  get options(): ToastOptions {
+    return this._options;
+  }
 
-  get options(): PopoverOptions { return this._options; }
-  get trigger(): HTMLElement { return this._trigger }
 
   constructor(private _overlayRef: OverlayRef,
-              private _options: PopoverOptions,
-              private _trigger: HTMLElement,
-              public _containerInstance: PopoverContainer,
-              readonly id: string = `my-popover-${uniqueId++}`) {
+              private _options: ToastOptions,
+              public _containerInstance: ToastContainer,
+              private count: number = counter++,
+              readonly id: string = `my-toast-${uniqueId++}`) {
     _containerInstance._id = id;
 
     // Emit when opening animation completes
@@ -79,22 +79,6 @@ export class PopoverRef<T, R = any> {
       this._overlayRef.dispose();
     });
 
-    _overlayRef.keydownEvents()
-      .pipe(filter(event => {
-        return event.keyCode === ESCAPE && !this.disableClose && !hasModifierKey(event);
-      }))
-      .subscribe(event => {
-        event.preventDefault();
-        _closePopoverVia(this, 'keyboard');
-      });
-
-    _overlayRef.backdropClick().subscribe(() => {
-      if (this.disableClose) {
-        //this._containerInstance._recaptureFocus();
-      } else {
-        _closePopoverVia(this, 'mouse');
-      }
-    });
   }
 
   close(result?: R) {
@@ -135,13 +119,13 @@ export class PopoverRef<T, R = any> {
     return this;
   }
 
-  /** Gets the current state of the popover's lifecycle. */
-  getState(): PopoverState {
+  /** Gets the current state of the toast's lifecycle. */
+  getState(): ToastState {
     return this._state;
   }
 
   /**
-   * Finishes the dialog close by updating the state of the popover
+   * Finishes the dialog close by updating the state of the toast
    * and disposing the overlay.
    */
   private _finishDialogClose() {
@@ -158,6 +142,12 @@ export class PopoverRef<T, R = any> {
     this._overlayRef.updateSize({width, height});
     this._overlayRef.updatePosition();
     return this;
+  }
+
+
+  updatePosition(positionStrategy: PositionStrategy) {
+    this._overlayRef.updatePositionStrategy(positionStrategy);
+    this._overlayRef.updatePosition()
   }
 
   get overlayRef(): OverlayRef {
@@ -185,27 +175,10 @@ export class PopoverRef<T, R = any> {
     return this._beforeClosed;
   }
 
-  /**
-   * Gets an observable that emits when the overlay's backdrop has been clicked.
-   */
-  backdropClick(): Observable<MouseEvent> {
-    return this._overlayRef.backdropClick();
-  }
-
-  /**
-   * Gets an observable that emits when keydown events are targeted on the overlay.
-   */
-  keydownEvents(): Observable<KeyboardEvent> {
-    return this._overlayRef.keydownEvents();
-  }
-
-  /** Whether the user is allowed to close the dialog. */
-  get disableClose(): boolean { return this._containerInstance._options.disableClose }
 }
 
 
-
-export function _closePopoverVia<R>(ref: PopoverRef<R>, interactionType: FocusOrigin, result?: R) {
+export function _closeToastVia<R>(ref: ToastRef<R>, interactionType: FocusOrigin, result?: R) {
   // Some mock dialog ref instances in tests do not have the `_containerInstance` property.
   // For those, we keep the behavior as is and do not deal with the interaction type.
   if (ref._containerInstance !== undefined) {
