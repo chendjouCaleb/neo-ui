@@ -35,6 +35,8 @@ export class ToastRef<T, R = any> {
   /** Handle to the timeout that's running as a fallback in case the exit animation doesn't fire. */
   private _closeFallbackTimeout: any;
 
+  _closeTimeoutId: any;
+
   /** Current state of the toast. */
   private _state: ToastState = 'open'
 

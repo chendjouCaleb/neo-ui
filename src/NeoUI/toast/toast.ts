@@ -17,7 +17,7 @@ export class Toast {
 
   constructor(private _overlay: Overlay,
               private _injector: Injector,
-              @Optional() @Inject(TOAST_DEFAULT_OPTIONS)private _defaultOptions: ToastOptions) {
+              @Optional() @Inject(TOAST_DEFAULT_OPTIONS) private _defaultOptions: ToastOptions) {
     this._toastStack = new ToastStack(_overlay)
   }
 
@@ -35,15 +35,20 @@ export class Toast {
 
     toastRef.afterClosed().subscribe(() => {
       this._toastStack.removeToast(toastRef);
-    })
+    });
+    if (options.duration) {
+      toastRef._closeTimeoutId = setTimeout(() => {
+        toastRef.close()
+      }, options.duration)
+    }
     return toastRef
   }
 
 
   private _attachToastContainerContent<T>(content: ComponentType<T> | TemplateRef<T>,
-                                            overlayRef: OverlayRef,
-                                            container: ToastContainer,
-                                            options: ToastOptions): ToastRef<any> {
+                                          overlayRef: OverlayRef,
+                                          container: ToastContainer,
+                                          options: ToastOptions): ToastRef<any> {
 
     const toastRef = new ToastRef<T>(overlayRef, options, container)
 

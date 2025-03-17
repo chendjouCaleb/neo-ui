@@ -36,6 +36,8 @@ export class PopoverRef<T, R = any> {
   /** Handle to the timeout that's running as a fallback in case the exit animation doesn't fire. */
   private _closeFallbackTimeout: any;
 
+
+
   /** Current state of the popover. */
   private _state: PopoverState = 'open'
 

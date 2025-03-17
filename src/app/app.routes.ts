@@ -12,10 +12,12 @@ import {PersonaPage} from './persona/persona.page';
 import {TooltipPage} from './tooltip/tooltip.page';
 import {PopoverPage} from './popover/popover.page';
 import {ToastPage} from './toast/toast.page';
+import {SwitchPage} from './switch/switch.page';
 
 export const routes: Routes = [
-  {path: '', component: ToastPage },
+  {path: '', component: SwitchPage },
   {path: 'tooltip', component: TooltipPage },
+  {path: 'switch', component: SwitchPage },
   {path: 'toast', component: ToastPage },
   {path: 'popover', component: PopoverPage },
   {path: 'timetable', component: TimetablePage},
