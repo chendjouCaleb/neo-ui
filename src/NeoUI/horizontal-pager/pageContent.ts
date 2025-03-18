@@ -7,7 +7,7 @@
   ViewContainerRef,
   ViewEncapsulation
 } from '@angular/core';
-import {PageContentDef, PageContext} from './page-content-ref';
+import {PageContentDef, HorizontalPageContext} from './page-content-ref';
 
 @Component({
   template: `
@@ -32,7 +32,7 @@ export class PageContent implements AfterViewInit {
 
   constructor(private _contentDef: PageContentDef,
               private _elementRef: ElementRef<HTMLElement>,
-              private _context: PageContext) {
+              private _context: HorizontalPageContext) {
   }
 
   ngAfterViewInit(): void {

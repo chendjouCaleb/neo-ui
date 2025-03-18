@@ -1,12 +1,14 @@
 ﻿import {Component} from '@angular/core';
-import {HorizontalPager, PageContentDef, TabRow, TabRowItem} from '../../NeoUI';
+import {MySwitch} from '../../NeoUI/switch';
+import {Pager, PagerTemplateDef} from '../../NeoUI';
 
 @Component({
-  selector: 'PagerPage',
-  standalone: true,
   templateUrl: 'pager.page.html',
-  imports: [ TabRow, TabRowItem, HorizontalPager, PageContentDef]
+  standalone: true,
+  imports: [Pager, PagerTemplateDef],
+  selector: 'InfinitePage'
 })
 export class PagerPage {
 
 }
+

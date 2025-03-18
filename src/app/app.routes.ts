@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
 import {DropdownPage} from './dropdown/dropdown.page';
-import {PagerPage} from './pager/pager.page';
+import {HorizontalPagerPage} from './horizontal-pager/horizontal-pager.page';
 import {TimetablePage} from './timetable/timetable.page';
 import {AgendaMonthPage} from './month-calendar/agenda-month.page';
 import {AgendaPage} from './agenda/agenda.page';
@@ -13,9 +13,12 @@ import {TooltipPage} from './tooltip/tooltip.page';
 import {PopoverPage} from './popover/popover.page';
 import {ToastPage} from './toast/toast.page';
 import {SwitchPage} from './switch/switch.page';
+import {PagerContainer} from '../NeoUI';
+import {PagerPage} from './pager/pager.page';
 
 export const routes: Routes = [
-  {path: '', component: SwitchPage },
+  {path: '', component: PagerPage },
+  {path: 'pager', component: PagerPage },
   {path: 'tooltip', component: TooltipPage },
   {path: 'switch', component: SwitchPage },
   {path: 'toast', component: ToastPage },
@@ -24,7 +27,7 @@ export const routes: Routes = [
   {path: 'checkbox', component: CheckboxPage},
   {path: 'persona', component: PersonaPage},
   {path: 'dropdown', component: DropdownPage},
-  {path: 'pager', component: PagerPage},
+  {path: 'horizontal-pager', component: HorizontalPagerPage},
   {path: 'month-calendar', component: AgendaMonthPage},
   {path: 'agenda', component: AgendaPage},
   {path: 'agenda-planning', component: AgendaPlanningPage},

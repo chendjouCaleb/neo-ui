@@ -1,3 +1,3 @@
-export * from './HorizontalPager'
-export * from './page-content-ref'
-export * from './pageContent'
+﻿export * from './pager-container';
+export * from './pager';
+export * from './template-def';

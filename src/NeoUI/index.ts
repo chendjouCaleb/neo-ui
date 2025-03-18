@@ -1,4 +1,4 @@
-export * from './pager'
+export * from './horizontal-pager'
 export * from './tabRow'
 export * from './textField'
 export * from './dropdown'
@@ -18,3 +18,4 @@ export * from './checkbox'
 export * from './tooltip';
 export * from './popover';
 export * from './toast';
+export * from './pager';

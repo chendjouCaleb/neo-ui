@@ -2,7 +2,7 @@
 import {PageContent} from './pageContent';
 
 
-export class PageContext {
+export class HorizontalPageContext {
   odd: boolean;
   even: boolean;
   first: boolean;
@@ -25,5 +25,5 @@ export class PageContentDef {
 
   contentCache: ComponentRef<PageContent>
 
-  constructor(public template: TemplateRef<PageContext>) {}
+  constructor(public template: TemplateRef<HorizontalPageContext>) {}
 }

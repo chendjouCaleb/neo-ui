@@ -13,7 +13,7 @@ $mySwitch_bgColor__checked: #0f6cbd;
   display: inline-block;
   width: 36px;
   height: 22px;
-  border: 1px solid $mySwitch_borderColor;
+  border: none;
   border-radius: 20px;
   background-color: $mySwitch_bgColor;
   cursor: pointer;
@@ -41,8 +41,8 @@ $mySwitch_bgColor__checked: #0f6cbd;
   display: inline-block;
   background-color: $mySwitch_borderColor;
   position: absolute;
-  top: 2px;
-  left: 2px;
+  top: 3px;
+  left: 4px;
 
   transition: transform cubic-bezier(0.1, 0.9, 0.2, 1) 200ms;
 }
@@ -50,5 +50,5 @@ $mySwitch_bgColor__checked: #0f6cbd;
 .my-switch.my-checked .my-switch-thumb{
   background-color: #FFFFFF;
 
-transform: translateX(14px);
+transform: translateX(12px);
 }

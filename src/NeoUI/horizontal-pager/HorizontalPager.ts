@@ -8,7 +8,7 @@
   ViewContainerRef,
   ViewEncapsulation
 } from '@angular/core';
-import {PageContentDef, PageContext} from './page-content-ref';
+import {PageContentDef, HorizontalPageContext} from './page-content-ref';
 import {PageContent} from './pageContent';
 import {MsMotionSlideDir, MsMotionTimings} from '../motion';
 import {MsMotionFunction} from './pager-motion';
@@ -144,10 +144,10 @@ export class HorizontalPager implements AfterViewInit {
   }
 
   private _createInjector(index: number, content: PageContentDef): Injector {
-    const context = new PageContext(index, this.pageList!.length);
+    const context = new HorizontalPageContext(index, this.pageList!.length);
 
     const providers: StaticProvider[] = [
-      {provide: PageContext, useValue: context},
+      {provide: HorizontalPageContext, useValue: context},
       {provide: PageContentDef, useValue: content}
     ];
 

@@ -1,0 +1,67 @@
+﻿<div>
+  <TabRow #tabRow="tabRow" [selectedIndex]="2">
+    <button TabRowItem
+            (click)="tabRow.selectIndex(0, true); pager.selectIndex(0)"
+            (mouseenter)="tabRow.activateHover(0)"
+            (mouseleave)="tabRow.deactivateHover()"
+            [active] = "tabRow.selectedIndex == 0"
+    >Tous
+    </button>
+    <button TabRowItem
+            (click)="tabRow.selectIndex(1, true); pager.selectIndex(1)"
+            (mouseenter)="tabRow.activateHover(1)"
+            (mouseleave)="tabRow.deactivateHover()"
+            [active] = "tabRow.selectedIndex == 1"
+    >Images
+    </button>
+    <button TabRowItem (click)="tabRow.selectIndex(2, true); pager.selectIndex(2)"
+            (mouseenter)="tabRow.activateHover(2)"
+            (mouseleave)="tabRow.deactivateHover()"
+            [active] = "tabRow.selectedIndex == 2"
+
+    >Vidéos
+    </button>
+    <button TabRowItem
+            (click)="tabRow.selectIndex(3, true); pager.selectIndex(3)"
+            (mouseenter)="tabRow.activateHover(3)"
+            (mouseleave)="tabRow.deactivateHover()"
+            [active] = "tabRow.selectedIndex == 3"
+    >Actualités
+    </button>
+    <button TabRowItem
+            (click)="tabRow.selectIndex(4, true); pager.selectIndex(4)"
+            (mouseenter)="tabRow.activateHover(4)"
+            (mouseleave)="tabRow.deactivateHover()"
+            [active] = "tabRow.selectedIndex == 4"
+    >Carte
+    </button>
+    <button TabRowItem
+            (click)="tabRow.selectIndex(5, true); pager.selectIndex(5)"
+            (mouseenter)="tabRow.activateHover(5)"
+            (mouseleave)="tabRow.deactivateHover()"
+            [active] = "tabRow.selectedIndex == 5"
+    >Livre
+    </button>
+  </TabRow>
+</div>
+
+<HorizontalPager #pager="pager" [selectedIndex]="2">
+  <div *PageDef>
+    <span>0</span>
+  </div>
+  <div *PageDef>
+    <span>1</span>
+  </div>
+  <div *PageDef>
+    <span>2</span>
+  </div>
+  <div *PageDef>
+    <span>3</span>
+  </div>
+  <div *PageDef>
+    <span>4</span>
+  </div>
+  <div *PageDef>
+    <span>5</span>
+  </div>
+</HorizontalPager>
