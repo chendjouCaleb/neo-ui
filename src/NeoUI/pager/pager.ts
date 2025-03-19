@@ -32,7 +32,7 @@ export class PagerChange {
   }
 })
 export class Pager implements AfterViewInit {
-  _pages: {[key: number]: PagerContainer} = {}
+  _pages: { [key: number]: PagerContainer } = {}
 
   @ContentChild(PagerTemplateDef)
   templateRef: PagerTemplateDef
@@ -42,9 +42,12 @@ export class Pager implements AfterViewInit {
 
   _height: number
 
-  get currentIndex(): number { return this._currentIndex; }
+  get currentIndex(): number {
+    return this._currentIndex;
+  }
+
   private _currentIndex: number = 0;
-  private _lastActiveIndex: number = -1;
+  private _lastActiveIndex: number | null = null;
 
   private _currentPage: PagerContainer
 
@@ -57,17 +60,17 @@ export class Pager implements AfterViewInit {
 
   activatePage(index: number) {
 
-    if(this._currentPage){
+    if (this._currentPage) {
       this._currentPage.startExitAnimation()
       this._lastActiveIndex = this._currentIndex;
     }
 
-    const pageContext = { index }
+    const pageContext = {index}
     this._currentPage = this._getOrCreateContainer(pageContext);
-    const dir = index > this._lastActiveIndex ?  'rtl' : 'ltr';
-    if(this._lastActiveIndex === -1) {
-        this._currentPage.markAsActive()
-    }else {
+    const dir = index > this._lastActiveIndex ? 'rtl' : 'ltr';
+    if (this._lastActiveIndex === -1) {
+      this._currentPage.markAsActive()
+    } else {
       this._currentPage.startEnterAnimation(dir);
     }
 
@@ -79,17 +82,16 @@ export class Pager implements AfterViewInit {
   }
 
   private _getOrCreateContainer(pageContext: PageContext): PagerContainer {
-    if(this._pages[pageContext.index]) {
+    if (this._pages[pageContext.index]) {
       return this._pages[pageContext.index];
-    }
-    else {
+    } else {
       const container = this._attachPageContainer(pageContext);
       this._pages[pageContext.index] = container;
       return container;
     }
   }
 
-  private _attachPageContainer(pageContext: PageContext) : PagerContainer {
+  private _attachPageContainer(pageContext: PageContext): PagerContainer {
     const injector = Injector.create({
       parent: this._injector,
       providers: [
@@ -108,14 +110,13 @@ export class Pager implements AfterViewInit {
   }
 
 
-
   next() {
     this.activatePage(this._currentIndex + 1)
   }
 
   prev() {
-    if(this._currentIndex > 0)
-      this.activatePage(this._currentIndex - 1)
+    this.activatePage(this._currentIndex - 1)
+
   }
 
   pushBack() {
