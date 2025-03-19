@@ -8,3 +8,19 @@
   <button (click)="pager.next()">Next</button>
 
 </div>
+
+
+<div class="padding-16">
+  <MyPager #calendarPager style="border: 1px solid red; width: 224px">
+    <div *MyPagerTemplateDef="let i=index">
+      <MyCalendarMonth #calendarMonth [year]="getDate(i).year()" [month]="getDate(i).monthValue()">
+    <span class="my-calendar-month-day"
+          [class.outside]="item.monthValue() != calendarMonth.month"
+          *CalendarMonthDayDef="let item=day">{{item.dayOfMonth()}}</span>
+      </MyCalendarMonth>
+    </div>
+  </MyPager>
+  <button (click)="calendarPager.prev()">Prev</button>
+  <button (click)="calendarPager.next()">Next</button>
+
+</div>

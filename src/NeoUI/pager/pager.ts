@@ -1,6 +1,6 @@
 ﻿import {
   AfterViewInit,
-  ChangeDetectionStrategy,
+  ChangeDetectionStrategy, ChangeDetectorRef,
   Component,
   ContentChild, Injector,
   TemplateRef,
@@ -27,11 +27,12 @@ export class PagerChange {
     CdkPortalOutlet
   ],
   host: {
-    'class': 'my-pager'
+    'class': 'my-pager',
+    '[style.height.px]': '_height'
   }
 })
 export class Pager implements AfterViewInit {
-  _pages: PagerContainer[] = [];
+  _pages: {[key: number]: PagerContainer} = {}
 
   @ContentChild(PagerTemplateDef)
   templateRef: PagerTemplateDef
@@ -39,11 +40,15 @@ export class Pager implements AfterViewInit {
   @ViewChild(CdkPortalOutlet)
   _portalOutlet: CdkPortalOutlet
 
+  _height: number
+
   get currentIndex(): number { return this._currentIndex; }
   private _currentIndex: number = 0;
   private _lastActiveIndex: number = -1;
 
-  constructor(private _injector: Injector) {
+  private _currentPage: PagerContainer
+
+  constructor(private _injector: Injector, private _changeDetectorRef: ChangeDetectorRef) {
   }
 
   ngAfterViewInit() {
@@ -51,12 +56,37 @@ export class Pager implements AfterViewInit {
   }
 
   activatePage(index: number) {
-    const pageContext = { index }
-    const container = this._attachPageContainer(pageContext);
 
-    const templatePortal = new TemplatePortal(this.templateRef.template, null!, pageContext);
-    container.attachTemplatePortal(templatePortal);
+    if(this._currentPage){
+      this._currentPage.startExitAnimation()
+      this._lastActiveIndex = this._currentIndex;
+    }
+
+    const pageContext = { index }
+    this._currentPage = this._getOrCreateContainer(pageContext);
+    const dir = index > this._lastActiveIndex ?  'rtl' : 'ltr';
+    if(this._lastActiveIndex === -1) {
+        this._currentPage.markAsActive()
+    }else {
+      this._currentPage.startEnterAnimation(dir);
+    }
+
+    setTimeout(() => {
+      this._height = this._currentPage.host.getBoundingClientRect().height
+      console.log(this._height)
+    }, 0)
     this._currentIndex = index;
+  }
+
+  private _getOrCreateContainer(pageContext: PageContext): PagerContainer {
+    if(this._pages[pageContext.index]) {
+      return this._pages[pageContext.index];
+    }
+    else {
+      const container = this._attachPageContainer(pageContext);
+      this._pages[pageContext.index] = container;
+      return container;
+    }
   }
 
   private _attachPageContainer(pageContext: PageContext) : PagerContainer {
@@ -69,10 +99,15 @@ export class Pager implements AfterViewInit {
     });
 
     const containerPortal = new ComponentPortal(PagerContainer, null!, injector);
+
     const containerRef = this._portalOutlet.attachComponentPortal(containerPortal);
-   // this._portalOutlet.detach()
-    return containerRef.instance;
+    const templatePortal = new TemplatePortal(this.templateRef.template, null!, pageContext);
+    containerRef.instance.attachTemplatePortal(templatePortal);
+
+    return containerRef.instance
   }
+
+
 
   next() {
     this.activatePage(this._currentIndex + 1)

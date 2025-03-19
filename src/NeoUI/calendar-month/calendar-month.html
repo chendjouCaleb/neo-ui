@@ -1,8 +1,10 @@
-@for(day of weekRanges[0]; track day) {
-  <span class="my-calendar-month-dayOfWeek">
+<div>
+  @for(day of weekRanges[0]; track day) {
+    <span class="my-calendar-month-dayOfWeek">
     {{toJsDate(day).toLocaleDateString('fr-FR', {weekday: 'short'})}}
   </span>
-}
+  }
+</div>
 
 @for (weekRange of weekRanges; track weekRange) {
   <div>

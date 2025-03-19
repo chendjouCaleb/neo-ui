@@ -15,6 +15,7 @@ import {ToastPage} from './toast/toast.page';
 import {SwitchPage} from './switch/switch.page';
 import {PagerContainer} from '../NeoUI';
 import {PagerPage} from './pager/pager.page';
+import {MonthCalendarPage} from './agenda-month/month-calendar.page';
 
 export const routes: Routes = [
   {path: '', component: PagerPage },
@@ -28,7 +29,7 @@ export const routes: Routes = [
   {path: 'persona', component: PersonaPage},
   {path: 'dropdown', component: DropdownPage},
   {path: 'horizontal-pager', component: HorizontalPagerPage},
-  {path: 'month-calendar', component: AgendaMonthPage},
+  {path: 'month-calendar', component: MonthCalendarPage},
   {path: 'agenda', component: AgendaPage},
   {path: 'agenda-planning', component: AgendaPlanningPage},
   {path: 'agenda-month', component: AgendaMonthPage},
