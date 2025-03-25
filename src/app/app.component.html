@@ -1,1 +1,38 @@
-<router-outlet></router-outlet>
+<div class="layout">
+  <div class="layout-menu">
+    <a routerLink="button" routerLinkActive="active">Button</a>
+    <a routerLink="radio" routerLinkActive="active">Radio</a>
+    <a routerLink="checkbox" routerLinkActive="active">Checkbox</a>
+    <a routerLink="switch" routerLinkActive="active">Switch</a>
+    <a routerLink="text-field" routerLinkActive="active">Text field</a>
+    <a routerLink="select" routerLinkActive="active">Select</a>
+
+    <a routerLink="persona" routerLinkActive="active">Persona</a>
+
+    <a routerLink="popover" routerLinkActive="active">Popover</a>
+    <a routerLink="tooltip" routerLinkActive="active">Tooltip</a>
+    <a routerLink="toast" routerLinkActive="active">Toast</a>
+    <a routerLink="pager" routerLinkActive="active">Pager</a>
+    <a routerLink="dropdown" routerLinkActive="active">Dropdown</a>
+
+    <a routerLink="timetable" routerLinkActive="active">Timetable</a>
+    <a routerLink="timetable-planning" routerLinkActive="active">Timetable planning</a>
+    <a routerLink="month-calendar" routerLinkActive="active">Calendar month</a>
+    <a routerLink="agenda" routerLinkActive="active">Agenda</a>
+    <a routerLink="agenda-month" routerLinkActive="active">Agenda month</a>
+    <a routerLink="agenda-planning" routerLinkActive="active">Agenda planning</a>
+    <a routerLink="dropdown" routerLinkActive="active">Dropdown</a>
+
+    <div>
+      <MySwitch [checked]="themeMode == 'dark'" (change)="toggleThemeMode($event.checked)"></MySwitch>
+    </div>
+  </div>
+
+  <div class="layout-content">
+   <div style="width: 100%; overflow-x: scroll">
+     <router-outlet></router-outlet>
+   </div>
+  </div>
+</div>
+
+
