@@ -191,9 +191,7 @@ export class MyRadio implements AfterContentInit, OnInit, OnDestroy, ControlValu
       }
     });
 
-    effect(() => {
-      console.log('bonjour: ' + this.getInputChecked())
-    });
+
   }
 
 

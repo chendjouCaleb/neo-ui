@@ -1,4 +1,10 @@
-﻿.my-button {
+﻿:root {
+  --my-button-shape__rounded: 4px;
+  --my-button-shape__circular: 32px;
+  --my-button-shape__square: 0;
+}
+
+.my-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,13 +13,17 @@
   line-height: 16px;
   padding: 8px 16px;
 
-  border-radius: 32px;
   box-sizing: border-box;
 
   color: #FFFFFF;
   background-color: #0A78D5;
   border: none;
+  cursor: pointer;
 }
+
+.my-button.shape-rounded { border-radius: var(--my-button-shape__rounded); }
+.my-button.shape-circular { border-radius: var(--my-button-shape__circular); }
+.my-button.shape-square { border-radius: var(--my-button-shape__square); }
 
 .my-button-container {
   display: flex;
