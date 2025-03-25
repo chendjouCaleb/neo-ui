@@ -1,11 +1,14 @@
 ﻿.my-calendar-month {
+  --my-agenda-month-color: var(--colorNeutralForeground1);
+  --my-agenda-month-stroke: var(--colorNeutralStroke1);
+
   border: 1px solid #dbdbdb;
   display: block;
 }
 
 .my-agenda-month-line {
   height: 128px;
-  border-bottom: 1px solid #dbdbdb;
+  border-bottom: 1px solid var(--my-agenda-month-stroke);
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -14,7 +17,7 @@
 .my-agenda-month-day-container {
   font-size: 14px;
   box-sizing: border-box;
-  border-left: 1px solid #dbdbdb;
+  border-left: 1px solid var(--my-agenda-month-stroke);
   padding: 4px;
 
   &.outside-month {
@@ -33,7 +36,7 @@
   cursor: pointer;
   border-radius: 2px;
   &:hover {
-    background-color: #f0f0f0;
+    background-color: var(--colorNeutralBackground1Hover);
   }
 }
 

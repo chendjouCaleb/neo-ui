@@ -1,5 +1,6 @@
 ﻿.my-calendar-month {
-
+  --my-calendar-month-color: var(--colorNeutralForeground1);
+  --my-calendar-month-stroke: var(--colorNeutralStroke1);
   display: grid;
 }
 
@@ -11,9 +12,10 @@
   display: inline-block;
   text-align: center;
   cursor: pointer;
+  border-radius: 4px;
 
   &:hover {
-    background-color: #f0f0f0;
+    background-color: var(--colorNeutralBackground1Hover);
   }
 
   &.outside {
