@@ -4,12 +4,14 @@
 
 .my-timetable-planning {
   display: block;
+  --my-timetable-planning-color: var(--colorNeutralForeground1);
+  --my-timetable-planning-stroke: var(--colorNeutralStroke1)
 }
 
 .my-timetable-planning-dayOfWeek {
 
   &.bordered {
-    border-top: 1px solid #d6d6d6;
+    border-top: 1px solid var( --my-timetable-planning-stroke);
   }
 }
 
@@ -20,7 +22,7 @@
   border-radius: 4px;
 
   &:hover {
-    background-color: #d6d6d6;
+    background-color: var(--colorNeutralBackground1Hover);
     cursor: pointer;
   }
 }
