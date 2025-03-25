@@ -2,6 +2,8 @@
   --my-button-shape__rounded: 4px;
   --my-button-shape__circular: 32px;
   --my-button-shape__square: 0;
+
+  --my-button-borderSize: 1px;
 }
 
 .my-button {
@@ -16,17 +18,120 @@
   box-sizing: border-box;
 
   color: #FFFFFF;
-  background-color: #0A78D5;
+  background-color: var(--colorBrandBackground);
   border: none;
   cursor: pointer;
+
+
+}
+
+.my-button-container {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
 }
 
 .my-button.shape-rounded { border-radius: var(--my-button-shape__rounded); }
 .my-button.shape-circular { border-radius: var(--my-button-shape__circular); }
 .my-button.shape-square { border-radius: var(--my-button-shape__square); }
 
-.my-button-container {
-  display: flex;
-  align-items: center;
-  column-gap: 8px;
+
+.my-button.appearance-filled {
+
+}
+
+.my-button.appearance-tonal {
+
+}
+
+.my-button.appearance-outlined {
+  border: var(--my-button-borderSize) solid;
+  background-color: transparent;
+  height: 32px;
+}
+
+.my-button.appearance-text {
+  border: none;
+  background-color: transparent;
+}
+
+.my-button.color-primary {
+  &:focus {
+    outline: 2px solid var(--colorBrandBackground);
+  }
+}
+
+.my-button.appearance-filled.color-primary {
+  background-color: var(--colorBrandBackground);
+  color: #FFF;
+
+  &:hover {
+    background-color: var(--colorBrandBackgroundHover);
+  }
+
+  &:active {
+    background-color: var(--colorBrandBackgroundPressed);
+  }
+}
+
+.my-button.appearance-tonal.color-primary {
+  background-color: var(--colorBrandBackground2);
+  color: var(--colorBrandForeground2);
+
+  &:hover {
+    background-color: var(--colorBrandBackground2Hover);
+  }
+}
+
+.my-button.appearance-outlined.color-primary {
+  background-color: transparent;
+  color: var(--colorBrandForeground1);
+  border-color: var(--colorNeutralStroke1);
+
+  &:hover {
+    background-color: var(--colorBrandBackground2Hover);
+    border-color: var(--colorBrandBackground2Hover);
+  }
+}
+
+.my-button.appearance-text.color-primary {
+  background-color: transparent;
+  color: var(--colorBrandForeground1);
+  border-color: transparent;
+
+  &:hover {
+    background-color: var(--colorBrandBackground2Hover);
+    border-color: var(--colorBrandBackground2Hover);
+  }
+}
+
+
+.my-button.color-danger {
+  &:focus {
+    outline: 2px solid var(--colorStatusDangerBackground3);
+  }
+}
+
+.my-button.appearance-filled.color-danger {
+  background-color: var(--colorStatusDangerBackground3);
+  color: var(--colorNeutralForegroundInverted);
+
+  &:hover {
+    background-color: var(--colorStatusDangerBackground3Hover);
+  }
+
+  &:active {
+    background-color: var(--colorStatusDangerBackground3Pressed);
+  }
+}
+
+
+.my-button.appearance-tonal.color-danger {
+  background-color: var(--colorStatusDangerBackground1);
+  color: var(--colorStatusDangerForeground1);
+
+  &:hover {
+    background-color: var(--colorStatusDangerBackground3Hover);
+    color: var(--colorNeutralForegroundInverted);
+  }
 }
