@@ -16,9 +16,10 @@ import {SwitchPage} from './switch/switch.page';
 import {PagerContainer} from '../NeoUI';
 import {PagerPage} from './pager/pager.page';
 import {MonthCalendarPage} from './agenda-month/month-calendar.page';
+import {ButtonPage} from './button/button.page';
 
 export const routes: Routes = [
-  {path: '', component: PagerPage },
+  {path: '', component: ButtonPage },
   {path: 'pager', component: PagerPage },
   {path: 'tooltip', component: TooltipPage },
   {path: 'switch', component: SwitchPage },
@@ -34,5 +35,5 @@ export const routes: Routes = [
   {path: 'agenda-planning', component: AgendaPlanningPage},
   {path: 'agenda-month', component: AgendaMonthPage},
   {path: 'timetable-planning', component: TimetablePlanningPage},
-
+  {path: 'button', component: ButtonPage }
 ];

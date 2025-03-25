@@ -2,6 +2,7 @@
 import {MySwitch} from '../../NeoUI/switch';
 import {CalendarMonth, CalendarMonthDayDef, Pager, PagerTemplateDef} from '../../NeoUI';
 import {LocalDate} from '@js-joda/core';
+import {DateTime} from 'luxon';
 
 @Component({
   templateUrl: 'pager.page.html',
@@ -11,8 +12,8 @@ import {LocalDate} from '@js-joda/core';
 })
 export class PagerPage {
 
-  getDate(index: number): LocalDate {
-    return LocalDate.now().plusMonths(index)
+  getDate(index: number): DateTime {
+    return DateTime.now().plus({month: index})
   }
 
   protected readonly indexedDB = indexedDB;

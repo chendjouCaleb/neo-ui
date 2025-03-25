@@ -2,7 +2,7 @@
   AfterViewInit,
   ChangeDetectionStrategy, ChangeDetectorRef,
   Component,
-  ContentChild, Injector,
+  ContentChild, Injector, Input,
   TemplateRef,
   ViewChild,
   ViewEncapsulation
@@ -32,6 +32,7 @@ export class PagerChange {
   }
 })
 export class Pager implements AfterViewInit {
+  private _initialized = false;
   _pages: { [key: number]: PagerContainer } = {}
 
   @ContentChild(PagerTemplateDef)
@@ -42,6 +43,15 @@ export class Pager implements AfterViewInit {
 
   _height: number
 
+
+  @Input()
+  set currentIndex(index: number) {
+    if(this._initialized) {
+      this.activatePage(index)
+    }else {
+      this._currentIndex = index
+    }
+  }
   get currentIndex(): number {
     return this._currentIndex;
   }
@@ -56,6 +66,7 @@ export class Pager implements AfterViewInit {
 
   ngAfterViewInit() {
     this.activatePage(this._currentIndex)
+    this._initialized = true
   }
 
   activatePage(index: number) {
