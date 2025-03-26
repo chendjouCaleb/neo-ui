@@ -1,5 +1,9 @@
 ﻿:root {
-  --my-agendaPlanning-borderColor : #dbdbdb;
+
+}
+
+.my-agenda-planning {
+  --my-agendaPlanning-borderColor : var(--colorNeutralStroke1);
   --my-agendaPlanning-dayCell-width: 128px;
   --my-agendaPlanning-hourCell-width: 150px;
 }

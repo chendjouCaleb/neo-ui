@@ -3,7 +3,7 @@
 }
 
 .tab-row-thumb {
-  background-color: #0A78D5;
+  background-color: var(--colorBrandForeground1);
   border-radius: 8px;
   height: 4px;
   width: 96px;
@@ -24,9 +24,10 @@
   font-size: 14px;
   border-radius: 4px;
   font-family: "Noto Sans", sans-serif;
+  color: var(--colorNeutralForeground1);
   &.active {
     font-weight: 500;
-    color: #0A78D5;
+    color: var(--colorBrandForeground1);
   }
 
   &:hover {
