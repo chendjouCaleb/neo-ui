@@ -1,0 +1,31 @@
+﻿{
+  "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "lib": {
+    "entryFile": "src/NeoUI/index.ts"
+  },
+  "dest": "dist",
+  "allowedNonPeerDependencies": [
+    "@angular/animations",
+    "@angular/common",
+    "@angular/compiler",
+    "@angular/core",
+    "@angular/cdk",
+    "@angular/forms",
+    "@angular/platform-browser",
+    "@angular/platform-browser-dynamic",
+    "@angular/router",
+    "rxjs",
+    "tslib",
+    "zone.js",
+    "hammerjs",
+    "gsap",
+    "cleave.js",
+    "moment",
+    "@js-joda/core",
+    "@js-joda/locale_fr",
+    "luxon",
+    "@types/luxon",
+    "lucide-angular",
+    "resize-observer-polyfill"
+  ]
+}

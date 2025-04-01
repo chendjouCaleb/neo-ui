@@ -165,6 +165,7 @@
   --colorNeutralShadowKeyDarker: rgba(0,0,0,0.24);
   --colorBrandShadowAmbient: rgba(0,0,0,0.30);
   --colorBrandShadowKey: rgba(0,0,0,0.25);
+
   --colorPaletteRedBackground1: #fdf6f6;
   --colorPaletteRedBackground2: #f1bbbc;
   --colorPaletteRedBackground3: #d13438;
@@ -174,6 +175,7 @@
   --colorPaletteRedBorderActive: #d13438;
   --colorPaletteRedBorder1: #f1bbbc;
   --colorPaletteRedBorder2: #d13438;
+
   --colorPaletteGreenBackground1: #f1faf1;
   --colorPaletteGreenBackground2: #9fd89f;
   --colorPaletteGreenBackground3: #107c10;

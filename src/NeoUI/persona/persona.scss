@@ -10,11 +10,23 @@ $myPersona-size-56: ( size: 56,   fontSize: 20px, iconSize: 32px);
 $myPersona-size-72: ( size: 72,   fontSize: 24px, iconSize: 48px);
 $myPersona-size-100:( size: 100,  fontSize: 32px, iconSize: 56px);
 $myPersona-size-128:( size: 128,  fontSize: 48px, iconSize: 72px);
+$myPersona-size-180:( size: 180,  fontSize: 64px, iconSize: 90px);
 
 $myPersona-color-neutral: (name: neutral, bgColor: #e6e6e6, color: #616161);
 $myPersona-color-lavender: (name: lavender, bgColor: #d2ccf8, color: #3f3682);
 $myPersona-color-lavenderDark: (name: lavenderDark, bgColor: #3f3682, color: #d2ccf8);
-$myPersona-color-red: (name: red, bgColor: #f1bbbc, color: #751d1f);
+$myPersona-color-red: (
+  name: red,
+  bgColor: var(--colorPaletteRedBackground1),
+  color: var(--colorPaletteRedForeground1)
+);
+
+$myPersona-color-red: (
+  name: red,
+  bgColor: var(--colorPaletteRedBackground1),
+  color: var(--colorPaletteRedForeground1)
+);
+
 $myPersona-color-green: (name: green, bgColor: #9fd89f, color: #107c10);
 $myPersona-color-orange: (name: orange, bgColor: #f4bfab, color: #da3b01);
 $myPersona-color-yellow: (name: yellow, bgColor: #fef7b2, color: #fde300);
@@ -31,13 +43,16 @@ $myPersona-sizes : $myPersona-size-24
 ,$myPersona-size-56
 ,$myPersona-size-72
 ,$myPersona-size-100
-,$myPersona-size-128;
+,$myPersona-size-128
+,$myPersona-size-180;
 
 $myPersona-colors: $myPersona-color-neutral, $myPersona-color-lavender, $myPersona-color-lavenderDark,
 $myPersona-color-red, $myPersona-color-green, $myPersona-color-orange, $myPersona-color-yellow,
 $myPersona-color-berry, $myPersona-color-berry2, $myPersona-color-magenta, $myPersona-color-lilac,
 $myPersona-color-pink
 ;
+
+$paletteColors : Red, Green, DarkOrange, Yellow, Berry, LightGreen, Marigold, DarkRed, Cranberry, Pumpkin, Peach, Gold, Brass, Brown, Forest, Seafoam, DarkGreen, LightTeal, Teal, Steel, Blue, RoyalBlue, Cornflower, Navy, Lavender, Purple, Grape, Lilac, Pink, Magenta, Plum, Beige, Mink, Platinum, Anchor;
 
 .my-persona {
   width: 32px;
@@ -116,18 +131,40 @@ $myPersona-color-pink
   }
 }
 
-@each $color in $myPersona-colors {
-  .my-persona.color-#{map.get($color, name)} {
+
+
+//@each $color in $myPersona-colors {
+//  .my-persona.color-#{map.get($color, name)} {
+//    .my-persona-text {
+//      color: map.get($color, color)
+//    }
+//    .my-persona-icon {
+//      svg { stroke: map.get($color, color); }
+//    }
+//
+//    .my-persona-content {
+//      background-color: map.get($color, bgColor);
+//    }
+//
+//  }
+//}
+
+$paletteColors : Red, Green, DarkOrange, Yellow, Berry, LightGreen, Marigold, DarkRed, Cranberry, Pumpkin, Peach, Gold, Brass, Brown, Forest, Seafoam, DarkGreen, LightTeal, Teal, Steel, Blue, RoyalBlue, Cornflower, Navy, Lavender, Purple, Grape, Lilac, Pink, Magenta, Plum, Beige, Mink, Platinum, Anchor;
+
+@each $palette in $paletteColors {
+  .my-persona.color#{$palette} {
     .my-persona-text {
-      color: map.get($color, color)
+      color: var(--colorPalette#{$palette}Foreground2);
     }
+
     .my-persona-icon {
-      svg { stroke: map.get($color, color); }
+      svg {
+        stroke: var(--colorPalette#{$palette}Foreground2);
+      }
     }
 
     .my-persona-content {
-      background-color: map.get($color, bgColor);
+      background-color: var(--colorPalette#{$palette}Background2);
     }
-
   }
 }
