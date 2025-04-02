@@ -29,6 +29,9 @@ export class ToastRef<T, R = any> {
   /** Subject for notifying the user that the dialog has started closing. */
   private readonly _beforeClosed = new Subject<R | undefined>();
 
+  /** Subject notifying when the toast action is called. */
+  private readonly _onAction = new Subject<void>();
+
   /** Result to be passed to afterClosed. */
   private _result: R | undefined;
 
@@ -175,6 +178,22 @@ export class ToastRef<T, R = any> {
    */
   beforeClosed(): Observable<R | undefined> {
     return this._beforeClosed;
+  }
+
+
+  /**
+   * Gets an observable that is notified when the toast action is called.
+   */
+  onAction(): Observable<void> {
+    return this._onAction;
+  }
+
+
+  /**
+   * Emits an event to notifying that action is called.
+   */
+  emitOnAction(): void {
+    return this._onAction.next()
   }
 
 }

@@ -1,10 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {TextFieldPage} from './textField/textField.page';
 import {DropdownPage} from './dropdown/dropdown.page';
 import {ContactPage} from './contact/contact.page';
 import {SelectPage} from './select/select.page';
 import {MySwitch} from '../NeoUI/switch';
+import {DOCUMENT} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -13,18 +14,29 @@ import {MySwitch} from '../NeoUI/switch';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   host: {
-    '[class.fluent-light-theme]': "themeMode === 'light'",
-    '[class.fluent-dark-theme]': "themeMode === 'dark'",
+
   }
 })
 export class AppComponent {
   title = 'NeoUI';
   themeMode = this.getThemeMode();
 
+  constructor(@Inject(DOCUMENT) protected document: Document) {
+    this.toggleThemeMode(this.getThemeMode() == 'dark')
+  }
+
   toggleThemeMode(isDark: boolean) {
     const theme = isDark ? 'dark' : 'light';
     this.themeMode = theme
     localStorage.setItem('theme', theme)
+
+    this.document.body.classList.remove('fluent-light-theme', 'fluent-dark-theme');
+
+    if(this.themeMode === 'dark') {
+      this.document.body.classList.add('fluent-dark-theme');
+    }else {
+      this.document.body.classList.add('fluent-light-theme');
+    }
   }
 
   getThemeMode(): 'dark' | 'light' {

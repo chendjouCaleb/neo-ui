@@ -20,7 +20,7 @@ export class ToastPage {
   templateRef: TemplateRef<any>
 
 
-  constructor(private toast: Toast) {
+  constructor(protected toast: Toast) {
   }
 
   open() {
@@ -42,5 +42,8 @@ export class ToastPage {
     this.toast.open(this.templateRef, { duration: 5000 })
   }
 
+  openTextToast() {
+    this.toast.show({intent: 'info', title: ''},)
+  }
 
 }

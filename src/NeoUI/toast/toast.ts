@@ -7,6 +7,7 @@ import {TOAST_DATA, TOAST_DEFAULT_OPTIONS, ToastOptions} from './toast-options';
 import {ToastRef} from './toast-ref';
 import {ToastContainer} from './toast-container';
 import {ToastStack} from './toast-stack';
+import {TextOnlyToast, TextOnlyToastOptions} from './TextOnlyToast';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,10 @@ export class Toast {
       }, options.duration)
     }
     return toastRef
+  }
+
+  show(options: TextOnlyToastOptions, duration: number = 5000): ToastRef<TextOnlyToast> {
+    return this.open(TextOnlyToast, {duration, data: options});
   }
 
 

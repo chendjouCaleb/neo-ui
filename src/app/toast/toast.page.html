@@ -2,6 +2,20 @@
     <button #trigger (click)="open()" > Open toast</button>
 </div>
 
+<div class="padding-24">
+  <button (click)="toast.show({title: 'Email send', body: 'Email have been send',
+  intent: 'info', showClose: true})">TextOnly info</button>
+
+  <button (click)="toast.show({title: 'Email send', body: 'Email have been send',
+  intent: 'success', showClose: true})">TextOnly success</button>
+
+  <button (click)="toast.show({title: 'Email send', body: 'Email have been send',
+  intent: 'warn', showClose: true})">TextOnly warn</button>
+
+  <button (click)="toast.show({title: 'Email send', body: 'Email have been send',
+  intent: 'danger', showClose: true})">TextOnly danger</button>
+</div>
+
 <ng-template #templateRef let-toastRef="toastRef">
   <div class="messageBar color-green" style="width: 400px">
     <div class="messageBar-title">Message title</div>

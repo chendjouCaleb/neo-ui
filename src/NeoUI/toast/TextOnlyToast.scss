@@ -1,0 +1,97 @@
+﻿.my-text-only-toast {
+  color: var(--colorNeutralForeground1);
+  background-color: var(--colorNeutralBackground2);
+  min-width: 180px;
+  display: flex;
+  column-gap: 12px;
+  padding: 12px;
+  border-radius: 4px;
+ // border: 1px solid var(--colorNeutralStroke1);
+}
+
+.my-text-only-toast .intent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+
+  overflow: hidden;
+
+  lucide-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.success {
+    background-color: var(--colorStatusSuccessBackground3);
+    color: #FFF;
+    stroke: var(--colorStatusSuccessForeground3);
+    border-radius: 24px;
+  }
+
+  &.danger {
+    background-color: #c50f1f;
+    color: #FFF;
+    stroke: #FFF;
+    border-radius: 24px;
+  }
+
+  &.warn {
+    fill: var(--colorStatusWarningBackground3);
+    color: #FFF;
+    stroke: #FFF;
+
+    svg {
+      fill: #bc4b09;
+    }
+  }
+
+  &.info {
+    color: #FFF;
+    stroke: #FFF;
+    fill: var(--colorBrandBackground);
+  }
+}
+
+.my-text-only-toast .title {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.my-text-only-toast .subtitle {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 300;
+}
+
+.my-toast-action {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--colorBrandForeground1);
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.my-toast-icon-button {
+  background: transparent;
+  height: 20px;
+  width: 20px;
+  border-radius: 4px;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  lucide-icon path {
+    stroke: #FFF;
+  }
+}
