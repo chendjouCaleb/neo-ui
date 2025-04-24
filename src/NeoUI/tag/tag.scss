@@ -2,10 +2,33 @@
   display: inline-block;
   cursor: pointer;
 
+
+}
+
+.my-tag.appearance-filled {
   background-color: var(--colorNeutralBackground3);
 
   &:hover {
     background-color: var(--colorNeutralBackground3Hover);
+  }
+}
+
+.my-tag.appearance-outline {
+  background: transparent;
+  border: 1px solid var(--colorNeutralStroke2)
+}
+
+.my-tag.selected {
+  color: var(--colorBrandForeground2);
+  border-color: var(--colorBrandStroke2);
+  background: var(--colorBrandBackground2);
+
+  svg {
+    fill: var(--colorBrandForeground1)
+  }
+
+  &:hover {
+    background: var(--colorBrandBackground2Hover);
   }
 }
 

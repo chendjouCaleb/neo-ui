@@ -65,3 +65,27 @@
     </div>
   </MyTag>
 </div>
+
+<div class="padding-24" style="display: flex; column-gap: 16px">
+  <MyTag size="medium" appearance="filled">
+    <MyTagDismiss></MyTagDismiss>
+    Filled
+  </MyTag>
+
+  <MyTag size="medium" appearance="outline">
+    <MyTagDismiss></MyTagDismiss>
+    Outlined
+  </MyTag>
+</div>
+
+<div class="padding-24" style="display: flex; column-gap: 16px">
+  <MyTag size="medium" appearance="filled" [selected]="true">
+    <MyTagDismiss></MyTagDismiss>
+    Selected
+  </MyTag>
+
+  <MyTag size="medium" appearance="outline" [selected]="true">
+    <MyTagDismiss></MyTagDismiss>
+    Selected oulined
+  </MyTag>
+</div>
