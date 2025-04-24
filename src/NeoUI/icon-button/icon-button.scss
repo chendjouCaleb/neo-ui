@@ -1,0 +1,97 @@
+﻿.my-icon-button {
+  display: inline-block;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  background: none;
+
+  border-radius: 100px;
+
+  lucide-icon svg {
+    stroke: var(--colorNeutralForeground1)
+  }
+}
+
+.my-icon-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  lucide-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.my-icon-button.appearance-neutral {
+  svg {
+    stroke: var(--colorNeutralForeground1)
+  }
+
+  background-color: transparent;
+  &:hover {
+    background-color: var(--colorNeutralBackground4Hover);
+  }
+}
+
+.my-icon-button.appearance-standard {
+  svg {
+    stroke: var(--colorBrandForeground1)
+  }
+
+  background-color: transparent;
+  &:hover {
+    background-color: var(--colorBrandBackground2Hover);
+  }
+}
+
+.my-icon-button.appearance-tonal {
+  svg {
+    stroke: var(--colorBrandForeground1)
+  }
+
+  background-color: var(--colorBrandBackground2);
+  &:hover {
+    background-color: var(--colorBrandBackground2Hover);
+  }
+}
+
+.my-icon-button.appearance-filled {
+  svg {
+    stroke: var(--colorNeutralForeground1)
+  }
+  background-color: var(--colorBrandBackground);
+  &:hover {
+    background-color: var(--colorBrandBackgroundHover);
+  }
+}
+
+.my-icon-button.size-small {
+  width: 20px;
+  height: 20px;
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.my-icon-button.size-medium {
+  width: 32px;
+  height: 32px;
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.my-icon-button.size-large {
+  width: 40px;
+  height: 40px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}

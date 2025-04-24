@@ -21,3 +21,4 @@ export * from './toast';
 export * from './pager';
 export * from './button'
 export * from './tag';
+export * from './button';

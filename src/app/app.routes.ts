@@ -19,10 +19,12 @@ import {MonthCalendarPage} from './agenda-month/month-calendar.page';
 import {ButtonPage} from './button/button.page';
 import {SelectPage} from './select/select.page';
 import {TagPage} from './tag/tag.page';
+import {IconButtonPage} from './icon-button/icon-button.page';
 
 export const routes: Routes = [
   {path: '', component: ButtonPage },
   {path: 'button', component: ButtonPage },
+  {path: 'icon-button', component: IconButtonPage },
   {path: 'tag', component: TagPage },
   {path: 'pager', component: PagerPage },
   {path: 'tooltip', component: TooltipPage },
