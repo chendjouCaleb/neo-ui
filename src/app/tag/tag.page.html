@@ -89,3 +89,29 @@
     Selected oulined
   </MyTag>
 </div>
+
+
+<div class="padding-24" >
+  <div class="textStyle-subtitle2">Clickable tag</div>
+  <div style="display: flex; column-gap: 16px">
+    <MyTag size="medium" appearance="filled" [clickable]="true">
+      <MyTagDismiss></MyTagDismiss>
+      Filled
+    </MyTag>
+
+    <MyTag size="medium" appearance="outline" [clickable]="true" >
+      <MyTagDismiss></MyTagDismiss>
+      Outline
+    </MyTag>
+
+    <MyTag size="medium" appearance="filled" [selected]="true" [clickable]="true">
+      <MyTagDismiss></MyTagDismiss>
+      Selected filled
+    </MyTag>
+
+    <MyTag size="medium" appearance="outline" [selected]="true" [clickable]="true">
+      <MyTagDismiss></MyTagDismiss>
+      Selected oulined
+    </MyTag>
+  </div>
+</div>

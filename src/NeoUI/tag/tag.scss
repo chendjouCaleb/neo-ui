@@ -1,16 +1,10 @@
 ﻿.my-tag {
   display: inline-block;
-  cursor: pointer;
-
-
+  cursor: default;
 }
 
 .my-tag.appearance-filled {
   background-color: var(--colorNeutralBackground3);
-
-  &:hover {
-    background-color: var(--colorNeutralBackground3Hover);
-  }
 }
 
 .my-tag.appearance-outline {
@@ -27,7 +21,24 @@
     fill: var(--colorBrandForeground1)
   }
 
-  &:hover {
+}
+
+.my-tag.clickable {
+  cursor: pointer;
+
+  &.appearance-filled:hover {
+    background-color: var(--colorNeutralBackground3Hover);
+  }
+
+  &.appearance-outline:hover {
+    background-color: var(--colorNeutralBackground3Hover);
+  }
+
+  &.selected.appearance-filled:hover {
+    background: var(--colorBrandBackground2Hover);
+  }
+
+  &.selected.appearance-outline:hover {
     background: var(--colorBrandBackground2Hover);
   }
 }
@@ -43,11 +54,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   svg {
     height: 20px;
     width: 20px;
     fill: var(--colorNeutralForeground1)
   }
+
   &:hover svg {
     fill: var(--colorBrandForeground1)
   }
@@ -85,7 +98,7 @@
   border-radius: 6px;
 }
 
-.my-tag.shape-circular  {
+.my-tag.shape-circular {
   border-radius: 100px
 }
 

@@ -25,7 +25,10 @@ import {MY_TAG_DEFAULT_OPTIONS, MyTagAppearance, MyTagDefaultOptions, MyTagShape
     '[class.appearance-outline]': "appearance == 'outline'",
 
     '[class.selected]' : 'selected',
-    '[class.disabled]' : 'disabled'
+    '[class.disabled]' : 'disabled',
+
+    '[class.clickable]' : 'clickable',
+    '[attr.tabindex]': 'clickable ? 0 : -1'
   }
 })
 export class Tag {
@@ -43,6 +46,9 @@ export class Tag {
 
   @Input()
   selected: boolean = false;
+
+  @Input()
+  clickable: boolean = false;
 
   constructor(@Optional() @Inject(MY_TAG_DEFAULT_OPTIONS) _defaultOptions: MyTagDefaultOptions) {
     if(_defaultOptions) {
