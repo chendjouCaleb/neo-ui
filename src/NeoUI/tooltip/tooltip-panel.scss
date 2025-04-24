@@ -1,7 +1,7 @@
 ﻿$my-tooltip-padding: 4px;
 $my-tooltip-fontSize: 12px;
-$my-tooltip-color: #ebf3fc;
-$my-tooltip-bgColor: #0f6cbd;
+$my-tooltip-color: var(--colorNeutralForeground3);
+$my-tooltip-bgColor: var(--colorNeutralBackground3);
 
 .my-tooltip-container {
   background-color: transparent;

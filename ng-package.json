@@ -1,5 +1,8 @@
 ﻿{
   "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "assets": [
+    "src/NeoUI/styles"
+  ],
   "lib": {
     "entryFile": "src/NeoUI/index.ts"
   },

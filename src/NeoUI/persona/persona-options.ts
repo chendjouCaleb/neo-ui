@@ -1,6 +1,6 @@
 ﻿import {InjectionToken} from '@angular/core';
 
-export type MyPersonaSize = '24' | '32' | '40' | '48' | '56' | '72' | '100' | '120'
+export type MyPersonaSize = '24' | '32' | '40' | '48' | '56' | '72' | '100' | '120' | '180'
 export interface MyPersonaDefaultOptions {
   color: string;
 }

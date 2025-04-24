@@ -1,9 +1,11 @@
-﻿
-<div class="my-persona-content">
-  <ng-content></ng-content>
-</div>
+﻿<div class="my-persona-container">
+  <div class="my-persona-content">
+    <ng-content></ng-content>
+  </div>
 
 
-<span *ngIf="showStatus" class="my-persona-status-container">
+  <span *ngIf="showStatus" class="my-persona-status-container">
   <ng-content select="[MyPersonaStatus]"></ng-content>
 </span>
+</div>
+

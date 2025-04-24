@@ -17,6 +17,6 @@ export const myToastAnimations: {
     transition('* => enter', animate('200ms cubic-bezier(0, 0, 0.2, 1)',
       style({transform: 'none', opacity: 1}))),
     transition('* => void, * => exit',
-      animate('2000ms cubic-bezier(0.4, 0.0, 0.2, 1)', style({opacity: 0}))),
+      animate('200ms cubic-bezier(0.4, 0.0, 0.2, 1)', style({opacity: 0}))),
   ])
 };

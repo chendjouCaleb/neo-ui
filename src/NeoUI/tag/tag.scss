@@ -1,0 +1,71 @@
+﻿.my-tag {
+  display: inline-block;
+  cursor: pointer;
+
+  background-color: var(--colorNeutralBackground3);
+
+  &:hover {
+    background-color: var(--colorNeutralBackground3Hover);
+  }
+}
+
+.my-tag-container {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.my-tag-dismiss {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    height: 20px;
+    width: 20px;
+    fill: var(--colorNeutralForeground1)
+  }
+  &:hover svg {
+    fill: var(--colorBrandForeground1)
+  }
+}
+
+.my-tag.size-medium {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 4px 8px;
+}
+
+.my-tag.size-small {
+  font-size: 12px;
+  line-height: 16px;
+  padding: 2px 6px;
+
+  svg {
+    height: 16px;
+    width: 16px;
+  }
+}
+
+.my-tag.size-extra-small {
+  font-size: 10px;
+  line-height: 14px;
+  padding: 2px 4px;
+
+  svg {
+    height: 14px;
+    width: 14px;
+  }
+}
+
+.my-tag.shape-rounded {
+  border-radius: 6px;
+}
+
+.my-tag.shape-circular  {
+  border-radius: 100px
+}
+
+
+
+
