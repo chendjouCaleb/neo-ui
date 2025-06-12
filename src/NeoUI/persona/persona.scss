@@ -1,5 +1,5 @@
 ﻿@use "sass:map";
-$myPersona-borderRadius: 50%;
+$myPersona-borderRadius: 1000%;
 $myPersona-statusBorderColor: #FFF;
 
 $myPersona-size-24:( size: 24, fontSize: 11px, iconSize: 12px);
@@ -59,6 +59,7 @@ $paletteColors : Red, Green, DarkOrange, Yellow, Berry, LightGreen, Marigold, Da
   height: 32px;
   box-sizing: border-box;
   display: inline-block;
+  cursor: default;
 }
 
 .my-persona-container {

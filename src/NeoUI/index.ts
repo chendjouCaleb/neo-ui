@@ -3,6 +3,7 @@ export * from './tabRow'
 export * from './textField'
 export * from './dropdown'
 export * from './checkbox'
+export * from './menu'
 export * from './timetable'
 export * from './agenda'
 export * from './calendar-month';
@@ -22,3 +23,4 @@ export * from './pager';
 export * from './button'
 export * from './tag';
 export * from './button';
+export * from './icon-button'

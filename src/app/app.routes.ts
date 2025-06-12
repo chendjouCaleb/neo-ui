@@ -20,6 +20,8 @@ import {ButtonPage} from './button/button.page';
 import {SelectPage} from './select/select.page';
 import {TagPage} from './tag/tag.page';
 import {IconButtonPage} from './icon-button/icon-button.page';
+import {TextFieldPage} from './textField/textField.page';
+import {MenuPage} from './menu/menu.page';
 
 export const routes: Routes = [
   {path: '', component: ButtonPage },
@@ -34,7 +36,10 @@ export const routes: Routes = [
   {path: 'popover', component: PopoverPage },
 
   {path: 'checkbox', component: CheckboxPage},
+  {path: 'menu', component: MenuPage},
   {path: 'persona', component: PersonaPage},
+  {path: 'persona', component: PersonaPage},
+  {path: 'text-field', component: TextFieldPage},
   {path: 'dropdown', component: DropdownPage},
   {path: 'horizontal-pager', component: HorizontalPagerPage},
 
