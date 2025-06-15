@@ -34,7 +34,6 @@ export class Dropdown implements AfterViewInit {
     if(!state && this._visible) {
       this.close()
     }
-    console.log("State: ", this._visible)
   }
   get visible(): boolean { return this._visible }
   private _visible: boolean = false

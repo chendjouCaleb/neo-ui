@@ -5,7 +5,7 @@ import {MY_BUTTON_DEFAULT_OPTIONS, MyButtonAppearance, MyButtonDefaultOptions, M
 @Component({
   templateUrl: 'button.html',
   styleUrl: 'button.scss',
-  selector: 'button[MyButton]',
+  selector: 'button[MyButton], a[MyButton]',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
