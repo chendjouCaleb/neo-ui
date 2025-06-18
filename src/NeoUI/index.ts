@@ -4,6 +4,7 @@ export * from './textField'
 export * from './dropdown'
 export * from './checkbox'
 export * from './menu'
+export * from './spinner'
 export * from './timetable'
 export * from './agenda'
 export * from './calendar-month';

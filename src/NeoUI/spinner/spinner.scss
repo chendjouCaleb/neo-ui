@@ -1,0 +1,16 @@
+﻿.my-spinner {
+  display: inline-block;
+  border: 4px solid transparent;
+  border-top: 4px solid var(--my-primaryColor);
+  border-left: 4px solid var(--my-primaryColor);
+  border-radius: 100%;
+  animation-name: spin;
+  animation-duration: 900ms;
+  animation-iteration-count: infinite; /* Continuous loop */
+  animation-timing-function: linear;
+}
+
+@keyframes spin{
+  0% {transform: rotate(0deg);}  /* Start at 0 degrees */
+  0% {transform: rotate(-360deg);} /* Complete one full rotation */
+}
