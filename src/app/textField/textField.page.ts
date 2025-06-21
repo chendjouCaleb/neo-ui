@@ -10,12 +10,7 @@ import {TextFieldInput} from '../../NeoUI';
     TextFieldInput,
     TextFieldLabel
   ],
-  template: `
-    <TextField>
-      <label TextFieldLabel for="input1">Nom & prénom</label>
-      <input type="text" id="input1" placeholder="Entrez votre nom" TextFieldInput>
-    </TextField>
-  `
+  templateUrl: 'textField.page.html'
 })
 export class TextFieldPage {
 

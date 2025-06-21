@@ -53,7 +53,7 @@ export class Dropdown implements AfterViewInit {
     this.overlayRef = this.overlay.create(this.getOverlayConfig());
     this.overlayRef.attach(this.contentTemplate);
     // this.syncWidth();
-     this.overlayRef.backdropClick().subscribe(() => this.onBackdropClick.emit());
+    this.overlayRef.backdropClick().subscribe(() => this.onBackdropClick.emit());
     this._visible = true;
   }
 

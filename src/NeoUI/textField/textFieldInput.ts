@@ -1,10 +1,10 @@
 ﻿import {Directive, ElementRef, Input} from '@angular/core';
 
 @Directive({
-  selector: 'input[TextFieldInput]',
+  selector: 'textarea[MyTextFieldInput], input[MyTextFieldInput]',
   standalone: true,
   host: {
-    'class': 'text-field-input',
+    'class': 'my-text-field-input',
     '[attr.disabled]':'disabled'
   }
 })

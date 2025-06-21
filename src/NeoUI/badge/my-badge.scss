@@ -1,0 +1,40 @@
+.my-badge {
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 16px;
+  padding: 2px 8px;
+  box-sizing: border-box;
+  display: inline-block;
+
+  .my-badge-layout {
+    align-items: center;
+    display: flex;
+    gap: 4px;
+  }
+
+  &.primary {
+    color: var(--colorNeutralForegroundOnBrand);
+    background-color: var(--colorBrandBackground3Static);
+  }
+
+  &.error {
+    color: var(--colorPaletteRedForeground1);
+    background-color: var(--colorPaletteRedBackground1);
+  }
+
+  &.neutral {
+    color: var(--colorNeutralBackground1);
+    background-color: var(--colorNeutralForeground1);
+  }
+
+  &.success {
+    color: var(--colorPaletteGreenForeground1);
+    background-color: var(--colorPaletteGreenBackground1);
+  }
+
+  &.warn {
+    color: var(--colorPaletteDarkOrangeForeground1);
+    background-color: var(--colorPaletteDarkOrangeBackground1);
+  }
+}
+

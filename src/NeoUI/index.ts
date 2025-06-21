@@ -5,6 +5,7 @@ export * from './dropdown'
 export * from './checkbox'
 export * from './menu'
 export * from './spinner'
+export * from './badge';
 export * from './timetable'
 export * from './agenda'
 export * from './calendar-month';

@@ -10,13 +10,13 @@ import {TextFieldLabel} from './textFieldLabel';
 import {TextFieldInput} from './textFieldInput';
 
 @Component({
-  selector: 'TextField',
+  selector: 'TextField, MyTextField',
   templateUrl: 'textField.html',
   styleUrls: [ 'textField.scss'],
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   host: {
-    class: 'text-field',
+    class: 'my-text-field',
     '[class.disabled]': 'disabled',
     '[class.focused]': 'focused',
   }
@@ -66,7 +66,7 @@ export class TextField implements AfterContentInit, AfterViewInit {
 
   ngAfterContentInit(): void {
     if(!this.inputField) {
-      throw new Error('The FormField must contains a MsInputField');
+      throw new Error('The MyTextField must contains a MyTextInputField');
     }
     this.inputField.host.addEventListener('focus', this._inputFocusEvent);
     this.inputField.host.addEventListener('blur', this._inputBlurEvent);
@@ -82,9 +82,18 @@ export class TextField implements AfterContentInit, AfterViewInit {
 
   private _inputFocusEvent = () => {
     this._focused = true
+    this.contentLabel.focused = true
+    this.contentLabel.floating = true;
     console.log("focus")
   };
-  private _inputBlurEvent = () => this._focused = false;
+  private _inputBlurEvent = () => {
+    this._focused = false;
+    this.contentLabel.focused = false;
+    if(this.inputFieldHost.value === '') {
+      this.contentLabel.floating = false
+    }
+
+  }
 
   get inputFieldHost(): HTMLInputElement {
     return this.inputField.host;
