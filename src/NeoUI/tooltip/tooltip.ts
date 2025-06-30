@@ -1,4 +1,4 @@
-﻿import {ComponentRef, Directive, ElementRef, Input, OnInit} from '@angular/core';
+﻿import {ComponentRef, Directive, ElementRef, Input, OnDestroy, OnInit} from '@angular/core';
 import {
   ConnectedPosition,
   FlexibleConnectedPositionStrategy,
@@ -25,7 +25,7 @@ export interface BeakPosition {
     '(mouseleave)': '_mouseleave($event)'
   }
 })
-export class Tooltip implements OnInit {
+export class Tooltip implements OnInit, OnDestroy {
 
   /**
    * Disables the display of the tooltip.
@@ -64,6 +64,10 @@ export class Tooltip implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  ngOnDestroy() {
+    this.hide()
   }
 
   /** Shows the tooltip after the delay in ms, defaults to tooltip-delay-show or 0ms if no input. */

@@ -8,6 +8,7 @@ export type MyIconAppearance = 'neutral' | 'standard' | 'tonal' | 'filled'
   templateUrl: 'icon-button.html',
   styleUrl: 'icon-button.scss',
   selector: 'button[MyIconButton], button[my-icon-button]',
+  exportAs : 'myIconButton',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,

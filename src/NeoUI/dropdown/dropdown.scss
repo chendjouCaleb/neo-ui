@@ -1,12 +1,16 @@
-﻿.dropdown {
+﻿.my-dropdown {
   border: 1px solid red;
+  display: none;
 }
 
-.dropdown-container .cdk-overlay-pane {
+.my-dropdown-container .cdk-overlay-pane {
   border: 1px solid red;
   border-radius: 4px;
+
 }
 .dropdown-panel {
-  border: 1px solid #E0E0E0;
   border-radius: 4px;
+  background-color: var(--colorNeutralBackground3);
+  filter: drop-shadow(0 0 2px rgba(255,255,255, 0.06)) drop-shadow(0 8px 16px rgba(255,255,255, 0.14));
+  color: var(--colorNeutralForeground2)
 }

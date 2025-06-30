@@ -12,7 +12,7 @@ import {Overlay, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
     CdkPortal
   ],
   host: {
-    'class': 'dropdown'
+    'class': 'my-dropdown'
   }
 })
 export class Dropdown implements AfterViewInit {

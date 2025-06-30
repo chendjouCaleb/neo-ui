@@ -6,6 +6,7 @@ import {MY_BUTTON_DEFAULT_OPTIONS, MyButtonAppearance, MyButtonDefaultOptions, M
   templateUrl: 'button.html',
   styleUrl: 'button.scss',
   selector: 'button[MyButton], a[MyButton]',
+  exportAs : 'myButton',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
