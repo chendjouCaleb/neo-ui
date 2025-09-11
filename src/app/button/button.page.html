@@ -14,20 +14,47 @@
 
 
 <div class="padding-24">
-  <div class="textStyle-title2 paddingVertical-16">Button Appareance</div>
+  <div class="textStyle-title2 paddingVertical-16">Button Appearance</div>
   <div class="display-flex columnGap-24">
-    <button MyButton appearance="filled"    class="color-primary">Filled</button>
-    <button MyButton appearance="tonal"     class="color-primary">Tonal</button>
-    <button MyButton appearance="outlined"  class="color-primary">Outlined</button>
-    <button MyButton appearance="text"      class="color-primary">Text</button>
+    <button MyButton appearance="filled">Filled</button>
+    <button MyButton appearance="tonal">Tonal</button>
+    <button MyButton appearance="outlined">Outlined</button>
+    <button MyButton appearance="text">Text</button>
   </div>
 
   <div class="display-flex columnGap-24">
-    <button MyButton appearance="filled"    class="color-danger">Filled</button>
-    <button MyButton appearance="tonal"     class="color-danger">Tonal</button>
-    <button MyButton appearance="outlined"  class="color-danger">Outlined</button>
-    <button MyButton appearance="text"      class="color-danger">Text</button>
+    <button MyButton appearance="filled" class="color-danger">Filled</button>
+    <button MyButton appearance="tonal" class="color-danger">Tonal</button>
+    <button MyButton appearance="outlined" class="color-danger">Outlined</button>
+    <button MyButton appearance="text" class="color-danger">Text</button>
   </div>
 </div>
 
+<div class="padding-24">
+  <div class="textStyle-subtitle1 paddingVertical-16">With icon</div>
 
+  <div>
+    <button MyButton >
+      <MyMaterialIcon>add</MyMaterialIcon>
+      Button with icon</button>
+  </div>
+</div>
+
+<div class="padding-24">
+  <div class="textStyle-subtitle1 paddingVertical-16">Disabled</div>
+
+  <div>
+    <button MyButton [disabled]="true">Disabled button</button>
+  </div>
+</div>
+
+<div class="padding-24">
+  <div class="textStyle-subtitle1 paddingVertical-16">Full with button</div>
+
+  <div>
+    <button [fullWidth]="true" MyButton>Full width button</button>
+    <button [fullWidth]="true" MyButton>
+      <MyMaterialIcon>add</MyMaterialIcon>
+      Full width button</button>
+  </div>
+</div>

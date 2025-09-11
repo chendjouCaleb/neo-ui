@@ -29,6 +29,7 @@
     "luxon",
     "@types/luxon",
     "lucide-angular",
-    "resize-observer-polyfill"
+    "resize-observer-polyfill",
+    "material-symbols"
   ]
 }

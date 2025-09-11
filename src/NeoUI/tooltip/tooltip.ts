@@ -104,7 +104,9 @@ export class Tooltip implements OnInit, OnDestroy {
 
   /** Hides the tooltip after the delay in ms, defaults to tooltip-delay-hide or 0ms if no input. */
   hide(delay: number = this.hideDelay) {
-    this._overlayRef.detach()
+    if(this._overlayRef && this._overlayRef.hasAttached()) {
+      this._overlayRef.detach()
+    }
   }
 
 

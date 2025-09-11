@@ -1,9 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'material-symbols';
 @import '@angular/cdk/overlay-prebuilt.css';
 @import "NeoUI/styles/css/margin.css";
 @import "NeoUI/styles/layout";
 @import "NeoUI/styles/css/fluent-color.css";
 @import "NeoUI/styles/font";
+
+.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp {
+  color: var(--colorNeutralForeground1);
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+}
 
 html {
   height: 100%;

@@ -12,6 +12,8 @@ import {MY_BUTTON_DEFAULT_OPTIONS, MyButtonAppearance, MyButtonDefaultOptions, M
   standalone: true,
   host: {
     'class': 'my-button',
+    '[class.disabled]': 'disabled',
+    '[class.full-width]': 'fullWidth',
     '[class.shape-circular]': "shape == 'circular'",
     '[class.shape-rounded]': "shape == 'rounded'",
     '[class.shape-square]': "shape == 'square'",
@@ -23,12 +25,17 @@ import {MY_BUTTON_DEFAULT_OPTIONS, MyButtonAppearance, MyButtonDefaultOptions, M
   }
 })
 export class Button {
-
   @Input()
   shape: MyButtonShape
 
   @Input()
   appearance: MyButtonAppearance
+
+  @Input()
+  disabled: boolean = false
+
+  @Input()
+  fullWidth: boolean = false;
 
   constructor(@Optional() @Inject(MY_BUTTON_DEFAULT_OPTIONS)
               private _providerOverride?: MyButtonDefaultOptions) {
