@@ -1,11 +1,17 @@
 ﻿$my-tooltip-padding: 4px;
 $my-tooltip-fontSize: 12px;
-$my-tooltip-color: var(--colorNeutralForeground3);
-$my-tooltip-bgColor: var(--colorNeutralBackground3);
+$my-tooltip-color: var(--colorNeutralForegroundInverted);
+$my-tooltip-bgColor: var(--colorNeutralBackgroundInverted);
 
 .my-tooltip-container {
   background-color: transparent;
   position: relative;
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+
+  @starting-style {
+    transform: scale(.8);
+    opacity: .8;
+  }
 }
 
 .my-tooltip-content {

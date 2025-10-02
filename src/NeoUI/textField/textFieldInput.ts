@@ -5,12 +5,16 @@
   standalone: true,
   host: {
     'class': 'my-text-field-input',
-    '[attr.disabled]':'disabled'
+    '[attr.disabled]':'disabled',
+    '[class.error]':'error'
   }
 })
 export class TextFieldInput {
   @Input()
   disabled: boolean = false;
+
+  @Input()
+  error: boolean = false
 
   constructor(private _elementRef: ElementRef<HTMLInputElement>) {}
 

@@ -3,11 +3,12 @@
   ChangeDetectorRef,
   Component,
   ContentChild, ElementRef,
-  forwardRef,
+  forwardRef, Input,
   ViewEncapsulation
 } from '@angular/core';
 import {TextFieldLabel} from './textFieldLabel';
 import {TextFieldInput} from './textFieldInput';
+import {error} from 'ng-packagr/lib/utils/log';
 
 @Component({
   selector: 'TextField, MyTextField',
@@ -19,6 +20,7 @@ import {TextFieldInput} from './textFieldInput';
     class: 'my-text-field',
     '[class.disabled]': 'disabled',
     '[class.focused]': 'focused',
+    '[class.error]': 'isError',
   }
 })
 export class TextField implements AfterContentInit, AfterViewInit {
@@ -27,7 +29,9 @@ export class TextField implements AfterContentInit, AfterViewInit {
   private _focused: boolean;
   get focused(): boolean { return this._focused }
 
-  private _disabled: boolean;
+
+
+  @Input()
   get disabled(): boolean { return this._disabled }
   set disabled(value: boolean) {
 
@@ -39,6 +43,22 @@ export class TextField implements AfterContentInit, AfterViewInit {
     }
     this._disabled = value;
   }
+  private _disabled: boolean;
+
+  @Input()
+  get isError(): boolean { return this._isError }
+  set isError(value: boolean) {
+
+    if (this._initialized) {
+      if (this.contentLabel) {
+        this.contentLabel.error = value;
+      }
+      this.inputField.error = value;
+    }
+    this._isError = value;
+  }
+  private _isError: boolean;
+
 
   private _floatingLabel: boolean = false
   get floatingLabel(): boolean {
@@ -61,6 +81,7 @@ export class TextField implements AfterContentInit, AfterViewInit {
 
     Promise.resolve().then(() => {
       this.disabled = this._disabled;
+      this.isError = this._isError;
     });
   }
 
@@ -102,4 +123,5 @@ export class TextField implements AfterContentInit, AfterViewInit {
   get host(): HTMLElement {
     return this._elementRef.nativeElement;
   }
+
 }

@@ -5,6 +5,11 @@
   position: relative;
   box-sizing: border-box;
   //background-color: rgba(255, 0, 0, 0.6);
+
+  &.disabled {
+    pointer-events: none;
+    opacity: .6;
+  }
 }
 
 .my-text-field-label {
@@ -32,6 +37,10 @@
 
   &.focused {
     color: var(--colorBrandForeground1)
+  }
+
+  &.error, &.focused.error {
+    color: var(--colorPaletteRedForeground1)
   }
 }
 
@@ -82,6 +91,12 @@ textarea.my-text-field-input {
     bottom: 20px;
   }
 
+  &.error {
+    font-size: 12px;
+    color: var(--colorPaletteRedForeground1);
+    bottom: 20px;
+  }
+
   &.floating {
     font-size: 12px;
     color: var(--colorBrandForeground1);
@@ -116,5 +131,12 @@ textarea.my-text-field-input {
   }
   &.focused:before {
     transform: scaleX(1);
+  }
+
+  &.error:before {
+    background-color: var(--colorPaletteRedBorderActive);
+  }
+  &.error  {
+    background-color: var(--colorPaletteRedBorderActive);
   }
 }
