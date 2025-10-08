@@ -92,6 +92,10 @@ export class TextField implements AfterContentInit, AfterViewInit {
     this.inputField.host.addEventListener('focus', this._inputFocusEvent);
     this.inputField.host.addEventListener('blur', this._inputBlurEvent);
 
+    if(this.inputField.host.value){
+      this.contentLabel.floating = true;
+    }
+
     this.changeDetectorRef.markForCheck();
   }
 
@@ -105,7 +109,6 @@ export class TextField implements AfterContentInit, AfterViewInit {
     this._focused = true
     this.contentLabel.focused = true
     this.contentLabel.floating = true;
-    console.log("focus")
   };
   private _inputBlurEvent = () => {
     this._focused = false;

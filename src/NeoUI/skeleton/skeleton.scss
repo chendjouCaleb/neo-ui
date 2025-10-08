@@ -1,0 +1,67 @@
+﻿:root {
+  --my-skeleton_backgroundColor: var(--colorPaletteRedForeground1);
+  --my-skeleton_defaultHeight: 20px;
+}
+
+.my-skeleton {
+  display: inline-block;
+  background-color: var(--colorNeutralStencil1);
+  border-radius: 2px;
+  height: var(--my-skeleton_defaultHeight);
+  position: relative;;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(90deg, transparent, var(--colorNeutralStencil2), transparent);
+  }
+
+}
+
+.my-skeleton.animation-wave {
+  &::after {
+    transform: translateX(-100%);
+    animation: mySkeletonWave 1.6s linear infinite;
+  }
+}
+
+.my-skeleton.animation-pulse {
+  &::after {
+    animation: mySkeletonPulse 1.6s linear infinite;
+  }
+}
+
+@keyframes mySkeletonWave {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  60% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+
+@keyframes mySkeletonPulse {
+  0% {
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

@@ -13,7 +13,7 @@ import {TooltipPage} from './tooltip/tooltip.page';
 import {PopoverPage} from './popover/popover.page';
 import {ToastPage} from './toast/toast.page';
 import {SwitchPage} from './switch/switch.page';
-import {PagerContainer} from '../NeoUI';
+import {PagerContainer, Skeleton} from '../NeoUI';
 import {PagerPage} from './pager/pager.page';
 import {MonthCalendarPage} from './agenda-month/month-calendar.page';
 import {ButtonPage} from './button/button.page';
@@ -22,6 +22,7 @@ import {TagPage} from './tag/tag.page';
 import {IconButtonPage} from './icon-button/icon-button.page';
 import {TextFieldPage} from './textField/textField.page';
 import {MenuPage} from './menu/menu.page';
+import {SkeletonPage} from './skeleton/skeleton.page';
 
 export const routes: Routes = [
   {path: '', component: ButtonPage },
@@ -34,6 +35,7 @@ export const routes: Routes = [
   {path: 'toast', component: ToastPage },
   {path: 'select', component: SelectPage },
   {path: 'popover', component: PopoverPage },
+  {path: 'skeleton', component: SkeletonPage },
 
   {path: 'checkbox', component: CheckboxPage},
   {path: 'menu', component: MenuPage},

@@ -1,7 +1,7 @@
 .my-menu {
   display: block;
   padding: 8px 4px;
-  background-color: var(--colorNeutralBackground2);
+  background-color: var(--colorNeutralBackground3);
   color: var(--menu-item__color);
   border-radius: 4px;
   width: fit-content;
@@ -23,7 +23,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: var(--colorNeutralBackground2Hover);
+    background-color: var(--colorNeutralBackground3Hover);
   }
 }
 
