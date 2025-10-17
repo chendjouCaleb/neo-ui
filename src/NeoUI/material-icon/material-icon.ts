@@ -1,4 +1,4 @@
-﻿import {Component} from '@angular/core';
+﻿import {Component, Input} from '@angular/core';
 
 
 export type MaterialIconStyle = 'outlined' | 'rounded' | 'sharp'
@@ -15,5 +15,9 @@ export type MaterialIconStyle = 'outlined' | 'rounded' | 'sharp'
   }
 })
 export class MaterialIcon {
+  @Input('iconStyle')
   style : MaterialIconStyle = 'rounded';
+
+  @Input()
+  size: string | number
 }
