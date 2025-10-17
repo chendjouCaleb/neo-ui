@@ -8,19 +8,11 @@ import {
   ViewEncapsulation
 } from "@angular/core";
 import {TextFieldLabel} from '../textField';
-import {
-  LucideAngularModule,
-  ChevronDownIcon
-} from 'lucide-angular';
-
 @Component({
     selector: 'SelectField',
     encapsulation: ViewEncapsulation.None,
     templateUrl: 'select-field.html',
     styleUrl: 'select.scss',
-    imports: [
-        LucideAngularModule
-    ],
     // changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         'class': 'my-select-field',
@@ -33,7 +25,6 @@ import {
 })
 export class SelectField {
   private _initialized: boolean = false;
-  chevronDownIcon = ChevronDownIcon
 
   private _focused: boolean;
   get focused(): boolean { return this._focused }

@@ -1,20 +1,16 @@
 ﻿import {Component, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
 
 import {Toast} from '../../NeoUI/toast/toast';
-import {InfoIcon, XIcon} from 'lucide-angular';
-import {Tooltip} from '../../NeoUI';
 
 @Component({
     templateUrl: 'toast.page.html',
     styleUrl: 'toast.page.scss',
     encapsulation: ViewEncapsulation.None,
     imports: [
-        Tooltip
     ],
     selector: 'ToastPage'
 })
 export class ToastPage {
-  icons = { XIcon, InfoIcon }
   @ViewChild(TemplateRef)
   templateRef: TemplateRef<any>
 

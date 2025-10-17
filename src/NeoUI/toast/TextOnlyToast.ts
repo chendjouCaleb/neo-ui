@@ -1,8 +1,9 @@
 ﻿import {Component, Inject, ViewEncapsulation} from '@angular/core';
 import {TOAST_DATA} from './toast-options';
 import {NgIf} from '@angular/common';
-import {CheckIcon, CircleXIcon, InfoIcon, LucideAngularModule, TriangleAlertIcon, XIcon} from 'lucide-angular';
 import {ToastRef} from './toast-ref';
+import {MaterialIcon} from '../material-icon';
+import {MyPersonaIcon} from '../persona';
 
 export class TextOnlyToastOptions {
   intent?: 'info' | 'success' | 'danger' | 'warn' | 'load' = 'info'
@@ -17,16 +18,16 @@ export class TextOnlyToastOptions {
     styleUrl: 'TextOnlyToast.scss',
     selector: 'TextOnlyToast',
     encapsulation: ViewEncapsulation.None,
-    imports: [
-        NgIf,
-        LucideAngularModule
-    ],
+  imports: [
+    NgIf,
+    MaterialIcon,
+    MyPersonaIcon,
+  ],
     host: {
         class: 'my-text-only-toast'
     }
 })
 export class TextOnlyToast {
-  icons = { InfoIcon, TriangleAlertIcon, CheckIcon, CircleXIcon, XIcon }
   constructor(@Inject(TOAST_DATA) public readonly options: TextOnlyToastOptions,
               protected _toastRef: ToastRef<any>) {
   }

@@ -1,9 +1,9 @@
 ﻿<div *ngIf="options.intent == 'success'" class="intent success">
-  <lucide-icon [img]="icons.CheckIcon" size="12" strokeWidth="3"></lucide-icon>
+  <MyMaterialIcon MyPersonaIcon>check</MyMaterialIcon>
 </div>
 
 <div *ngIf="options.intent == 'danger'" class="intent danger">
-  <lucide-icon [img]="icons.XIcon" size="12" strokeWidth="3"></lucide-icon>
+  <MyMaterialIcon MyPersonaIcon>close</MyMaterialIcon>
 </div>
 
 <div *ngIf="options.intent == 'info'" class="intent info">
@@ -31,6 +31,6 @@
   </span>
 
   <button class="my-toast-icon-button" *ngIf="options.showClose" (click)="_toastRef.close()">
-    <lucide-icon [img]="icons.XIcon" size="18"></lucide-icon>
+    <<MyMaterialIcon MyPersonaIcon>close</MyMaterialIcon>
   </button>
 </div>

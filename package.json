@@ -23,7 +23,6 @@
     "@js-joda/core": "^5.6.4",
     "@js-joda/locale_fr": "^4.15.1",
     "@types/luxon": "^3.4.2",
-    "lucide-angular": "^0.455.0",
     "luxon": "^3.5.0",
     "material-symbols": "^0.34.0",
     "rxjs": "~7.8.0",
@@ -41,7 +40,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "ng-packagr": "^19.2.2",
+    "ng-packagr": "^20.0.1",
     "typescript": "~5.5.2"
   }
 }

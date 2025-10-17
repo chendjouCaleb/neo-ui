@@ -10,13 +10,15 @@
 <div class="padding-16">
   <MyMenu>
     <button MyMenuItem>
-      <span MyMenuItemIcon> <lucide-icon [img]="icons.CopyIcon"></lucide-icon> </span>
+      <span MyMenuItemIcon>
+        <MyMaterialIcon>copy</MyMaterialIcon>
+      </span>
       Open</button>
     <button MyMenuItem>
       <span MyMenuItemIcon>  </span>
       Share</button>
     <button MyMenuItem>
-      <span MyMenuItemIcon> <lucide-icon [img]="icons.CopyIcon"></lucide-icon> </span>
+      <span MyMenuItemIcon> <MyMaterialIcon>copy</MyMaterialIcon> </span>
       Copy</button>
   </MyMenu>
 </div>
@@ -31,21 +33,26 @@
       Share</button>
     <div class="my-menu-divider"></div>
     <button MyMenuItem>
-      <span MyMenuItemIcon> <lucide-icon [img]="icons.CopyIcon"></lucide-icon> </span>
+
+      <span MyMenuItemIcon> <MyMaterialIcon>copy</MyMaterialIcon> </span>
       Copy</button>
     <button MyMenuItem>
-      <span MyMenuItemIcon> <lucide-icon [img]="icons.ScissorsIcon"></lucide-icon> </span>
+      <span MyMenuItemIcon>
+        <MyMaterialIcon>cut</MyMaterialIcon>
+      </span>
       Cut</button>
     <button MyMenuItem>
-      <span MyMenuItemIcon> <lucide-icon [img]="icons.ClipboardIcon"></lucide-icon> </span>
+      <span MyMenuItemIcon>
+        <MyMaterialIcon>clipboard</MyMaterialIcon>
+      </span>
 
       Paste</button>
     <div class="my-menu-divider"></div>
     <button MyMenuItem>
-      <span MyMenuItemIcon> <lucide-icon [img]="icons.PencilIcon"></lucide-icon> </span>
+      <span MyMenuItemIcon> <MyMaterialIcon>edit</MyMaterialIcon> </span>
       Rename</button>
     <button MyMenuItem>
-      <span MyMenuItemIcon> <lucide-icon [img]="icons.TrashIcon"></lucide-icon> </span>
+      <span MyMenuItemIcon> <MyMaterialIcon>delete</MyMaterialIcon> </span>
       Delete</button>
   </MyMenu>
 </div>

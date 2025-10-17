@@ -1,22 +1,20 @@
 ﻿import {Component} from '@angular/core';
-import {MyPersonaIcon, MyPersonaImage, MyPersonaText, Persona} from '../../NeoUI';
+import {MaterialIcon, MyPersonaIcon, MyPersonaImage, MyPersonaText, Persona} from '../../NeoUI';
 import {NgOptimizedImage} from '@angular/common';
-import {LucideAngularModule, UserIcon} from 'lucide-angular';
 
 @Component({
     templateUrl: 'persona.page.html',
-    imports: [
-        Persona,
-        MyPersonaText,
-        MyPersonaImage,
-        NgOptimizedImage,
-        LucideAngularModule,
-        MyPersonaIcon
-    ],
+  imports: [
+    Persona,
+    MyPersonaText,
+    MyPersonaImage,
+    NgOptimizedImage,
+    MyPersonaIcon,
+    MaterialIcon
+  ],
     selector: 'SelectPage'
 })
 export class PersonaPage {
-  icons = { UserIcon }
   paletteColors =
     [
       "Red",
