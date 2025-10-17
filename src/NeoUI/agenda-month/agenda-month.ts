@@ -7,18 +7,17 @@ import {AgendaEventDescriptor} from '../agenda';
 import {DateTime} from 'luxon';
 
 @Component({
-  selector: 'MyAgendaMonth',
-  templateUrl: 'agenda-month.html',
-  styleUrl: 'agenda-month.scss',
-  encapsulation: ViewEncapsulation.None,
-  standalone: true,
-  imports: [
-    NgTemplateOutlet,
-    NgIf
-  ],
-  host: {
-    class: 'my-agenda-month'
-  }
+    selector: 'MyAgendaMonth',
+    templateUrl: 'agenda-month.html',
+    styleUrl: 'agenda-month.scss',
+    encapsulation: ViewEncapsulation.None,
+    imports: [
+        NgTemplateOutlet,
+        NgIf
+    ],
+    host: {
+        class: 'my-agenda-month'
+    }
 })
 export class AgendaMonth implements OnInit {
   @Input()

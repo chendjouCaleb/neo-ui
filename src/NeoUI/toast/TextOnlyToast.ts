@@ -13,18 +13,17 @@ export class TextOnlyToastOptions {
 }
 
 @Component({
-  templateUrl: 'TextOnlyToast.html',
-  styleUrl: 'TextOnlyToast.scss',
-  selector: 'TextOnlyToast',
-  encapsulation: ViewEncapsulation.None,
-  standalone: true,
-  imports: [
-    NgIf,
-    LucideAngularModule
-  ],
-  host: {
-    class: 'my-text-only-toast'
-  }
+    templateUrl: 'TextOnlyToast.html',
+    styleUrl: 'TextOnlyToast.scss',
+    selector: 'TextOnlyToast',
+    encapsulation: ViewEncapsulation.None,
+    imports: [
+        NgIf,
+        LucideAngularModule
+    ],
+    host: {
+        class: 'my-text-only-toast'
+    }
 })
 export class TextOnlyToast {
   icons = { InfoIcon, TriangleAlertIcon, CheckIcon, CircleXIcon, XIcon }

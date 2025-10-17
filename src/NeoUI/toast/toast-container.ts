@@ -23,28 +23,27 @@ interface ToastAnimationEvent {
 
 
 @Component({
-  templateUrl: 'toast-container.html',
-  styleUrl: 'toast-container.scss',
-  standalone: true,
-  encapsulation: ViewEncapsulation.None,
-  animations: [ myToastAnimations.toastContainer ],
-  imports: [
-    CdkPortalOutlet
-  ],
-  host: {
-    'class': 'my-toast-container',
-    'tabindex': '-1',
-    'aria-modal': 'true',
-    '[id]': '_id',
-    '[attr.role]': '_options.role',
-    '[attr.aria-labelledby]': '_options.ariaLabel ? null : _ariaLabelledBy',
-    '[attr.aria-label]': '_options.ariaLabel',
-    '[attr.aria-describedby]': '_options.ariaDescribedBy || null',
-    '[@toastContainer]':'_state',
-    '(@toastContainer.start)': '_onAnimationStart($event)',
-    '(@toastContainer.done)': '_onAnimationDone($event)',
-    '[style.transform]': 'transform'
-  }
+    templateUrl: 'toast-container.html',
+    styleUrl: 'toast-container.scss',
+    encapsulation: ViewEncapsulation.None,
+    animations: [myToastAnimations.toastContainer],
+    imports: [
+        CdkPortalOutlet
+    ],
+    host: {
+        'class': 'my-toast-container',
+        'tabindex': '-1',
+        'aria-modal': 'true',
+        '[id]': '_id',
+        '[attr.role]': '_options.role',
+        '[attr.aria-labelledby]': '_options.ariaLabel ? null : _ariaLabelledBy',
+        '[attr.aria-label]': '_options.ariaLabel',
+        '[attr.aria-describedby]': '_options.ariaDescribedBy || null',
+        '[@toastContainer]': '_state',
+        '(@toastContainer.start)': '_onAnimationStart($event)',
+        '(@toastContainer.done)': '_onAnimationDone($event)',
+        '[style.transform]': 'transform'
+    }
 })
 export class ToastContainer implements AfterViewInit {
   /** State of the dialog animation. */

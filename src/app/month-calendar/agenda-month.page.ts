@@ -5,10 +5,9 @@ import {AgendaMonth} from '../../NeoUI/agenda-month';
 import {eventList} from '../event-list';
 
 @Component({
-  templateUrl: 'agenda-month.page.html',
-  standalone: true,
-  imports: [AgendaMonth],
-  selector: 'AgendaMonthPage'
+    templateUrl: 'agenda-month.page.html',
+    imports: [AgendaMonth],
+    selector: 'AgendaMonthPage'
 })
 export class AgendaMonthPage {
   monthRange = new MonthRange()

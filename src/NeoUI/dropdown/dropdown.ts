@@ -3,17 +3,16 @@ import {CdkPortal} from '@angular/cdk/portal';
 import {Overlay, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
 
 @Component({
-  templateUrl: 'dropdown.html',
-  selector: 'Dropdown',
-  standalone: true,
-  styleUrl: 'dropdown.scss',
-  encapsulation: ViewEncapsulation.None,
-  imports: [
-    CdkPortal
-  ],
-  host: {
-    'class': 'my-dropdown'
-  }
+    templateUrl: 'dropdown.html',
+    selector: 'Dropdown',
+    styleUrl: 'dropdown.scss',
+    encapsulation: ViewEncapsulation.None,
+    imports: [
+        CdkPortal
+    ],
+    host: {
+        'class': 'my-dropdown'
+    }
 })
 export class Dropdown implements AfterViewInit {
   private  overlayRef!: OverlayRef;

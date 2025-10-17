@@ -30,27 +30,26 @@ interface PopoverAnimationEvent {
 
 
 @Component({
-  templateUrl: 'popover-container.html',
-  styleUrl: 'popover-container.scss',
-  standalone: true,
-  encapsulation: ViewEncapsulation.None,
-  animations: [ myPopoverAnimations.popoverContainer ],
-  imports: [
-    CdkPortalOutlet
-  ],
-  host: {
-    class: 'my-popover-container',
-    'tabindex': '-1',
-    'aria-modal': 'true',
-    '[id]': '_id',
-    '[attr.role]': '_options.role',
-    '[attr.aria-labelledby]': '_options.ariaLabel ? null : _ariaLabelledBy',
-    '[attr.aria-label]': '_options.ariaLabel',
-    '[attr.aria-describedby]': '_options.ariaDescribedBy || null',
-    '[@popoverContainer]':'_state',
-    '(@popoverContainer.start)': '_onAnimationStart($event)',
-    '(@popoverContainer.done)': '_onAnimationDone($event)',
-  }
+    templateUrl: 'popover-container.html',
+    styleUrl: 'popover-container.scss',
+    encapsulation: ViewEncapsulation.None,
+    animations: [myPopoverAnimations.popoverContainer],
+    imports: [
+        CdkPortalOutlet
+    ],
+    host: {
+        class: 'my-popover-container',
+        'tabindex': '-1',
+        'aria-modal': 'true',
+        '[id]': '_id',
+        '[attr.role]': '_options.role',
+        '[attr.aria-labelledby]': '_options.ariaLabel ? null : _ariaLabelledBy',
+        '[attr.aria-label]': '_options.ariaLabel',
+        '[attr.aria-describedby]': '_options.ariaDescribedBy || null',
+        '[@popoverContainer]': '_state',
+        '(@popoverContainer.start)': '_onAnimationStart($event)',
+        '(@popoverContainer.done)': '_onAnimationDone($event)',
+    }
 })
 export class PopoverContainer implements AfterViewInit {
   /** State of the dialog animation. */

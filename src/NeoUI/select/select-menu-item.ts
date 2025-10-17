@@ -3,20 +3,19 @@ import {Observable} from 'rxjs';
 import {NgIf} from '@angular/common';
 
 @Component({
-  templateUrl: 'select-menu-item.html',
-  styleUrl: 'select-menu.scss',
-  selector: 'MySelectMenuItem, [MySelectMenuItem]',
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    NgIf
-  ],
-  host: {
-    class: 'my-select-menu-item',
-    role: 'menu-item',
-    '(click)': 'onClick()'
-  }
+    templateUrl: 'select-menu-item.html',
+    styleUrl: 'select-menu.scss',
+    selector: 'MySelectMenuItem, [MySelectMenuItem]',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        NgIf
+    ],
+    host: {
+        class: 'my-select-menu-item',
+        role: 'menu-item',
+        '(click)': 'onClick()'
+    }
 })
 export class SelectMenuItem {
   @Input()

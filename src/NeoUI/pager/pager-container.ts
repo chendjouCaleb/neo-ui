@@ -14,18 +14,17 @@ import {Observable, Subject} from 'rxjs';
 import {PageContext} from './template-def';
 
 @Component({
-  template: `
+    template: `
     <ng-template cdkPortalOutlet></ng-template>`,
-  encapsulation: ViewEncapsulation.None,
-  standalone: true,
-  imports: [
-    CdkPortalOutlet
-  ],
-  host: {
-    'class': 'my-pager-page-container',
-    '[class.active]': '_isActive',
-    '[class.hidden]': '!_isActive'
-  }
+    encapsulation: ViewEncapsulation.None,
+    imports: [
+        CdkPortalOutlet
+    ],
+    host: {
+        'class': 'my-pager-page-container',
+        '[class.active]': '_isActive',
+        '[class.hidden]': '!_isActive'
+    }
 })
 export class PagerContainer {
 

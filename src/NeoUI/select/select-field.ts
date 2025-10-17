@@ -14,24 +14,22 @@ import {
 } from 'lucide-angular';
 
 @Component({
-  selector: 'SelectField',
-  encapsulation: ViewEncapsulation.None,
-  templateUrl: 'select-field.html',
-  styleUrl: 'select.scss',
-  standalone: true,
-  imports: [
-    LucideAngularModule
-  ],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    'class': 'my-select-field',
-    '[class.disabled]': 'disabled',
-    '[class.focused]': 'focused',
-    '[attr.tabindex]': 'disabled? -1 : 0',
-    '(focus)': 'onFocus()',
-    '(blur)': 'onBlur()'
-  }
-
+    selector: 'SelectField',
+    encapsulation: ViewEncapsulation.None,
+    templateUrl: 'select-field.html',
+    styleUrl: 'select.scss',
+    imports: [
+        LucideAngularModule
+    ],
+    // changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        'class': 'my-select-field',
+        '[class.disabled]': 'disabled',
+        '[class.focused]': 'focused',
+        '[attr.tabindex]': 'disabled? -1 : 0',
+        '(focus)': 'onFocus()',
+        '(blur)': 'onBlur()'
+    }
 })
 export class SelectField {
   private _initialized: boolean = false;

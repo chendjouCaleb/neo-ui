@@ -9,10 +9,9 @@ import {SelectMenuItem} from '../../NeoUI/select/select-menu-item';
 import {NgForOf, NgIf} from '@angular/common';
 
 @Component({
-  templateUrl: 'select.page.html',
-  standalone: true,
-  imports: [SelectField, SelectFieldLabel, Select, SelectDropdown, SelectMenu, SelectMenuItem, NgForOf, NgIf, TextField, TextFieldInput, TextFieldLabel],
-  selector: 'SelectPage'
+    templateUrl: 'select.page.html',
+    imports: [SelectField, SelectFieldLabel, Select, SelectDropdown, SelectMenu, SelectMenuItem, NgForOf, NgIf, TextField, TextFieldInput, TextFieldLabel],
+    selector: 'SelectPage'
 })
 export class SelectPage {
   dropdownVisible: boolean = false

@@ -10,18 +10,17 @@ import {
 import {NgIf, NgTemplateOutlet} from '@angular/common';
 
 @Component({
-  templateUrl: 'agenda.html',
-  styleUrl: 'agenda.scss',
-  selector: 'MyAgenda',
-  encapsulation: ViewEncapsulation.None,
-  standalone: true,
-  imports: [
-    NgIf,
-    NgTemplateOutlet
-  ],
-  host: {
-    class: 'my-agenda'
-  }
+    templateUrl: 'agenda.html',
+    styleUrl: 'agenda.scss',
+    selector: 'MyAgenda',
+    encapsulation: ViewEncapsulation.None,
+    imports: [
+        NgIf,
+        NgTemplateOutlet
+    ],
+    host: {
+        class: 'my-agenda'
+    }
 })
 export class Agenda implements AfterViewInit, OnInit {
   _initialized = false

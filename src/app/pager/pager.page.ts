@@ -5,10 +5,9 @@ import {LocalDate} from '@js-joda/core';
 import {DateTime} from 'luxon';
 
 @Component({
-  templateUrl: 'pager.page.html',
-  standalone: true,
-  imports: [Pager, PagerTemplateDef, CalendarMonth, CalendarMonthDayDef],
-  selector: 'InfinitePage'
+    templateUrl: 'pager.page.html',
+    imports: [Pager, PagerTemplateDef, CalendarMonth, CalendarMonthDayDef],
+    selector: 'InfinitePage'
 })
 export class PagerPage {
 

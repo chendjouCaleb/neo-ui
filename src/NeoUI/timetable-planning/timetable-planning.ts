@@ -12,18 +12,17 @@ import {
 import {NgTemplateOutlet} from '@angular/common';
 
 @Component({
-  templateUrl: 'timetable-planning.html',
-  styleUrl: 'timetable-planning.scss',
-  selector: 'MyTimetablePlanning',
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    NgTemplateOutlet
-  ],
-  host: {
-    'class': 'my-timetable-planning'
-  }
+    templateUrl: 'timetable-planning.html',
+    styleUrl: 'timetable-planning.scss',
+    selector: 'MyTimetablePlanning',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        NgTemplateOutlet
+    ],
+    host: {
+        'class': 'my-timetable-planning'
+    }
 })
 export class TimetablePlanning {
 

@@ -3,15 +3,14 @@ import {LucideAngularModule, MailIcon, MapPinIcon, PhoneIcon, UniversityIcon, Us
 import {TextField, TextFieldInput, TextFieldLabel} from '../../NeoUI';
 
 @Component({
-  templateUrl: 'contact.page.html',
-  standalone: true,
-  styleUrls: ['contact.page.scss'],
-  encapsulation: ViewEncapsulation.None,
-  selector: 'ContactPage',
-  imports: [LucideAngularModule, TextField, TextFieldLabel, TextFieldInput],
-  host: {
-    class: 'contact-page'
-  }
+    templateUrl: 'contact.page.html',
+    styleUrls: ['contact.page.scss'],
+    encapsulation: ViewEncapsulation.None,
+    selector: 'ContactPage',
+    imports: [LucideAngularModule, TextField, TextFieldLabel, TextFieldInput],
+    host: {
+        class: 'contact-page'
+    }
 })
 export class ContactPage {
   userIcon = UserRoundIcon

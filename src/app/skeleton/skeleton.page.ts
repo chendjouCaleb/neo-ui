@@ -2,12 +2,11 @@
 import {Skeleton} from '../../NeoUI';
 
 @Component({
-  templateUrl: 'skeleton.page.html',
-  standalone: true,
-  imports: [
-    Skeleton
-  ],
-  selector: 'SelectPage'
+    templateUrl: 'skeleton.page.html',
+    imports: [
+        Skeleton
+    ],
+    selector: 'SelectPage'
 })
 export class SkeletonPage {
 

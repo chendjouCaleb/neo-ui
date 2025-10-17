@@ -3,13 +3,12 @@ import {EllipsisIcon, HeartIcon, LucideAngularModule, MenuIcon} from 'lucide-ang
 import {IconButton} from '../../NeoUI/icon-button';
 
 @Component({
-  templateUrl: 'icon-button.page.html',
-  standalone: true,
-  imports: [
-    IconButton,
-    LucideAngularModule
-  ],
-  selector: 'IconButtonPage'
+    templateUrl: 'icon-button.page.html',
+    imports: [
+        IconButton,
+        LucideAngularModule
+    ],
+    selector: 'IconButtonPage'
 })
 export class IconButtonPage {
   icons = { EllipsisIcon, MenuIcon, HeartIcon }

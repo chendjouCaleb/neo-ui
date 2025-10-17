@@ -5,17 +5,16 @@ import {CalendarMonthDayContext, CalendarMonthDayDef} from './calendar-month-day
 import {NgTemplateOutlet} from '@angular/common';
 
 @Component({
-  selector: 'MyCalendarMonth',
-  templateUrl: 'calendar-month.html',
-  styleUrl: 'calendar-month.scss',
-  encapsulation: ViewEncapsulation.None,
-  standalone: true,
-  imports: [
-    NgTemplateOutlet
-  ],
-  host: {
-    class: 'my-calendar-month'
-  }
+    selector: 'MyCalendarMonth',
+    templateUrl: 'calendar-month.html',
+    styleUrl: 'calendar-month.scss',
+    encapsulation: ViewEncapsulation.None,
+    imports: [
+        NgTemplateOutlet
+    ],
+    host: {
+        class: 'my-calendar-month'
+    }
 })
 export class CalendarMonth implements OnInit {
   @Input()

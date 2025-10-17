@@ -11,22 +11,20 @@ import {Overlay, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
 import {CdkPortal} from '@angular/cdk/portal';
 
 @Component({
-  selector: 'SelectDropdown',
-  encapsulation: ViewEncapsulation.None,
-  template: `
+    selector: 'SelectDropdown',
+    encapsulation: ViewEncapsulation.None,
+    template: `
     <ng-template cdkPortal class="my-select-dropdown-container">
       <ng-content></ng-content>
     </ng-template>
   `,
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    CdkPortal
-  ],
-  host: {
-    class: 'my-select-dropdown',
-  }
-
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        CdkPortal
+    ],
+    host: {
+        class: 'my-select-dropdown',
+    }
 })
 export class SelectDropdown {
   private  overlayRef!: OverlayRef;

@@ -10,10 +10,9 @@ import {NgForOf, NgIf} from '@angular/common';
 import {MyRadio} from '../../NeoUI/radio/radio';
 
 @Component({
-  templateUrl: 'checkbox.page.html',
-  standalone: true,
-  imports: [SelectField, SelectFieldLabel, Select, SelectDropdown, SelectMenu, SelectMenuItem, NgForOf, NgIf, TextField, TextFieldInput, TextFieldLabel, MyCheckbox, MyRadio],
-  selector: 'SelectPage'
+    templateUrl: 'checkbox.page.html',
+    imports: [SelectField, SelectFieldLabel, Select, SelectDropdown, SelectMenu, SelectMenuItem, NgForOf, NgIf, TextField, TextFieldInput, TextFieldLabel, MyCheckbox, MyRadio],
+    selector: 'SelectPage'
 })
 export class CheckboxPage {
   dropdownVisible: boolean = false

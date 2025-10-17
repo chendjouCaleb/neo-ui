@@ -11,10 +11,9 @@ import {
 } from '../../NeoUI';
 
 @Component({
-  templateUrl: 'agenda-planning.page.html',
-  standalone: true,
-  imports: [Agenda, AgendaEventContentDef, AgendaHeaderCellDef, AgendaPlanning, AgendaHourDef, AgendaPlanningDayDef, AgendaPlanningHourDef, AgendaPlanningEventContentDef],
-  selector: 'AgendaPage'
+    templateUrl: 'agenda-planning.page.html',
+    imports: [Agenda, AgendaEventContentDef, AgendaHeaderCellDef, AgendaPlanning, AgendaHourDef, AgendaPlanningDayDef, AgendaPlanningHourDef, AgendaPlanningEventContentDef],
+    selector: 'AgendaPage'
 })
 export class AgendaPlanningPage {
   items = eventList

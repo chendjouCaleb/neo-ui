@@ -4,10 +4,9 @@ import {DateTimeFormatter, LocalTime} from '@js-joda/core';
 import {TimetableItemDef} from '../../NeoUI/timetable/timetable-item-def';
 
 @Component({
-  templateUrl: 'timetable.page.html',
-  standalone: true,
-  imports: [Timetable, TimetableItemDef],
-  selector: 'TimetablePage'
+    templateUrl: 'timetable.page.html',
+    imports: [Timetable, TimetableItemDef],
+    selector: 'TimetablePage'
 })
 export class TimetablePage {
   items: TimetableItemDescriptor[] = [

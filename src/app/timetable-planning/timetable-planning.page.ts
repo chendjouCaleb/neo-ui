@@ -9,15 +9,14 @@ import {
 } from '../../NeoUI/timetable-planning/timetable-planning-event-content';
 
 @Component({
-  templateUrl: 'timetable-planning.page.html',
-  standalone: true,
-  imports: [
-    TimetablePlanning,
-    TimetablePlanningDayDef,
-    TimetablePlanningHourDef,
-    TimetablePlanningEventContentDef
-  ],
-  selector: 'TimetablePlanningPage'
+    templateUrl: 'timetable-planning.page.html',
+    imports: [
+        TimetablePlanning,
+        TimetablePlanningDayDef,
+        TimetablePlanningHourDef,
+        TimetablePlanningEventContentDef
+    ],
+    selector: 'TimetablePlanningPage'
 })
 export class TimetablePlanningPage {
   items: TimetableItemDescriptor[] = [

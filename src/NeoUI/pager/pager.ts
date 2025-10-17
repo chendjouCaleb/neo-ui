@@ -17,19 +17,18 @@ export class PagerChange {
 }
 
 @Component({
-  selector: 'MyPager',
-  templateUrl: 'pager.html',
-  styleUrl: 'pager.scss',
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    CdkPortalOutlet
-  ],
-  host: {
-    'class': 'my-pager',
-    '[style.height.px]': '_height'
-  }
+    selector: 'MyPager',
+    templateUrl: 'pager.html',
+    styleUrl: 'pager.scss',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        CdkPortalOutlet
+    ],
+    host: {
+        'class': 'my-pager',
+        '[style.height.px]': '_height'
+    }
 })
 export class Pager implements AfterViewInit {
   private _initialized = false;

@@ -8,14 +8,11 @@ import {MySwitch} from '../NeoUI/switch';
 import {DOCUMENT} from '@angular/common';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, TextFieldPage, DropdownPage, ContactPage, SelectPage, RouterLink, RouterLinkActive, MySwitch],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  host: {
-
-  }
+    selector: 'app-root',
+    imports: [RouterOutlet, TextFieldPage, DropdownPage, ContactPage, SelectPage, RouterLink, RouterLinkActive, MySwitch],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    host: {}
 })
 export class AppComponent {
   title = 'NeoUI';

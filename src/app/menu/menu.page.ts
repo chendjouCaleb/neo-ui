@@ -5,10 +5,9 @@ import {ClipboardIcon, CopyIcon, LucideAngularModule, PencilIcon, ScissorsIcon, 
 import {MenuItemIcon} from '../../NeoUI/menu/menu-item-icon';
 
 @Component({
-  templateUrl: 'menu.page.html',
-  standalone: true,
-  imports: [NgForOf, NgIf, Menu, MenuItem, LucideAngularModule, MenuItemIcon],
-  selector: 'SelectPage'
+    templateUrl: 'menu.page.html',
+    imports: [NgForOf, NgIf, Menu, MenuItem, LucideAngularModule, MenuItemIcon],
+    selector: 'SelectPage'
 })
 export class MenuPage {
   icons = { CopyIcon, ClipboardIcon, TrashIcon, PencilIcon, ScissorsIcon }

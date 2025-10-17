@@ -4,13 +4,12 @@ import {Popover} from '../../NeoUI';
 import {TooltipPosition} from '../../NeoUI/toolttip-position';
 
 @Component({
-  templateUrl: 'popover.page.html',
-  styleUrl: 'popover.page.scss',
-  standalone: true,
-  imports: [
-    Tooltip
-  ],
-  selector: 'PopoverPage'
+    templateUrl: 'popover.page.html',
+    styleUrl: 'popover.page.scss',
+    imports: [
+        Tooltip
+    ],
+    selector: 'PopoverPage'
 })
 export class PopoverPage {
   @ViewChild(TemplateRef)

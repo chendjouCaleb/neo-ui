@@ -12,17 +12,16 @@ import {
 import {NgTemplateOutlet} from '@angular/common';
 
 @Component({
-  selector: 'MyAgendaPlanning',
-  templateUrl: 'agenda-planning.html',
-  styleUrl: 'agenda-planning.scss',
-  encapsulation: ViewEncapsulation.None,
-  standalone: true,
-  imports: [
-    NgTemplateOutlet
-  ],
-  host: {
-    class: 'my-agenda-planning'
-  }
+    selector: 'MyAgendaPlanning',
+    templateUrl: 'agenda-planning.html',
+    styleUrl: 'agenda-planning.scss',
+    encapsulation: ViewEncapsulation.None,
+    imports: [
+        NgTemplateOutlet
+    ],
+    host: {
+        class: 'my-agenda-planning'
+    }
 })
 export class AgendaPlanning {
   @Input()

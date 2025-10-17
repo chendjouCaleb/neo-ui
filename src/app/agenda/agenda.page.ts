@@ -5,10 +5,9 @@ import {DateTime} from 'luxon';
 import {eventList} from '../event-list';
 
 @Component({
-  templateUrl: 'agenda.page.html',
-  standalone: true,
-  imports: [Agenda, AgendaEventContentDef, AgendaHeaderCellDef],
-  selector: 'AgendaPage'
+    templateUrl: 'agenda.page.html',
+    imports: [Agenda, AgendaEventContentDef, AgendaHeaderCellDef],
+    selector: 'AgendaPage'
 })
 export class AgendaPage {
   items = eventList

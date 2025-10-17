@@ -5,10 +5,9 @@ import {TimetableItemDef} from '../../NeoUI/timetable/timetable-item-def';
 import {MonthRange} from '../../NeoUI';
 
 @Component({
-  templateUrl: 'month-calendar.page.html',
-  standalone: true,
-  imports: [Timetable, TimetableItemDef, CalendarMonth, CalendarMonthDayDef],
-  selector: 'MonthCalendarPage'
+    templateUrl: 'month-calendar.page.html',
+    imports: [Timetable, TimetableItemDef, CalendarMonth, CalendarMonthDayDef],
+    selector: 'MonthCalendarPage'
 })
 export class MonthCalendarPage {
   monthRange = new MonthRange()

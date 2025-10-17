@@ -13,18 +13,17 @@ import {ChronoUnit, DateTimeFormatter, LocalTime} from '@js-joda/core';
 import {TimetableItem, TimetableItemDef} from './timetable-item-def';
 
 @Component({
-  selector: 'Timetable',
-  templateUrl: 'timetable.html',
-  styleUrl: 'timetable.scss',
-  encapsulation: ViewEncapsulation.None,
-  standalone: true,
-  imports: [
-    TimetableItem
-  ],
-  host: {
-    class: 'timetable',
-    '[style.height.px]': 'getHourOffsetY(lastHour) + 60'
-  }
+    selector: 'Timetable',
+    templateUrl: 'timetable.html',
+    styleUrl: 'timetable.scss',
+    encapsulation: ViewEncapsulation.None,
+    imports: [
+        TimetableItem
+    ],
+    host: {
+        class: 'timetable',
+        '[style.height.px]': 'getHourOffsetY(lastHour) + 60'
+    }
 })
 export class Timetable {
   dayOfWeeks = dayOfWeeks

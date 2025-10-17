@@ -5,14 +5,13 @@ import {InfoIcon, XIcon} from 'lucide-angular';
 import {Tooltip} from '../../NeoUI';
 
 @Component({
-  templateUrl: 'toast.page.html',
-  styleUrl: 'toast.page.scss',
-  encapsulation: ViewEncapsulation.None,
-  standalone: true,
-  imports: [
-    Tooltip
-  ],
-  selector: 'ToastPage'
+    templateUrl: 'toast.page.html',
+    styleUrl: 'toast.page.scss',
+    encapsulation: ViewEncapsulation.None,
+    imports: [
+        Tooltip
+    ],
+    selector: 'ToastPage'
 })
 export class ToastPage {
   icons = { XIcon, InfoIcon }
