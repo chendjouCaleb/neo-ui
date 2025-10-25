@@ -1,7 +1,7 @@
 ﻿import {Component} from '@angular/core';
 import {
   MaterialIcon,
-  TextField,
+  TextField, TextFieldHint,
   TextFieldInput,
   TextFieldLabel,
   TextFieldLeadingContent,
@@ -18,7 +18,8 @@ import {
     TextFieldMessage,
     TextFieldLeadingContent,
     MaterialIcon,
-    TextFieldTrailingContent
+    TextFieldTrailingContent,
+    TextFieldHint
   ],
     templateUrl: 'textField.page.html'
 })

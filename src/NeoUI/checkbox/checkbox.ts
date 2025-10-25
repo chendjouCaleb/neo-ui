@@ -186,7 +186,7 @@ export class MyCheckbox {
   private _emitChangeEvent(event: Event): void {
     this.change.emit(new MyCheckboxChange(this, event, this._checked));
     this._controlValueAccessorChangeFn(this.checked);
-    console.log('emit change')
+
   }
 
 
