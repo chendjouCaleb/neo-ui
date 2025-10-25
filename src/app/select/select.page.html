@@ -1,31 +1,32 @@
 ﻿<SelectField>
-<span SelectFieldLabel>Choisir un pays</span>
+  <span SelectFieldLabel>Choisir un pays</span>
 </SelectField>
 
 <div style="display: flex; gap: 16px">
   <MySelect style="width: 200px">
-  <SelectField #selectField  style="width: 200px">
-  <span SelectFieldLabel>Choisir un grand pays</span>
-  @if (selectField.value) {
-    <span>{{selectField.value.name}}</span>
-  }
-</SelectField>
-<SelectDropdown #selectDropdown>
-<MySelectMenu >
-@for (country of countries; track country) {
-  <button MySelectMenuItem
-    [checked]="selectField.value?.code == country.code"
-    (onChange)="selectField.changeValue(country)"
-    (click)="selectDropdown.close()"
-  >{{ country.name }}</button>
-}
+    <SelectField #selectField style="width: 200px">
+      <span SelectFieldLabel>Choisir un grand pays</span>
+      @if (selectField.value) {
+        <span>{{ selectField.value.name }}</span>
+      }
+    </SelectField>
+    <SelectDropdown #selectDropdown>
+      <MySelectMenu>
+        @for (country of countries; track country) {
+          <button MySelectMenuItem
+                  [checked]="selectField.value?.code == country.code"
+                  (onChange)="selectField.changeValue(country)"
+                  (click)="selectDropdown.close()">
+            {{ country.name }}
+          </button>
+        }
 
-</MySelectMenu>
-</SelectDropdown>
-</MySelect>
+      </MySelectMenu>
+    </SelectDropdown>
+  </MySelect>
 
-<TextField style="width: 200px">
-<label TextFieldLabel for="input1">Nom & prénom</label>
-<input type="text" id="input1" placeholder="Entrez votre nom" TextFieldInput>
-</TextField>
+  <TextField style="width: 200px">
+    <label TextFieldLabel for="input1">Nom & prénom</label>
+    <input type="text" id="input1" placeholder="Entrez votre nom" TextFieldInput>
+  </TextField>
 </div>

@@ -1,0 +1,41 @@
+﻿.my-option {
+  height: 36px;
+  width: 100%;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--colorNeutralForeground1) !important;
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 0 16px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(10, 120, 213, .6);
+  }
+}
+
+.my-option-layout {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  //lucide-icon {
+  //  stroke: #FFFFFF;
+  //}
+}
+
+.my-option-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+.my-option-layout-content {
+  width: 100%;
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+}

@@ -5,12 +5,12 @@ import {SelectFieldLabel} from '../../NeoUI/select/select-field-label';
 import {Select} from '../../NeoUI/select/select';
 import {SelectDropdown} from '../../NeoUI/select/select-dropdown';
 import {SelectMenu} from '../../NeoUI/select/select-menu';
-import {SelectMenuItem} from '../../NeoUI/select/select-menu-item';
+import {MySelectOption} from '../../NeoUI/select/option/option';
 
 
 @Component({
     templateUrl: 'select.page.html',
-  imports: [SelectField, SelectFieldLabel, Select, SelectDropdown, SelectMenu, SelectMenuItem, TextField],
+  imports: [SelectField, SelectFieldLabel, Select, SelectDropdown, SelectMenu, MySelectOption, TextField],
     selector: 'SelectPage'
 })
 export class SelectPage {

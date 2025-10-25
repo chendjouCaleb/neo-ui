@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 import {SelectionModel} from '@angular/cdk/collections';
 import {Observable} from 'rxjs';
-import {SelectMenuItem} from './select-menu-item';
+import {MySelectOption} from './option/option';
 
 @Component({
   templateUrl: 'select-menu.html',
@@ -49,8 +49,8 @@ export class SelectMenu {
   // }
   // private _onChange = new EventEmitter<boolean>();
   //
-  // @ContentChildren(forwardRef(() => SelectMenuItem))
-  // menuItems: QueryList<SelectMenuItem>
+  // @ContentChildren(forwardRef(() => SelectOption))
+  // menuItems: QueryList<SelectOption>
   //
   // ngAfterContentInit(): void {
   //   this._initialized = true;
