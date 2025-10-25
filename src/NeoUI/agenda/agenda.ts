@@ -7,7 +7,7 @@ import {
   AgendaHeaderCellDef, AgendaHeaderCellDefContext,
   AgendaHourDef, AgendaHourDefContext
 } from './agenda-event-content';
-import {NgIf, NgTemplateOutlet} from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
     templateUrl: 'agenda.html',
@@ -15,9 +15,8 @@ import {NgIf, NgTemplateOutlet} from '@angular/common';
     selector: 'MyAgenda',
     encapsulation: ViewEncapsulation.None,
     imports: [
-        NgIf,
-        NgTemplateOutlet
-    ],
+    NgTemplateOutlet
+],
     host: {
         class: 'my-agenda'
     }

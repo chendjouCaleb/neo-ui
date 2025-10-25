@@ -1,14 +1,15 @@
 ﻿<div class="my-select-menu-item-layout">
   <span class="my-select-menu-item-icon">
-    <svg
-      *ngIf="checked"
-      xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-      viewBox="0 0 24 24" fill="none"
-      stroke="blue"
-      stroke-width="2" stroke-linecap="round"
-      stroke-linejoin="round">
-    <path d="M20 6 9 17l-5-5"></path>
-  </svg>
+    @if (checked) {
+      <svg
+        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+        viewBox="0 0 24 24" fill="none"
+        stroke="blue"
+        stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M20 6 9 17l-5-5"></path>
+      </svg>
+    }
   </span>
 
   <div class="my-select-menu-item-layout-content">

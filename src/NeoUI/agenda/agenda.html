@@ -2,15 +2,15 @@
   <div class="my-agenda-header-cell-timeline"></div>
 
   @for (day of days; track day){
-  <div class="my-agenda-header-cell-day-container">
-    <div class="my-agenda-header-cell-day">
-      @if(headerCellTemplateDef) {
-        <ng-container *ngTemplateOutlet="headerCellTemplateDef.template; context:_getHeaderTemplateContext(day)"></ng-container>
-      }@else {
-        <div>{{  day.dayOfMonth() }}</div>
-      }
+    <div class="my-agenda-header-cell-day-container">
+      <div class="my-agenda-header-cell-day">
+        @if(headerCellTemplateDef) {
+          <ng-container *ngTemplateOutlet="headerCellTemplateDef.template; context:_getHeaderTemplateContext(day)"></ng-container>
+          }@else {
+          <div>{{  day.dayOfMonth() }}</div>
+        }
+      </div>
     </div>
-  </div>
   }
 </div>
 
@@ -21,21 +21,23 @@
   <div class="my-agenda-body-columns" [style.grid-template-columns]="_getColumnGridTemplate()">
     <div class="my-agenda-column-timeline">
       @for (hour of timelineHours; track hour) {
-        <div class="my-agenda-timeline-hour" #timelineHour *ngIf="_initialized"
-             [style.top.px]="_getHourTop(hour) -10">
-          {{ hour.format(hourFormatter) }}
-        </div>
+        @if (_initialized) {
+          <div class="my-agenda-timeline-hour" #timelineHour
+            [style.top.px]="_getHourTop(hour) -10">
+            {{ hour.format(hourFormatter) }}
+          </div>
+        }
       }
     </div>
     @for (day of days; track day){
       <div class="my-agenda-column-day">
         @for(event of getDayEvents(day); track event) {
           <div class="my-agenda-event-container"
-               [style.top.px]="_getHourTop(event.startHour)"
-               [style.height.px]="_getRangeHeight(event.startHour, event.endHour)">
+            [style.top.px]="_getHourTop(event.startHour)"
+            [style.height.px]="_getRangeHeight(event.startHour, event.endHour)">
             @if(eventTemplateDef) {
               <ng-container
-                *ngTemplateOutlet="eventTemplateDef.template; context: _getEventTemplateContext(event)"></ng-container>
+              *ngTemplateOutlet="eventTemplateDef.template; context: _getEventTemplateContext(event)"></ng-container>
             } @else {
               <div class="my-agenda-event" [style.background-color]="event.color">
                 <div>{{event.title}}</div>
@@ -54,8 +56,8 @@
 
   @for (hour of timelineHours; track hour) {
     <div class="my-agenda-hour-line"
-         [style.top.px]="_getHourTop(hour)"
-         [style.left.px]="timelineWidth - 16"
+      [style.top.px]="_getHourTop(hour)"
+      [style.left.px]="timelineWidth - 16"
     ></div>
   }
 </div>

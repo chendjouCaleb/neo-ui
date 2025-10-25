@@ -3,17 +3,18 @@
   ChangeDetectorRef,
   Component,
   ContentChild, ElementRef,
-  forwardRef, Input,
+  forwardRef, Inject, Input, Optional,
   ViewEncapsulation
 } from '@angular/core';
 import {TextFieldLabel} from './textFieldLabel';
 import {TextFieldInput} from './textFieldInput';
-import {error} from 'ng-packagr/lib/utils/log';
+import {MY_TEXT_FIELD_DEFAULT_OPTIONS, MyTextFieldDefaultOptions, TextFieldAppearance} from './textFieldOptions';
+
 
 @Component({
   selector: 'TextField, MyTextField',
   templateUrl: 'textField.html',
-  styleUrls: [ 'textField.scss'],
+  styleUrls: ['textField.scss'],
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   host: {
@@ -27,12 +28,15 @@ export class TextField implements AfterContentInit, AfterViewInit {
   private _initialized: boolean = false;
 
   private _focused: boolean;
-  get focused(): boolean { return this._focused }
-
-
+  get focused(): boolean {
+    return this._focused
+  }
 
   @Input()
-  get disabled(): boolean { return this._disabled }
+  get disabled(): boolean {
+    return this._disabled
+  }
+
   set disabled(value: boolean) {
 
     if (this._initialized) {
@@ -43,10 +47,14 @@ export class TextField implements AfterContentInit, AfterViewInit {
     }
     this._disabled = value;
   }
+
   private _disabled: boolean;
 
   @Input()
-  get isError(): boolean { return this._isError }
+  get isError(): boolean {
+    return this._isError
+  }
+
   set isError(value: boolean) {
 
     if (this._initialized) {
@@ -57,12 +65,16 @@ export class TextField implements AfterContentInit, AfterViewInit {
     }
     this._isError = value;
   }
+
   private _isError: boolean;
+
+  @Input()
+  appearance: TextFieldAppearance = 'fill'
 
 
   private _floatingLabel: boolean = false
   get floatingLabel(): boolean {
-    return this.focused ||  (this.inputFieldHost && this.inputFieldHost.value !== "")
+    return this.focused || (this.inputFieldHost && this.inputFieldHost.value !== "")
   }
 
   @ContentChild(forwardRef(() => TextFieldLabel))
@@ -72,8 +84,12 @@ export class TextField implements AfterContentInit, AfterViewInit {
   inputField: TextFieldInput;
 
 
+
+
   constructor(private _elementRef: ElementRef<HTMLElement>,
-              private changeDetectorRef: ChangeDetectorRef) {
+              private changeDetectorRef: ChangeDetectorRef,
+              @Optional() @Inject(MY_TEXT_FIELD_DEFAULT_OPTIONS) private _defaultOptions: MyTextFieldDefaultOptions
+  ) {
   }
 
   ngAfterViewInit(): void {
@@ -86,13 +102,13 @@ export class TextField implements AfterContentInit, AfterViewInit {
   }
 
   ngAfterContentInit(): void {
-    if(!this.inputField) {
+    if (!this.inputField) {
       throw new Error('The MyTextField must contains a MyTextInputField');
     }
     this.inputField.host.addEventListener('focus', this._inputFocusEvent);
     this.inputField.host.addEventListener('blur', this._inputBlurEvent);
 
-    if(this.inputField.host.value){
+    if (this.inputField.host.value) {
       this.contentLabel.floating = true;
     }
 
@@ -113,7 +129,7 @@ export class TextField implements AfterContentInit, AfterViewInit {
   private _inputBlurEvent = () => {
     this._focused = false;
     this.contentLabel.focused = false;
-    if(this.inputFieldHost.value === '') {
+    if (this.inputFieldHost.value === '') {
       this.contentLabel.floating = false
     }
 

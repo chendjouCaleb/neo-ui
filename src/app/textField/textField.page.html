@@ -6,10 +6,10 @@
     </MyTextField>
   </div>
 
-  <div>
+  <div class="marginTop-24">
     <MyTextField>
-      <label MyTextFieldLabel for="inputPhone">Phone</label>
-      <input type="text" id="inputPhone" placeholder="Phone" value="6 85 63 25 41" MyTextFieldInput>
+      <MyTextFieldLabel>Phone</MyTextFieldLabel>
+      <input type="text" id="inputPhone" placeholder="Enter a phone number" MyTextFieldInput>
     </MyTextField>
   </div>
 
@@ -21,6 +21,7 @@
   </div>
 
   <div class="marginTop-24">
+    <div class="textStyle-subtitle2">Textarea</div>
     <MyTextField>
       <label MyTextFieldLabel for="input2">Message</label>
       <textarea MyTextFieldInput id="input2" placeholder="Entrez le message"></textarea>
@@ -34,5 +35,103 @@
       <label MyTextFieldLabel for="input3">Nom & prénom</label>
       <input type="text" id="input3" placeholder="Nom & prénom" MyTextFieldInput>
     </MyTextField>
+  </div>
+</div>
+
+
+<div class="padding-32">
+  <div class="textStyle-subtitle1">With hint</div>
+  <div>
+    <MyTextField>
+      <MyTextFieldLabel>Animal</MyTextFieldLabel>
+      <input type="text" placeholder="Animal" id="an" MyTextFieldInput>
+
+    </MyTextField>
+  </div>
+</div>
+
+
+<div class="padding-32">
+  <div class="textStyle-subtitle1">With leading and trailing content</div>
+  <div class="marginTop-16">
+    <MyTextField>
+      <MyTextFieldLabel>Animal</MyTextFieldLabel>
+      <input type="text"  MyTextFieldInput>
+      <MyTextFieldLeadingContent>
+        <MyMaterialIcon>account_circle</MyMaterialIcon>
+      </MyTextFieldLeadingContent>
+    </MyTextField>
+  </div>
+
+  <div class="marginTop-16">
+    <MyTextField>
+      <MyTextFieldLabel>Animal</MyTextFieldLabel>
+      <input type="text" MyTextFieldInput>
+      <MyTextFieldTrailingContent>
+        <MyMaterialIcon>mic</MyMaterialIcon>
+      </MyTextFieldTrailingContent>
+    </MyTextField>
+  </div>
+
+  <div class="marginTop-16">
+    <MyTextField>
+      <MyTextFieldLabel>Animal</MyTextFieldLabel>
+      <input type="text" MyTextFieldInput>
+      <MyTextFieldTrailingContent>.00</MyTextFieldTrailingContent>
+      <MyTextFieldLeadingContent>$</MyTextFieldLeadingContent>
+    </MyTextField>
+  </div>
+</div>
+
+
+
+<div class="padding-32">
+  <div class="textStyle-subtitle1">With message</div>
+  <div>
+
+    <div>
+      <MyTextField class="marginTop-24">
+        <MyTextFieldLabel>Info message</MyTextFieldLabel>
+        <input type="text" placeholder="Animal" MyTextFieldInput>
+        <MyTextFieldMessage intent="info">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolores earum magnam odio quia soluta tenetur
+          totam voluptatem.
+        </MyTextFieldMessage>
+      </MyTextField>
+    </div>
+
+    <div>
+      <MyTextField class="marginTop-24">
+        <MyTextFieldLabel>Success message</MyTextFieldLabel>
+        <input type="text" placeholder="Animal" MyTextFieldInput>
+        <MyTextFieldMessage intent="success">This is success message</MyTextFieldMessage>
+      </MyTextField>
+    </div>
+
+    <div>
+      <MyTextField class="marginTop-24">
+        <MyTextFieldLabel>warning message</MyTextFieldLabel>
+        <input type="text" placeholder="Animal" MyTextFieldInput>
+        <MyTextFieldMessage intent="warning">This is warning message</MyTextFieldMessage>
+      </MyTextField>
+    </div>
+
+    <div>
+      <MyTextField class="marginTop-24">
+        <MyTextFieldLabel>Error message</MyTextFieldLabel>
+        <input type="text" placeholder="Animal" MyTextFieldInput>
+        <MyTextFieldMessage intent="error">This is error message</MyTextFieldMessage>
+      </MyTextField>
+    </div>
+
+    <div>
+      <MyTextField class="marginTop-24">
+        <MyTextFieldLabel>Error message</MyTextFieldLabel>
+        <input type="text" placeholder="Animal" MyTextFieldInput>
+        <MyTextFieldMessage intent="custom">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </MyTextFieldMessage>
+      </MyTextField>
+    </div>
   </div>
 </div>

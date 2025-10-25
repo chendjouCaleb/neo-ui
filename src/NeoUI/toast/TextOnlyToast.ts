@@ -1,6 +1,6 @@
 ﻿import {Component, Inject, ViewEncapsulation} from '@angular/core';
 import {TOAST_DATA} from './toast-options';
-import {NgIf} from '@angular/common';
+
 import {ToastRef} from './toast-ref';
 import {MaterialIcon} from '../material-icon';
 import {MyPersonaIcon} from '../persona';
@@ -19,10 +19,9 @@ export class TextOnlyToastOptions {
     selector: 'TextOnlyToast',
     encapsulation: ViewEncapsulation.None,
   imports: [
-    NgIf,
     MaterialIcon,
-    MyPersonaIcon,
-  ],
+    MyPersonaIcon
+],
     host: {
         class: 'my-text-only-toast'
     }

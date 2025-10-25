@@ -1,8 +1,22 @@
-﻿
-<ng-content select="MyTextFieldLabel, [MyTextFieldLabel]"></ng-content>
+﻿<div class="my-text-field-box" [class.focused]="focused" [class.error]="isError">
+  <div class="my-text-field-leading-content-box">
+    <ng-content select="MyTextFieldLeadingContent, [MyTextFieldLeadingContent]"></ng-content>
+  </div>
 
-<div class="my-text-field-input-box">
-  <ng-content></ng-content>
+  <div class="my-text-field-input-box">
+    <ng-content select="MyTextFieldLabel, [MyTextFieldLabel]"></ng-content>
+    <ng-content select="[MyTextFieldInput]"></ng-content>
+  </div>
+
+  <div class="my-text-field-trailing-content-box">
+    <ng-content select="MyTextFieldTrailingContent, [MyTextFieldTrailingContent]"></ng-content>
+  </div>
+<!--  <div class="my-text-field-underline" [class.focused]="focused" [class.error]="isError"></div>-->
 </div>
 
-<div class="my-text-field-underline" [class.focused]="focused" [class.error]="isError"></div>
+
+<div>
+  <ng-content select="MyTextFieldHint"></ng-content>
+  <ng-content select="MyTextFieldMessage"></ng-content>
+</div>
+

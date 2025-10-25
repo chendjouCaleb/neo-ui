@@ -2,7 +2,7 @@
 import {MonthRange} from '../helpers';
 import {convert, LocalDate} from '@js-joda/core';
 import {AgendaMonthDayContext, AgendaMonthDayDef} from './agenda-month-day-def';
-import {NgIf, NgTemplateOutlet} from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {AgendaEventDescriptor} from '../agenda';
 import {DateTime} from 'luxon';
 
@@ -12,9 +12,8 @@ import {DateTime} from 'luxon';
     styleUrl: 'agenda-month.scss',
     encapsulation: ViewEncapsulation.None,
     imports: [
-        NgTemplateOutlet,
-        NgIf
-    ],
+    NgTemplateOutlet
+],
     host: {
         class: 'my-agenda-month'
     }

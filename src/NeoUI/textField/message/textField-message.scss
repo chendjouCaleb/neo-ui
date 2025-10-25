@@ -1,0 +1,48 @@
+﻿.my-textField-message {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  grid-column-gap: 16px;
+  column-gap: 8px;
+
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--colorNeutralForeground3);
+}
+
+
+.my-textField-message svg {
+  height: 16px;
+  width: 16px;
+}
+
+
+.my-textField-message.intent-info {
+  color: var(--colorNeutralForeground3);
+
+  svg {
+    fill: var(--colorNeutralForeground3);
+  }
+}
+
+.my-textField-message.intent-warning {
+  color: var(--colorNeutralForeground3);
+
+  svg {
+    fill: var(--colorPaletteDarkOrangeBackground3);
+  }
+}
+
+.my-textField-message.intent-success {
+  color: var(--colorPaletteGreenForeground3);
+
+  svg {
+    fill: var(--colorPaletteGreenBackground3);
+  }
+}
+
+.my-textField-message.intent-error {
+  color: var(--colorPaletteRedForeground3);
+  svg {
+    fill: var(--colorPaletteRedBackground3);
+  }
+}

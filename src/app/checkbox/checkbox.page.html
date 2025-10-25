@@ -1,33 +1,6 @@
 ﻿<div style="padding: 16px">
   <label for="checkbox">Checkbox</label>
 
-  <MyCheckbox id="checkbox"></MyCheckbox>
+  <MyCheckbox nativeInputId="checkbox" (change)="change($event)"></MyCheckbox>
 </div>
 
-
-<div style="padding: 16px">
-  <div style="display: flex; gap: 16px; align-items: center; padding: 8px 0">
-    <MyRadio inputId="option1" value="option1" name="option"
-             (change)="selectedOption = 'option1'"
-             [checked]="selectedOption == 'option1'"
-    ></MyRadio>
-    <label for="option1">Option 3</label>
-  </div>
-
-  <div style="display: flex; gap: 16px; align-items: center; padding: 8px 0">
-    <MyRadio inputId="option2" value="option2" name="option"
-             (change)="selectedOption = 'option2'"
-             [checked]="selectedOption == 'option2'"
-    ></MyRadio>
-    <label for="option2">Option 3</label>
-  </div>
-
-  <div style="display: flex; gap: 16px; align-items: center; padding: 8px 0">
-    <MyRadio inputId="option3" value="option3" name="option"
-             (change)="selectedOption = 'option3'"
-             [checked]="selectedOption == 'option3'"
-    ></MyRadio>
-    <label for="option3">Option 3</label>
-  </div>
-
-</div>

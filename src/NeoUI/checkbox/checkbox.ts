@@ -5,11 +5,12 @@
   forwardRef, Inject,
   Input, Optional,
   Output, ViewChild,
-  ViewEncapsulation
+  ViewEncapsulation,
+  DOCUMENT
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {FocusMonitor} from '@angular/cdk/a11y';
-import {DOCUMENT} from '@angular/common';
+
 import {MY_CHECKBOX_DEFAULT_OPTIONS, MyCheckboxDefaultOptions} from './checkbox-options';
 
 
@@ -95,6 +96,9 @@ export class MyCheckbox {
   @Input()
   id: string = this._uniqueId;
   getHostId(): string { return `${this.id}_host`}
+
+  @Input()
+  nativeInputId: string = ''
 
   /** Whether this checkbox button is disabled. */
   @Input()
@@ -182,6 +186,7 @@ export class MyCheckbox {
   private _emitChangeEvent(event: Event): void {
     this.change.emit(new MyCheckboxChange(this, event, this._checked));
     this._controlValueAccessorChangeFn(this.checked);
+    console.log('emit change')
   }
 
 
@@ -206,12 +211,20 @@ export class MyCheckbox {
   }
 
   _onClick(event ) {
+
     this._checked = !this._nativeInput.nativeElement.checked
     this._emitChangeEvent(event)
   }
 
   _nativeInputChange(event) {
-    this.checked = this._nativeInput.nativeElement.checked
+    event.stopPropagation()
+    this._checked = this._nativeInput.nativeElement.checked
     this._emitChangeEvent(event)
+
+  }
+
+  _nativeInputClick(event){
+    event.stopPropagation()
+    return
   }
 }

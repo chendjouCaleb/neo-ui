@@ -1,6 +1,6 @@
 ﻿import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
 import {Observable} from 'rxjs';
-import {NgIf} from '@angular/common';
+
 
 @Component({
     templateUrl: 'select-menu-item.html',
@@ -8,9 +8,7 @@ import {NgIf} from '@angular/common';
     selector: 'MySelectMenuItem, [MySelectMenuItem]',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        NgIf
-    ],
+    imports: [],
     host: {
         class: 'my-select-menu-item',
         role: 'menu-item',

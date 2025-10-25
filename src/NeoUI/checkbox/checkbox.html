@@ -1,8 +1,9 @@
 ﻿<input type="checkbox" #nativeInput
-       [id]="id"
+       [id]="nativeInputId"
        [checked]="checked"
        [disabled]="disabled"
        (change)="_nativeInputChange($event)"
+       (click)="_nativeInputClick($event)"
        class="my-checkbox-nativeInput"
 >
 

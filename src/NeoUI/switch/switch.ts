@@ -5,11 +5,12 @@
   forwardRef, Inject,
   Input, Optional,
   Output, ViewChild,
-  ViewEncapsulation
+  ViewEncapsulation,
+  DOCUMENT
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {FocusMonitor} from '@angular/cdk/a11y';
-import {DOCUMENT} from '@angular/common';
+
 import {MY_SWITCH_DEFAULT_OPTIONS, MySwitchDefaultOptions} from './switch-options';
 
 

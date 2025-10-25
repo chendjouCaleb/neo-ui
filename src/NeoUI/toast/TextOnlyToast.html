@@ -1,36 +1,52 @@
-﻿<div *ngIf="options.intent == 'success'" class="intent success">
-  <MyMaterialIcon MyPersonaIcon>check</MyMaterialIcon>
-</div>
+﻿@if (options.intent == 'success') {
+  <div class="intent success">
+    <MyMaterialIcon MyPersonaIcon>check</MyMaterialIcon>
+  </div>
+}
 
-<div *ngIf="options.intent == 'danger'" class="intent danger">
-  <MyMaterialIcon MyPersonaIcon>close</MyMaterialIcon>
-</div>
+@if (options.intent == 'danger') {
+  <div class="intent danger">
+    <MyMaterialIcon MyPersonaIcon>close</MyMaterialIcon>
+  </div>
+}
 
-<div *ngIf="options.intent == 'info'" class="intent info">
-  <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" >
-    <path
-      stroke="red"
-      d="M480-280q17 0 28.5-11.5T520-320v-160q0-17-11.5-28.5T480-520q-17 0-28.5 11.5T440-480v160q0 17 11.5 28.5T480-280Zm0-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
-  </svg>
-</div>
+@if (options.intent == 'info') {
+  <div class="intent info">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" >
+      <path
+        stroke="red"
+        d="M480-280q17 0 28.5-11.5T520-320v-160q0-17-11.5-28.5T480-520q-17 0-28.5 11.5T440-480v160q0 17 11.5 28.5T480-280Zm0-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+      </svg>
+    </div>
+  }
 
-<div *ngIf="options.intent == 'warn'" class="intent warn">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"  height="24" width="24" >
-    <path d="M109-120q-11 0-20-5.5T75-140q-5-9-5.5-19.5T75-180l370-640q6-10 15.5-15t19.5-5q10 0 19.5 5t15.5 15l370 640q6 10 5.5 20.5T885-140q-5 9-14 14.5t-20 5.5H109Zm371-120q17 0 28.5-11.5T520-280q0-17-11.5-28.5T480-320q-17 0-28.5 11.5T440-280q0 17 11.5 28.5T480-240Zm0-120q17 0 28.5-11.5T520-400v-120q0-17-11.5-28.5T480-560q-17 0-28.5 11.5T440-520v120q0 17 11.5 28.5T480-360Z"/>
-  </svg>
-</div>
+  @if (options.intent == 'warn') {
+    <div class="intent warn">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"  height="24" width="24" >
+        <path d="M109-120q-11 0-20-5.5T75-140q-5-9-5.5-19.5T75-180l370-640q6-10 15.5-15t19.5-5q10 0 19.5 5t15.5 15l370 640q6 10 5.5 20.5T885-140q-5 9-14 14.5t-20 5.5H109Zm371-120q17 0 28.5-11.5T520-280q0-17-11.5-28.5T480-320q-17 0-28.5 11.5T440-280q0 17 11.5 28.5T480-240Zm0-120q17 0 28.5-11.5T520-400v-120q0-17-11.5-28.5T480-560q-17 0-28.5 11.5T440-520v120q0 17 11.5 28.5T480-360Z"/>
+      </svg>
+    </div>
+  }
 
-<div style="flex-grow: 1">
-  <div *ngIf="options.title" class="title">{{options.title}}</div>
-  <div *ngIf="options.body" class="subtitle">{{options.body}}</div>
-</div>
+  <div style="flex-grow: 1">
+    @if (options.title) {
+      <div class="title">{{options.title}}</div>
+    }
+    @if (options.body) {
+      <div class="subtitle">{{options.body}}</div>
+    }
+  </div>
 
-<div style="display: flex; align-items: center; column-gap: 4px; height: 20px">
-  <span *ngIf="options.action" class="my-toast-action" (click)="_toastRef.emitOnAction()">
-    {{options.action}}
-  </span>
+  <div style="display: flex; align-items: center; column-gap: 4px; height: 20px">
+    @if (options.action) {
+      <span class="my-toast-action" (click)="_toastRef.emitOnAction()">
+        {{options.action}}
+      </span>
+    }
 
-  <button class="my-toast-icon-button" *ngIf="options.showClose" (click)="_toastRef.close()">
-    <<MyMaterialIcon MyPersonaIcon>close</MyMaterialIcon>
-  </button>
-</div>
+    @if (options.showClose) {
+      <button class="my-toast-icon-button" (click)="_toastRef.close()">
+        <<MyMaterialIcon MyPersonaIcon>close</MyMaterialIcon>
+      </button>
+    }
+  </div>

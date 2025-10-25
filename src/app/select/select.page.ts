@@ -1,16 +1,16 @@
 ﻿import {Component} from '@angular/core';
-import {Dropdown, TextField, TextFieldInput, TextFieldLabel} from '../../NeoUI';
+import {TextField} from '../../NeoUI';
 import {SelectField} from '../../NeoUI/select/select-field';
 import {SelectFieldLabel} from '../../NeoUI/select/select-field-label';
 import {Select} from '../../NeoUI/select/select';
 import {SelectDropdown} from '../../NeoUI/select/select-dropdown';
 import {SelectMenu} from '../../NeoUI/select/select-menu';
 import {SelectMenuItem} from '../../NeoUI/select/select-menu-item';
-import {NgForOf, NgIf} from '@angular/common';
+
 
 @Component({
     templateUrl: 'select.page.html',
-    imports: [SelectField, SelectFieldLabel, Select, SelectDropdown, SelectMenu, SelectMenuItem, NgForOf, NgIf, TextField, TextFieldInput, TextFieldLabel],
+  imports: [SelectField, SelectFieldLabel, Select, SelectDropdown, SelectMenu, SelectMenuItem, TextField],
     selector: 'SelectPage'
 })
 export class SelectPage {
