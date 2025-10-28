@@ -1,32 +1,39 @@
-﻿<SelectField>
-  <span SelectFieldLabel>Choisir un pays</span>
-</SelectField>
+﻿
 
-<div style="display: flex; gap: 16px">
-  <MySelect style="width: 200px">
-    <SelectField #selectField style="width: 200px">
-      <span SelectFieldLabel>Choisir un grand pays</span>
-      @if (selectField.value) {
-        <span>{{ selectField.value.name }}</span>
-      }
-    </SelectField>
-    <SelectDropdown #selectDropdown>
-      <MySelectMenu>
-        @for (country of countries; track country) {
-          <button MySelectMenuItem
-                  [checked]="selectField.value?.code == country.code"
-                  (onChange)="selectField.changeValue(country)"
-                  (click)="selectDropdown.close()">
-            {{ country.name }}
-          </button>
-        }
-
-      </MySelectMenu>
-    </SelectDropdown>
+<div class="padding-24">
+  <div class="textStyle-subtitle2">Basic select</div>
+  <MySelect style="width: 200px" placeholder="Choisir un page dans cette longue liste">
+    @for (country of countries; track country) {
+      <MyOption [value]="country">
+        {{ country.name }}
+      </MyOption>
+    }
   </MySelect>
+</div>
 
-  <TextField style="width: 200px">
-    <label TextFieldLabel for="input1">Nom & prénom</label>
-    <input type="text" id="input1" placeholder="Entrez votre nom" TextFieldInput>
-  </TextField>
+
+<div class="padding-24">
+  <div class="textStyle-subtitle2">Multiple values</div>
+  <MySelect style="width: 200px" [multiple]="true" placeholder="Choisir un page dans cette longue liste">
+    @for (country of countries; track country) {
+      <MyOption [value]="country">
+        {{ country.name }}
+      </MyOption>
+    }
+  </MySelect>
+</div>
+
+
+<div class="padding-24">
+  <div class="textStyle-subtitle2">Customer trigger</div>
+  <MySelect #selectCustomerTrigger style="width: 200px" placeholder="Choisir un page dans cette longue liste">
+    <MySelectTrigger>
+      {{selectCustomerTrigger.value?.code}}
+    </MySelectTrigger>
+    @for (country of countries; track country) {
+      <MyOption [value]="country">
+        {{ country.name }}
+      </MyOption>
+    }
+  </MySelect>
 </div>

@@ -1,39 +1,46 @@
 ﻿.my-option {
+  display: flex;
+  align-items: center;
   height: 36px;
   width: 100%;
+  max-width: 100%;
+  overflow: hidden;
   font-size: 14px;
-  line-height: 20px;
   color: var(--colorNeutralForeground1) !important;
   background-color: transparent;
   border: none;
   text-decoration: none;
   border-radius: 4px;
-  padding: 0 16px;
+  box-sizing: border-box;
+  padding: 0 12px;
   cursor: pointer;
 
   &:hover {
-    background-color: rgba(10, 120, 213, .6);
+    background-color: var(--colorNeutralBackground2Hover);
   }
 }
 
 .my-option-layout {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 
-  //lucide-icon {
-  //  stroke: #FFFFFF;
-  //}
 }
 
 .my-option-icon {
   display: inline-block;
   width: 24px;
   height: 24px;
+  overflow: hidden;
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--colorNeutralForeground3);
+  }
 }
 
-.my-option-layout-content {
-  width: 100%;
+.my-option-content {
+  flex-flow: 1;
   overflow:hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

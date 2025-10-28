@@ -59,7 +59,6 @@ export const MY_RADIO_CONTROL_VALUE_ACCESSOR: any = {
 
     '[attr.tabindex]': 'disabled ? -1 : 0',
     '[attr.id]': 'id',
-    '[attr.disabled]': 'disabled',
     '[attr.aria-labelledby]': 'ariaLabelledby',
     '[attr.aria-describedby]': 'ariaDescribedby',
     '[attr.aria-label]': 'ariaLabel'

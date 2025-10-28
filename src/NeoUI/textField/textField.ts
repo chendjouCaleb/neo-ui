@@ -3,13 +3,16 @@
   ChangeDetectorRef,
   Component,
   ContentChild, ElementRef,
-  forwardRef, Inject, Input, Optional,
+  forwardRef, Inject, InjectionToken, Input, Optional,
   ViewEncapsulation
 } from '@angular/core';
 import {TextFieldLabel} from './textFieldLabel';
 import {TextFieldInput} from './textFieldInput';
 import {MY_TEXT_FIELD_DEFAULT_OPTIONS, MyTextFieldDefaultOptions, TextFieldAppearance} from './textFieldOptions';
+import {MyOptionGroup} from '../select/option';
+import {TextFieldControl} from './textFieldControl';
 
+export const MY_TEXT_FIELD = new InjectionToken<MyOptionGroup>('MyTextField');
 
 @Component({
   selector: 'TextField, MyTextField',
@@ -22,9 +25,10 @@ import {MY_TEXT_FIELD_DEFAULT_OPTIONS, MyTextFieldDefaultOptions, TextFieldAppea
     '[class.disabled]': 'disabled',
     '[class.focused]': 'focused',
     '[class.error]': 'isError',
-  }
+  },
+  providers: [ {provide: MY_TEXT_FIELD, useExisting: MyTextField} ]
 })
-export class TextField implements AfterContentInit, AfterViewInit {
+export class MyTextField implements AfterContentInit, AfterViewInit {
   private _initialized: boolean = false;
 
   private _focused: boolean;
@@ -74,14 +78,14 @@ export class TextField implements AfterContentInit, AfterViewInit {
 
   private _floatingLabel: boolean = false
   get floatingLabel(): boolean {
-    return this.focused || (this.inputFieldHost && this.inputFieldHost.value !== "")
+    return this.focused || (this.inputField.hasValue())
   }
 
   @ContentChild(forwardRef(() => TextFieldLabel))
   contentLabel: TextFieldLabel;
 
-  @ContentChild(forwardRef(() => TextFieldInput))
-  inputField: TextFieldInput;
+  @ContentChild(forwardRef(() => TextFieldControl))
+  inputField: TextFieldControl;
 
 
 
@@ -105,10 +109,14 @@ export class TextField implements AfterContentInit, AfterViewInit {
     if (!this.inputField) {
       throw new Error('The MyTextField must contains a MyTextInputField');
     }
+
+    if (!this.contentLabel) {
+      throw new Error('The MyTextField must contains a MyTextFieldLabel');
+    }
     this.inputField.host.addEventListener('focus', this._inputFocusEvent);
     this.inputField.host.addEventListener('blur', this._inputBlurEvent);
 
-    if (this.inputField.host.value) {
+    if (this.inputField.hasValue()) {
       this.contentLabel.floating = true;
     }
 
@@ -129,15 +137,12 @@ export class TextField implements AfterContentInit, AfterViewInit {
   private _inputBlurEvent = () => {
     this._focused = false;
     this.contentLabel.focused = false;
-    if (this.inputFieldHost.value === '') {
+    if (!this.inputField.hasValue()) {
       this.contentLabel.floating = false
     }
 
   }
 
-  get inputFieldHost(): HTMLInputElement {
-    return this.inputField.host;
-  }
 
   get host(): HTMLElement {
     return this._elementRef.nativeElement;

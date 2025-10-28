@@ -1,7 +1,7 @@
 ﻿import {Component} from '@angular/core';
 import {
   MaterialIcon,
-  TextField, TextFieldHint,
+  MyTextField, TextFieldHint,
   TextFieldInput,
   TextFieldLabel,
   TextFieldLeadingContent,
@@ -12,7 +12,7 @@ import {
 @Component({
     selector: 'TextFieldPage',
   imports: [
-    TextField,
+    MyTextField,
     TextFieldInput,
     TextFieldLabel,
     TextFieldMessage,

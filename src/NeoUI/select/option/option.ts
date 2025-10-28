@@ -2,13 +2,18 @@
   booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  Component, ElementRef,
-  EventEmitter, inject,
-  Input, OnDestroy,
-  Output, signal, ViewChild,
+  Component,
+  ElementRef,
+  EventEmitter,
+  inject,
+  Input,
+  OnDestroy,
+  Output,
+  signal,
+  ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-import {Observable, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 import {_IdGenerator, FocusOrigin} from '@angular/cdk/a11y';
 import {hasModifierKey} from '@angular/cdk/keycodes';
 import {MY_OPTION_PARENT_COMPONENT, MyOptionParentComponent} from './option-parent';
@@ -29,12 +34,12 @@ export class MyOptionSelectionChange<T = any> {
 @Component({
   templateUrl: 'option.html',
   styleUrl: 'option.scss',
-  selector: 'MySelectOption, [MySelectOption]',
+  selector: 'MyOption, [MyOption]',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
   host: {
-    'class': 'my-select-option',
+    'class': 'my-option',
     '[class.selected]': 'selected',
     '[class.disabled]': 'disabled',
     '[class.active]': 'active',
@@ -112,10 +117,11 @@ export class MyOption<T = any> implements OnDestroy {
   private _disabled = signal(false);
 
   @Output()
-  private selectionChange = new EventEmitter<MyOptionSelectionChange<T>>();
+  public selectionChange = new EventEmitter<MyOptionSelectionChange<T>>();
 
   /** Element containing the option's text. */
-  @ViewChild('text', {static: true}) _text: ElementRef<HTMLElement> | undefined;
+  @ViewChild('text', {static: true})
+  _text: ElementRef<HTMLElement> | undefined;
 
   /** Emits when the state of the option changes and any parents have to be notified. */
   readonly _stateChanges = new Subject<void>();
@@ -197,11 +203,17 @@ export class MyOption<T = any> implements OnDestroy {
    * determine if the select's view -> model callback should be invoked.`
    */
   _selectViaInteraction(): void {
-    if (!this.disabled) {
-      this._selected = this.multiple ? !this._selected : true;
-      this._changeDetectorRef.markForCheck();
-      this._emitSelectionChangeEvent(true);
+    if (this.disabled) return;
+
+    if(this.multiple){
+      this._selected = !this.selected
+    }else if(!this.selected) {
+      this._selected = true;
+    }else {
+      return;
     }
+    this._changeDetectorRef.markForCheck();
+    this._emitSelectionChangeEvent(true);
   }
 
   /** Gets the host DOM element. */
