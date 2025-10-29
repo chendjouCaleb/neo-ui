@@ -1,4 +1,6 @@
-﻿<div class="my-select-input styled" (click)="open()" cdk-overlay-origin
+﻿<div class="my-select-input" (click)="open()"
+     [class.styled]="_parentFormField"
+     cdk-overlay-origin
      #triggerElement
      #trigger="cdkOverlayOrigin">
   <div class="my-select-input-content">
@@ -16,14 +18,14 @@
       }
     }
   </div>
-  <svg xmlns="http://www.w3.org/2000/svg" class="my-select-thumb" height="24px" viewBox="0 -960 960 960" width="24px">
+  <svg xmlns="http://www.w3.org/2000/svg" class="my-select-thumb" height="16px" width="16px" viewBox="0 -960 960 960" >
     <path
       d="M480-351.5q-9.76 0-19.34-4.16-9.57-4.17-16.77-11.36L263.46-547.46Q248.5-562.41 248.75-583t15.21-35.04q14.95-14.46 35.29-14.46t34.79 14.46L480-472.09l145.96-145.95q14.45-14.46 34.79-14.46t35.29 14.46Q711-603.59 711.25-583t-14.71 35.54L516.11-367.02q-7.2 7.19-16.77 11.36-9.58 4.16-19.34 4.16Z"/>
   </svg>
 </div>
 
 <ng-template cdkConnectedOverlay
-             [cdkConnectedOverlayOrigin]="trigger"
+             [cdkConnectedOverlayOrigin]="preferredOverlayOrigin"
              [cdkConnectedOverlayOpen]="panelOpen"
              [cdkConnectedOverlayScrollStrategy]="_getScrollStrategy()"
              [cdkConnectedOverlayWidth]="_getOverlayWidth()"

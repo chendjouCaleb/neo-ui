@@ -1,7 +1,7 @@
 ﻿import {Directive} from '@angular/core';
 
 @Directive({
-  selector: 'MyTextFieldLabel, [MyTextFieldLabel]',
+  selector: 'MyLabel, [MyLabel]',
   standalone: true,
   host: {
     class: 'my-text-field-label',
@@ -10,7 +10,7 @@
     '[class.floating]': 'floating'
   }
 })
-export class TextFieldLabel {
+export class MyLabel {
   disabled: boolean = false
 
   focused: boolean

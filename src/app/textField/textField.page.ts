@@ -3,7 +3,7 @@ import {
   MaterialIcon,
   MyTextField, TextFieldHint,
   TextFieldInput,
-  TextFieldLabel,
+  MyLabel,
   TextFieldLeadingContent,
   TextFieldMessage,
   TextFieldTrailingContent
@@ -14,7 +14,7 @@ import {
   imports: [
     MyTextField,
     TextFieldInput,
-    TextFieldLabel,
+    MyLabel,
     TextFieldMessage,
     TextFieldLeadingContent,
     MaterialIcon,

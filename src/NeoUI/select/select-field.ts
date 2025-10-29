@@ -7,7 +7,7 @@ import {
   Output,
   ViewEncapsulation
 } from "@angular/core";
-import {TextFieldLabel} from '../textField';
+import {MyLabel} from '../textField';
 @Component({
     selector: 'SelectField',
     encapsulation: ViewEncapsulation.None,
@@ -53,8 +53,8 @@ export class SelectField {
     return !!this.value;
   }
 
-  @ContentChild(forwardRef(() => TextFieldLabel))
-  contentLabel: TextFieldLabel;
+  @ContentChild(forwardRef(() => MyLabel))
+  contentLabel: MyLabel;
 
   onFocus() {
     this._focused = true

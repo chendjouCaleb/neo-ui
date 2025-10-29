@@ -6,7 +6,7 @@
   forwardRef, Inject, InjectionToken, Input, Optional,
   ViewEncapsulation
 } from '@angular/core';
-import {TextFieldLabel} from './textFieldLabel';
+import {MyLabel} from './my-label.directive';
 import {TextFieldInput} from './textFieldInput';
 import {MY_TEXT_FIELD_DEFAULT_OPTIONS, MyTextFieldDefaultOptions, TextFieldAppearance} from './textFieldOptions';
 import {MyOptionGroup} from '../select/option';
@@ -28,7 +28,7 @@ export const MY_TEXT_FIELD = new InjectionToken<MyOptionGroup>('MyTextField');
   },
   providers: [ {provide: MY_TEXT_FIELD, useExisting: MyTextField} ]
 })
-export class MyTextField implements AfterContentInit, AfterViewInit {
+export class MyTextField<T> implements AfterContentInit, AfterViewInit {
   private _initialized: boolean = false;
 
   private _focused: boolean;
@@ -36,23 +36,10 @@ export class MyTextField implements AfterContentInit, AfterViewInit {
     return this._focused
   }
 
-  @Input()
-  get disabled(): boolean {
-    return this._disabled
+ get disabled(): boolean {
+    return this.inputField.disabled
   }
 
-  set disabled(value: boolean) {
-
-    if (this._initialized) {
-      if (this.contentLabel) {
-        this.contentLabel.disabled = value;
-      }
-      this.inputField.disabled = value;
-    }
-    this._disabled = value;
-  }
-
-  private _disabled: boolean;
 
   @Input()
   get isError(): boolean {
@@ -65,7 +52,7 @@ export class MyTextField implements AfterContentInit, AfterViewInit {
       if (this.contentLabel) {
         this.contentLabel.error = value;
       }
-      this.inputField.error = value;
+      // this.inputField.errorState = value;
     }
     this._isError = value;
   }
@@ -81,13 +68,11 @@ export class MyTextField implements AfterContentInit, AfterViewInit {
     return this.focused || (this.inputField.hasValue())
   }
 
-  @ContentChild(forwardRef(() => TextFieldLabel))
-  contentLabel: TextFieldLabel;
+  @ContentChild(forwardRef(() => MyLabel))
+  contentLabel: MyLabel;
 
   @ContentChild(forwardRef(() => TextFieldControl))
-  inputField: TextFieldControl;
-
-
+  inputField: TextFieldControl<T>;
 
 
   constructor(private _elementRef: ElementRef<HTMLElement>,
@@ -100,7 +85,6 @@ export class MyTextField implements AfterContentInit, AfterViewInit {
     this._initialized = true;
 
     Promise.resolve().then(() => {
-      this.disabled = this._disabled;
       this.isError = this._isError;
     });
   }
@@ -110,9 +94,6 @@ export class MyTextField implements AfterContentInit, AfterViewInit {
       throw new Error('The MyTextField must contains a MyTextInputField');
     }
 
-    if (!this.contentLabel) {
-      throw new Error('The MyTextField must contains a MyTextFieldLabel');
-    }
     this.inputField.host.addEventListener('focus', this._inputFocusEvent);
     this.inputField.host.addEventListener('blur', this._inputBlurEvent);
 
@@ -143,9 +124,25 @@ export class MyTextField implements AfterContentInit, AfterViewInit {
 
   }
 
+  hasLabel(): boolean { return !!this.contentLabel; }
+
+  _updateLabelFocusState(){
+    if(!this.hasLabel()) return;
+    this.contentLabel.focused = true;
+    this.contentLabel.floating = this.inputField.hasValue() || this.inputField.focused;
+  }
+
 
   get host(): HTMLElement {
     return this._elementRef.nativeElement;
+  }
+
+  /**
+   * Gets an ElementRef for the element that a overlay attached to the form field
+   * should be positioned relative to.
+   */
+  getConnectedOverlayOrigin(): ElementRef {
+    return  this._elementRef;
   }
 
 }

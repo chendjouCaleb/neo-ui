@@ -80,6 +80,8 @@ export const MY_SELECT_CONTROL_VALUE_ACCESSOR: any = {
     'aria-haspopup': 'listbox',
     'class': 'my-select',
     '[class.disabled]': 'disabled',
+    '[class.styled]':'!hasParentFormField',
+    '[class.field-child]':'hasParentFormField',
     '[attr.tabindex]': 'disabled? 0 : -1',
     '[attr.multiple]': 'multiple',
   },
@@ -92,7 +94,7 @@ export const MY_SELECT_CONTROL_VALUE_ACCESSOR: any = {
   providers: [MY_SELECT_CONTROL_VALUE_ACCESSOR, {provide: TextFieldControl, useExisting: MySelect}]
 
 })
-export class MySelect<T = any> implements OnInit, AfterContentInit, OnDestroy, TextFieldControl, ControlValueAccessor {
+export class MySelect<T = any> implements OnInit, AfterContentInit, OnDestroy, TextFieldControl<T>, ControlValueAccessor {
 
   private _overlay = inject(Overlay);
   private _idGenerator = inject(_IdGenerator)
@@ -119,11 +121,11 @@ export class MySelect<T = any> implements OnInit, AfterContentInit, OnDestroy, T
     return this.hasSelectedValue
   }
 
-  error: boolean;
+  errorState: boolean;
   protected _changeDetectorRef = inject(ChangeDetectorRef);
   readonly _elementRef = inject(ElementRef);
-  protected _parentFormField = inject<MyTextField>(MY_TEXT_FIELD, {optional: true});
-
+  protected _parentFormField = inject<MyTextField<T>>(MY_TEXT_FIELD, {optional: true});
+  get hasParentFormField(): boolean { return !!this._parentFormField }
   /** Deals with the selection logic. */
   _selectionModel: SelectionModel<MyOption>;
 
@@ -275,6 +277,13 @@ export class MySelect<T = any> implements OnInit, AfterContentInit, OnDestroy, T
   @ViewChild(CdkConnectedOverlay)
   protected _overlayDir: CdkConnectedOverlay;
 
+  @ViewChild(CdkOverlayOrigin)
+  _fallbackOverlayOrigin: CdkOverlayOrigin
+
+  get preferredOverlayOrigin() {
+    return this._parentFormField?.getConnectedOverlayOrigin() || this._fallbackOverlayOrigin
+  }
+
   get empty(): boolean {
     return !this._selectionModel || this._selectionModel.isEmpty()
   }
@@ -306,6 +315,10 @@ export class MySelect<T = any> implements OnInit, AfterContentInit, OnDestroy, T
   }
 
   _getOverlayWidth() {
+    if(this.hasParentFormField) {
+      return this._parentFormField.host.offsetWidth
+    }
+
     return this._triggerHost().offsetWidth
   }
 

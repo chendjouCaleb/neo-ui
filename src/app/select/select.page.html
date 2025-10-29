@@ -35,12 +35,23 @@
 
     </MySelectTrigger>
 
-    <div>
-      <MyTextField>
-        <label MyTextFieldLabel>Chercher un pays</label>
-        <input MyTextFieldInput placeholder="chercher un pays" #input  (keyup)="filter(input.value)" />
-      </MyTextField>
+    @for (country of filteredCountries; track country) {
+      <MyOption [value]="country">
+        <div class="display-flex alignItems-center columnGap-8">
+          <span [class]="getFlagClass(country.code)" style="font-size: 20px"></span>
+          {{ country.name }}
+        </div>
+      </MyOption>
+    }
+  </MySelect>
+</div>
 
+
+<div class="padding-24">
+  <div class="textStyle-subtitle1">With form field</div>
+  <MyTextField>
+    <label MyLabel>Chercher un pays</label>
+    <MySelect>
       @for (country of filteredCountries; track country) {
         <MyOption [value]="country">
           <div class="display-flex alignItems-center columnGap-8">
@@ -49,6 +60,8 @@
           </div>
         </MyOption>
       }
-    </div>
-  </MySelect>
+    </MySelect>
+  </MyTextField>
+
+
 </div>
