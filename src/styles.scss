@@ -6,6 +6,8 @@
 @import "NeoUI/styles/css/fluent-color.css";
 @import "NeoUI/styles/font";
 
+@import "flag-icons/css/flag-icons.min.css";
+
 .material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp {
   color: var(--colorNeutralForeground1);
   font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
@@ -20,7 +22,7 @@ html {
 body {
   color: #242424;
   font-size: 16px;
-  font-family: "Inter", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   height: 100%;
   width: 100%;
   padding: 0;

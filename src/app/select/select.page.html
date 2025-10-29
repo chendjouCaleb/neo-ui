@@ -1,6 +1,4 @@
-﻿
-
-<div class="padding-24">
+﻿<div class="padding-24">
   <div class="textStyle-subtitle2">Basic select</div>
   <MySelect style="width: 200px" placeholder="Choisir un page dans cette longue liste">
     @for (country of countries; track country) {
@@ -28,12 +26,29 @@
   <div class="textStyle-subtitle2">Customer trigger</div>
   <MySelect #selectCustomerTrigger style="width: 200px" placeholder="Choisir un page dans cette longue liste">
     <MySelectTrigger>
-      {{selectCustomerTrigger.value?.code}}
+      @if (selectCustomerTrigger.value) {
+        <div class="display-flex alignItems-center columnGap-8">
+          <span [class]="getFlagClass(selectCustomerTrigger.value?.code)" style="font-size: 20px"></span>
+          {{ selectCustomerTrigger.value?.name }}
+        </div>
+      }
+
     </MySelectTrigger>
-    @for (country of countries; track country) {
-      <MyOption [value]="country">
-        {{ country.name }}
-      </MyOption>
-    }
+
+    <div>
+      <MyTextField>
+        <label MyTextFieldLabel>Chercher un pays</label>
+        <input MyTextFieldInput placeholder="chercher un pays" #input  (keyup)="filter(input.value)" />
+      </MyTextField>
+
+      @for (country of filteredCountries; track country) {
+        <MyOption [value]="country">
+          <div class="display-flex alignItems-center columnGap-8">
+            <span [class]="getFlagClass(country.code)" style="font-size: 20px"></span>
+            {{ country.name }}
+          </div>
+        </MyOption>
+      }
+    </div>
   </MySelect>
 </div>

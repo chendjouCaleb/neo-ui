@@ -589,11 +589,20 @@ export class MySelect<T = any> implements OnInit, AfterContentInit, OnDestroy, T
   }
 
   _onBlur(event) {
+    this._focused = false;
 
+    if(!this.disabled){
+      this._onTouched();
+      this._changeDetectorRef.markForCheck()
+      this.stateChanges.next()
+    }
   }
 
   _onFocus(event) {
-
+    if (!this.disabled) {
+      this._focused = true;
+      this.stateChanges.next();
+    }
   }
 
   _onOverlayKeydown(event: KeyboardEvent) {
