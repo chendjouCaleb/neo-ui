@@ -79,11 +79,14 @@ export const MY_SELECT_CONTROL_VALUE_ACCESSOR: any = {
     'role': 'combobox',
     'aria-haspopup': 'listbox',
     'class': 'my-select',
+    '[class.focused]' : 'focused',
     '[class.disabled]': 'disabled',
     '[class.styled]':'!hasParentFormField',
     '[class.field-child]':'hasParentFormField',
     '[attr.tabindex]': 'disabled? 0 : -1',
     '[attr.multiple]': 'multiple',
+    '(blur)':'_onBlur($event)',
+    '(focus)':'_onFocus($event)'
   },
   imports: [
     CdkOverlayOrigin,
@@ -548,13 +551,16 @@ export class MySelect<T = any> implements OnInit, AfterContentInit, OnDestroy, T
     if(!this._canOpen) return;
 
     this._panelOpen = true;
+    this.stateChanges.next()
+    this._changeDetectorRef.markForCheck()
   }
 
   close() {
-    console.log('Request panel close')
     if (!this._panelOpen)
       return
     this._panelOpen = false;
+    this._onTouched()
+    this.stateChanges.next()
     this._changeDetectorRef.markForCheck()
   }
 
@@ -665,32 +671,32 @@ export class MySelect<T = any> implements OnInit, AfterContentInit, OnDestroy, T
   _positions: ConnectedPosition[] = [
     {
       originX: 'start',
-      originY: 'bottom',
       overlayX: 'start',
+      originY: 'bottom',
       overlayY: 'top',
-      offsetY: 2
+      offsetY: -4
     },
     {
       originX: 'end',
-      originY: 'bottom',
       overlayX: 'end',
+      originY: 'bottom',
       overlayY: 'top',
-      offsetY: 2
+      offsetY: 4
     },
     {
       originX: 'start',
       originY: 'top',
       overlayX: 'start',
       overlayY: 'bottom',
-      offsetX: 2,
+      offsetX: -2,
       panelClass: 'my-select-panel-above',
     },
     {
       originX: 'end',
-      originY: 'top',
       overlayX: 'end',
+      originY: 'top',
       overlayY: 'bottom',
-      offsetY: 2,
+      offsetY: -8,
       panelClass: 'my-select-panel-above',
     },
   ];

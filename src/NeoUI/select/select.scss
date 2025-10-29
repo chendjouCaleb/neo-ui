@@ -26,19 +26,31 @@
   }
 }
 
+.my-select-thumb {
+  height: 16px;
+  width: 16px;
+}
+
 .my-select-input-content {
   flex-grow: 1;
+  overflow: hidden;
 }
 
 .my-select-placeholder, .my-select-value-text {
   font-size: 14px;
-  opacity: .6;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 1; /* number of lines to show */
   line-clamp: 1;
   -webkit-box-orient: vertical;
+}
+
+.my-select-placeholder {
+  opacity: .6;
+}
+.my-select-value-text {
+
 }
 
 .my-select.styled {
@@ -52,6 +64,10 @@
       background-color: var(--colorNeutralBackground3Hover);
     }
   }
+}
+
+.my-select.styled.focused  .my-select-input {
+  border-color: var(--colorBrandStroke1);
 }
 
 .my-select-field {

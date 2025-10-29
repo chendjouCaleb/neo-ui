@@ -4,9 +4,7 @@ import {
   MyTextField, TextFieldHint,
   TextFieldInput,
   MyLabel,
-  TextFieldLeadingContent,
-  TextFieldMessage,
-  TextFieldTrailingContent
+  TextFieldMessage,  MyTextFieldTrailingContent, MyTextFieldLeadingContent
 } from '../../NeoUI';
 
 @Component({
@@ -16,10 +14,10 @@ import {
     TextFieldInput,
     MyLabel,
     TextFieldMessage,
-    TextFieldLeadingContent,
     MaterialIcon,
-    TextFieldTrailingContent,
-    TextFieldHint
+    TextFieldHint,
+    MyTextFieldTrailingContent,
+    MyTextFieldLeadingContent
   ],
     templateUrl: 'textField.page.html'
 })

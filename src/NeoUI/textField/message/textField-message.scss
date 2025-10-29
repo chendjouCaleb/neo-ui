@@ -1,12 +1,11 @@
 ﻿.my-textField-message {
-  display: grid;
-  grid-template-columns: 16px 1fr;
-  grid-column-gap: 16px;
+  display: flex;
   column-gap: 8px;
 
   font-size: 12px;
   line-height: 16px;
   color: var(--colorNeutralForeground3);
+  margin-top: 2px;
 }
 
 

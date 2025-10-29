@@ -1,17 +1,22 @@
 ﻿<div class="my-text-field-box" [class.focused]="focused" [class.error]="isError">
-  <div class="my-text-field-leading-content-box">
-    <ng-content select="MyTextFieldLeadingContent, [MyTextFieldLeadingContent]"></ng-content>
-  </div>
+
+  @if (hasLeadingContent) {
+    <div class="my-text-field-leading-content-box">
+      <ng-content select="MyTextFieldLeadingContent, [MyTextFieldLeadingContent]"></ng-content>
+    </div>
+  }
 
   <div class="my-text-field-input-box">
     <ng-content select="MyLabel, [MyLabel]"></ng-content>
     <ng-content select="[MyInput], MySelect"></ng-content>
   </div>
 
-  <div class="my-text-field-trailing-content-box">
-    <ng-content select="MyTextFieldTrailingContent, [MyTextFieldTrailingContent]"></ng-content>
-  </div>
-<!--  <div class="my-text-field-underline" [class.focused]="focused" [class.error]="isError"></div>-->
+  @if (hasTrailingContent) {
+    <div class="my-text-field-trailing-content-box">
+      <ng-content select="MyTextFieldTrailingContent, [MyTextFieldTrailingContent]"></ng-content>
+    </div>
+  }
+  <!--  <div class="my-text-field-underline" [class.focused]="focused" [class.error]="isError"></div>-->
 </div>
 
 

@@ -3,4 +3,4 @@
 @Directive({
   selector: 'MyTextFieldTrailingContent',
 })
-export class TextFieldTrailingContent {}
+export class MyTextFieldTrailingContent {}

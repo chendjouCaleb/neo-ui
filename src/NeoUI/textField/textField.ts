@@ -1,16 +1,24 @@
 ﻿import {
-  AfterContentInit, AfterViewInit,
+  AfterContentInit,
+  AfterViewInit,
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ContentChild, ElementRef,
-  forwardRef, Inject, InjectionToken, Input, Optional,
+  ContentChild,
+  ElementRef,
+  forwardRef, inject,
+  Inject,
+  InjectionToken,
+  Input,
+  Optional,
   ViewEncapsulation
 } from '@angular/core';
 import {MyLabel} from './my-label.directive';
-import {TextFieldInput} from './textFieldInput';
 import {MY_TEXT_FIELD_DEFAULT_OPTIONS, MyTextFieldDefaultOptions, TextFieldAppearance} from './textFieldOptions';
 import {MyOptionGroup} from '../select/option';
 import {TextFieldControl} from './textFieldControl';
+import {MyTextFieldLeadingContent} from './textField-leadingContent';
+import {MyTextFieldTrailingContent} from './textField-trailingContent';
 
 export const MY_TEXT_FIELD = new InjectionToken<MyOptionGroup>('MyTextField');
 
@@ -19,6 +27,7 @@ export const MY_TEXT_FIELD = new InjectionToken<MyOptionGroup>('MyTextField');
   templateUrl: 'textField.html',
   styleUrls: ['textField.scss'],
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   host: {
     class: 'my-text-field',
@@ -74,6 +83,16 @@ export class MyTextField<T> implements AfterContentInit, AfterViewInit {
   @ContentChild(forwardRef(() => TextFieldControl))
   inputField: TextFieldControl<T>;
 
+  @ContentChild(forwardRef(() => MyTextFieldLeadingContent))
+  leadingContent: MyTextFieldLeadingContent;
+
+  @ContentChild(forwardRef(() => MyTextFieldTrailingContent))
+  trailingContent: MyTextFieldTrailingContent;
+
+  get hasLeadingContent(): boolean { return !!this.leadingContent }
+  get hasTrailingContent(): boolean { return !!this.trailingContent }
+
+
 
   constructor(private _elementRef: ElementRef<HTMLElement>,
               private changeDetectorRef: ChangeDetectorRef,
@@ -83,6 +102,8 @@ export class MyTextField<T> implements AfterContentInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this._initialized = true;
+
+
 
     Promise.resolve().then(() => {
       this.isError = this._isError;
@@ -94,13 +115,13 @@ export class MyTextField<T> implements AfterContentInit, AfterViewInit {
       throw new Error('The MyTextField must contains a MyTextInputField');
     }
 
-    this.inputField.host.addEventListener('focus', this._inputFocusEvent);
-    this.inputField.host.addEventListener('blur', this._inputBlurEvent);
+    this.inputField.stateChanges.subscribe(() => {
+      this._focused = this.inputField.focused
+      this._updateLabelFocusState()
+      this.changeDetectorRef.markForCheck()
+    })
 
-    if (this.inputField.hasValue()) {
-      this.contentLabel.floating = true;
-    }
-
+    this._updateLabelFocusState()
     this.changeDetectorRef.markForCheck();
   }
 
@@ -112,23 +133,19 @@ export class MyTextField<T> implements AfterContentInit, AfterViewInit {
 
   private _inputFocusEvent = () => {
     this._focused = true
-    this.contentLabel.focused = true
-    this.contentLabel.floating = true;
   };
   private _inputBlurEvent = () => {
     this._focused = false;
-    this.contentLabel.focused = false;
-    if (!this.inputField.hasValue()) {
-      this.contentLabel.floating = false
-    }
 
   }
 
   hasLabel(): boolean { return !!this.contentLabel; }
 
+
+
   _updateLabelFocusState(){
     if(!this.hasLabel()) return;
-    this.contentLabel.focused = true;
+    this.contentLabel.focused = this._focused;
     this.contentLabel.floating = this.inputField.hasValue() || this.inputField.focused;
   }
 

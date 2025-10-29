@@ -1,8 +1,10 @@
-﻿
+﻿:host {
+  --textFieldHeight: 36px;
+}
 .my-text-field {
   display: inline-block;
   width: 256px;
-  min-height: 36px;
+  min-height: var(--textFieldHeight);
   min-width: 100px;
   position: relative;
   box-sizing: border-box;
@@ -17,7 +19,7 @@
 
 .my-text-field-box {
   box-sizing: border-box;
-  border: 1px solid var(--colorNeutralStroke1);
+
   border-radius: 4px;
   width: 100%;
   height: auto;
@@ -28,7 +30,7 @@
 
 
   &.focused {
-    border-color:   transparent;
+    border-color: transparent;
   }
 
   &.error {
@@ -49,9 +51,11 @@
     top: 0;
     bottom: 0;
     border-radius: 4px;
+    border: 1px solid var(--colorNeutralStroke1);
     transition: border-width 200ms ease-in-out;
     z-index: 0;
   }
+
   &.focused:after {
     border: 2px solid var(--colorBrandStroke1);
   }
@@ -69,6 +73,8 @@
   background: transparent;
   flex-grow: 1;
 
+  padding: 8px;
+
   transition: font-size 200ms ease-in-out, bottom 200ms ease-in-out;
 
 
@@ -79,8 +85,6 @@
 
   font-family: inherit;
   box-sizing: border-box;
-
-  padding: 0;
 }
 
 .my-text-field-label {
@@ -127,20 +131,23 @@
 }
 
 
-
-
 .my-text-field-input {
 
   width: 100%;
   line-height: 20px;
+  box-sizing: border-box;
+
+  padding: 0;
+
 
   //border: 1px solid red;
   border: none;
   outline: none;
   font-family: inherit;
+  font-size: 14px;
   background: transparent;
   //background-color: blue;
-  margin-top: 8px;
+  //margin-top: 8px;
   z-index: 2;
   position: relative;
   color: var(--colorNeutralForeground1);
@@ -194,7 +201,14 @@ textarea.my-text-field-input {
   }
 }
 
+MyTextFieldLeadingContent, MyTextFieldTrailingContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .my-text-field-leading-content-box {
+  color: var(--colorNeutralForeground2);
   height: 36px;
   display: flex;
   align-items: center;
@@ -205,6 +219,7 @@ textarea.my-text-field-input {
 }
 
 .my-text-field-trailing-content-box {
+  color: var(--colorNeutralForeground2);
   height: 36px;
   display: flex;
   align-items: center;
@@ -216,7 +231,7 @@ textarea.my-text-field-input {
 
 
 .my-text-field-hint {
-  color: var(--colorBrandForeground3);
+  color: var(--colorNeutralForeground3);
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;

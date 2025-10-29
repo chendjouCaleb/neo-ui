@@ -1,6 +1,6 @@
 ﻿import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
 
-export type TextFieldMessageIntent = 'info'| "error" | 'warning' | 'success' | 'custom';
+export type TextFieldMessageIntent = 'info'| "error" | 'warning' | 'success' | 'custom' | 'none';
 
 @Component({
   selector: 'MyTextFieldMessage',
@@ -20,4 +20,8 @@ export type TextFieldMessageIntent = 'info'| "error" | 'warning' | 'success' | '
 export class TextFieldMessage {
   @Input()
   intent: TextFieldMessageIntent = 'info';
+
+  get showIntent(): boolean {
+    return this.intent && this.intent !== 'none';
+  }
 }

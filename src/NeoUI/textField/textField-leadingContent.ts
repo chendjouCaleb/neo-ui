@@ -4,4 +4,4 @@
   selector: 'MyTextFieldLeadingContent',
 
 })
-export class TextFieldLeadingContent {}
+export class MyTextFieldLeadingContent {}
