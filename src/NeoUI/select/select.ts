@@ -13,7 +13,7 @@ import {
   viewChild,
   ViewEncapsulation
 } from "@angular/core";
-import {MY_TEXT_FIELD, MyTextField} from '../textField';
+import {MY_TEXT_FIELD, TextField} from '../textField';
 import {TextFieldControl} from '../textField/textFieldControl';
 import {CdkConnectedOverlay, CdkOverlayOrigin, ConnectedPosition, Overlay, OverlayRef} from '@angular/cdk/overlay';
 import {CdkPortal} from '@angular/cdk/portal';
@@ -127,7 +127,7 @@ export class MySelect<T = any> implements OnInit, AfterContentInit, OnDestroy, T
   errorState: boolean;
   protected _changeDetectorRef = inject(ChangeDetectorRef);
   readonly _elementRef = inject(ElementRef);
-  protected _parentFormField = inject<MyTextField<T>>(MY_TEXT_FIELD, {optional: true});
+  protected _parentFormField = inject<TextField<T>>(MY_TEXT_FIELD, {optional: true});
   get hasParentFormField(): boolean { return !!this._parentFormField }
   /** Deals with the selection logic. */
   _selectionModel: SelectionModel<MyOption>;

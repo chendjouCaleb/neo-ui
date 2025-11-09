@@ -1,6 +1,6 @@
 ﻿export * from './textField'
 export * from './textFieldInput'
-export * from './my-label.directive'
+export * from './label'
 export * from './textFieldHint'
 export * from './textField-trailingContent'
 export * from './textField-leadingContent'

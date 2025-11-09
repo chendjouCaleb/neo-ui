@@ -1,16 +1,16 @@
 ﻿import {Component} from '@angular/core';
 import {
   MaterialIcon,
-  MyTextField, TextFieldHint,
+  TextField, TextFieldHint,
   TextFieldInput,
   MyLabel,
-  TextFieldMessage,  MyTextFieldTrailingContent, MyTextFieldLeadingContent
+  TextFieldMessage, MyTextFieldTrailingContent, MyTextFieldLeadingContent
 } from '../../NeoUI';
 
 @Component({
-    selector: 'TextFieldPage',
+  selector: 'TextFieldPage',
   imports: [
-    MyTextField,
+    TextField,
     TextFieldInput,
     MyLabel,
     TextFieldMessage,
@@ -19,7 +19,7 @@ import {
     MyTextFieldTrailingContent,
     MyTextFieldLeadingContent
   ],
-    templateUrl: 'textField.page.html'
+  templateUrl: 'textField.page.html'
 })
 export class TextFieldPage {
 

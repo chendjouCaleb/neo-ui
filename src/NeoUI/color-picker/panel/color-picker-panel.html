@@ -1,0 +1,7 @@
+﻿<div class="my-color-picker-panel-grid">
+  @for (palette of paletteColors; track palette) {
+    <MyColorPickerItem [palette]="palette" [selected]="isSelected(palette)"
+                       (click)="_onClick(palette)"></MyColorPickerItem>
+  }
+</div>
+

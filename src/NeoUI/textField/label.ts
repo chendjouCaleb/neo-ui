@@ -1,5 +1,7 @@
 ﻿import {Directive} from '@angular/core';
 
+export type TextFieldLabel = MyLabel;
+
 @Directive({
   selector: 'MyLabel, [MyLabel]',
   standalone: true,

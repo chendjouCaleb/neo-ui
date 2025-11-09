@@ -23,6 +23,8 @@ import {IconButtonPage} from './icon-button/icon-button.page';
 import {TextFieldPage} from './textField/textField.page';
 import {MenuPage} from './menu/menu.page';
 import {SkeletonPage} from './skeleton/skeleton.page';
+import {ColorPicker} from '../NeoUI/color-picker/color-picker';
+import {ColorPickerPage} from './color-picker/color-picker.page';
 
 export const routes: Routes = [
   {path: '', component: ButtonPage },
@@ -45,6 +47,7 @@ export const routes: Routes = [
   {path: 'dropdown', component: DropdownPage},
   {path: 'horizontal-pager', component: HorizontalPagerPage},
 
+  {path: 'color-picker', component: ColorPickerPage},
   {path: 'timetable', component: TimetablePage},
   {path: 'month-calendar', component: MonthCalendarPage},
   {path: 'agenda', component: AgendaPage},

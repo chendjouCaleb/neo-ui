@@ -3,17 +3,17 @@
 export type TextFieldAppearance = 'fill' | 'outlined';
 
 
-export interface MyTextFieldDefaultOptions {
+export interface TextFieldDefaultOptions {
   appearance: string;
 }
 
-export const MY_TEXT_FIELD_DEFAULT_OPTIONS =
-  new InjectionToken<MyTextFieldDefaultOptions>('my-text-field-default-options', {
+export const TEXT_FIELD_DEFAULT_OPTIONS =
+  new InjectionToken<TextFieldDefaultOptions>('my-text-field-default-options', {
     providedIn: 'root',
     factory: MY_TEXT_FIELD_DEFAULT_OPTIONS_FACTORY
   });
 
-export function MY_TEXT_FIELD_DEFAULT_OPTIONS_FACTORY(): MyTextFieldDefaultOptions {
+export function MY_TEXT_FIELD_DEFAULT_OPTIONS_FACTORY(): TextFieldDefaultOptions {
   return {
     appearance: 'fill'
   };

@@ -2,12 +2,12 @@
 import {MySelect, MySelectTrigger} from '../../NeoUI/select/select';
 import {MyOption} from '../../NeoUI/select/option/option';
 import {countryListAlpha2} from '../variousCountryListFormats';
-import {MyTextField, TextFieldInput, MyLabel} from '../../NeoUI';
+import {TextField, TextFieldInput, MyLabel} from '../../NeoUI';
 
 
 @Component({
   templateUrl: 'select.page.html',
-  imports: [MySelect, MyOption, MySelectTrigger, MyTextField, TextFieldInput, MyLabel],
+  imports: [MySelect, MyOption, MySelectTrigger, TextField, TextFieldInput, MyLabel],
   selector: 'SelectPage'
 })
 export class SelectPage {

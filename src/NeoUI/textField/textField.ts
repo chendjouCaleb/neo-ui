@@ -6,15 +6,15 @@
   Component,
   ContentChild,
   ElementRef,
-  forwardRef, inject,
+  forwardRef,
   Inject,
   InjectionToken,
   Input,
   Optional,
   ViewEncapsulation
 } from '@angular/core';
-import {MyLabel} from './my-label.directive';
-import {MY_TEXT_FIELD_DEFAULT_OPTIONS, MyTextFieldDefaultOptions, TextFieldAppearance} from './textFieldOptions';
+import {MyLabel} from './label';
+import {TEXT_FIELD_DEFAULT_OPTIONS, TextFieldAppearance, TextFieldDefaultOptions} from './textFieldOptions';
 import {MyOptionGroup} from '../select/option';
 import {TextFieldControl} from './textFieldControl';
 import {MyTextFieldLeadingContent} from './textField-leadingContent';
@@ -35,9 +35,9 @@ export const MY_TEXT_FIELD = new InjectionToken<MyOptionGroup>('MyTextField');
     '[class.focused]': 'focused',
     '[class.error]': 'isError',
   },
-  providers: [ {provide: MY_TEXT_FIELD, useExisting: MyTextField} ]
+  providers: [ {provide: MY_TEXT_FIELD, useExisting: TextField} ]
 })
-export class MyTextField<T> implements AfterContentInit, AfterViewInit {
+export class TextField<T> implements AfterContentInit, AfterViewInit {
   private _initialized: boolean = false;
 
   private _focused: boolean;
@@ -96,7 +96,7 @@ export class MyTextField<T> implements AfterContentInit, AfterViewInit {
 
   constructor(private _elementRef: ElementRef<HTMLElement>,
               private changeDetectorRef: ChangeDetectorRef,
-              @Optional() @Inject(MY_TEXT_FIELD_DEFAULT_OPTIONS) private _defaultOptions: MyTextFieldDefaultOptions
+              @Optional() @Inject(TEXT_FIELD_DEFAULT_OPTIONS) private _defaultOptions: TextFieldDefaultOptions
   ) {
   }
 
