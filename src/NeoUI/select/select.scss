@@ -146,10 +146,7 @@
   }
 }
 
-.my-select-panel-motion-container {
-  overflow: hidden;
-  background: transparent;
-}
+
 
 .my-select-panel {
   box-sizing: border-box;
@@ -163,6 +160,11 @@
   //@starting-style {
   //  transform: translate3d(0, -48px, 0)
   //}
+}
+
+.my-select-panel-motion-container {
+  overflow: hidden;
+  background: transparent;
 }
 
 .enter-motion {

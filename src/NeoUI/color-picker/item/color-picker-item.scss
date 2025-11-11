@@ -2,6 +2,7 @@
   display: flex;
   width: 64px;
   height: 64px;
+  padding: 4px;
   border-radius: 8px;
   flex-direction: column;
   align-items: center;
@@ -24,6 +25,8 @@
   line-height: 20px;
   margin: 0 16px;
   display: inline-block;
+  box-sizing: border-box;
+  color: var(--colorNeutralForeground1);
 
   overflow: hidden;
   text-overflow: ellipsis;

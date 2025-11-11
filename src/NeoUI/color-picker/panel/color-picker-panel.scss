@@ -4,8 +4,10 @@
   column-gap: 2px;
   row-gap: 2px;
   padding: 16px;
-  width: 336px;
   background-color: var(--colorNeutralBackground3);
 }
 
 
+.my-color-picker-panel {
+  display: block;
+}

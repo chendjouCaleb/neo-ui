@@ -28,3 +28,5 @@ export * from './button';
 export * from './icon-button'
 export * from './material-icon'
 export * from './skeleton'
+export * from './color-picker'
+export * from './select'

@@ -1,12 +1,18 @@
 ﻿import {Component} from '@angular/core';
-import {Button, MyPersonaImage, Persona, Tag, TagDismiss} from '../../NeoUI';
-import {NgOptimizedImage} from '@angular/common';
-import {MyColorPickerPanel} from '../../NeoUI/color-picker/panel/color-picker-panel';
+import {MyColorPickerPanel} from '../../NeoUI/color-picker';
+import {MyColorPicker} from '../../NeoUI/color-picker';
+import {MyLabel, TextField, TextFieldInput} from '../../NeoUI';
+import {MySelect} from '../../NeoUI/select/select';
 
 @Component({
     templateUrl: 'color-picker.page.html',
   imports: [
-    MyColorPickerPanel
+    MyColorPickerPanel,
+    MyColorPicker,
+    TextField,
+    MyLabel,
+    TextFieldInput,
+    MySelect
   ],
     selector: 'SelectPage'
 })

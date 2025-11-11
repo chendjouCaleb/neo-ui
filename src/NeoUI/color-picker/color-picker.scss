@@ -1,0 +1,97 @@
+﻿.my-color-picker-input {
+  display: flex;
+  column-gap: 16px;
+  align-items: center;
+
+  padding: 4px 4px 4px 8px;
+
+  height: 36px;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  cursor: pointer;
+  border: 1px solid transparent;
+
+  &.disabled {
+    opacity: .6;
+    pointer-events: none;
+  }
+
+  &.error {
+    border-color: var(--colorPaletteRedBorder2) !important;
+    outline: none;
+  }
+
+  .my-color-picker-input-content {
+    flex-grow: 1;
+  }
+
+  .my-color-picker-input-placeholder {
+    opacity: .6;
+    font-size: 14px;
+  }
+
+  .my-color-picker-input-value {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    column-gap: 8px;
+  }
+
+  .my-color-picker-dropdown-thumb {
+    opacity: .8;
+    stroke: var(--colorNeutralStroke3);
+    display: flex;
+    align-items: center;
+  }
+}
+
+
+.my-color-picker-input.styled {
+  background-color: var(--colorNeutralBackground2);
+
+  &:hover {
+    background-color: var(--colorNeutralBackground3Hover);
+  }
+
+  &.focused {
+    border-color: var(--colorBrandStroke1);
+    outline: none;
+  }
+}
+
+.my-color-picker-panel-motion-container {
+  overflow: hidden;
+  background: transparent;
+}
+
+.enter-motion {
+  animation: slide-fade 200ms;
+}
+
+
+.leave-motion {
+  animation: slideUp-out 200ms;
+}
+@keyframes slide-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-48px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-48px);
+  }
+}
+

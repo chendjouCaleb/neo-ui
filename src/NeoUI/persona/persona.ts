@@ -12,7 +12,7 @@
         'class': 'my-persona'
     }
 })
-export class Persona {
+export class MyPersona {
   @Input()
   showStatus: boolean = false
 }

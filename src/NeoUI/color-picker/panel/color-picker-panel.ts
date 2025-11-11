@@ -3,14 +3,11 @@
   ChangeDetectorRef,
   Component,
   EventEmitter,
-  inject,
+  inject, Input,
   Output,
   ViewEncapsulation
 } from '@angular/core';
 import {FluentPaletteColor, fluentPaletteColors} from '../../helpers/fluent-color';
-import {NgClass} from '@angular/common';
-import {fluentPaletteColorIntlFr} from '../../helpers/fluent-color-palette-intl.fr';
-import {capitalizeFirstLetter} from '../../helpers';
 import {MyColorPickerItem} from '../item';
 
 @Component({
@@ -20,7 +17,6 @@ import {MyColorPickerItem} from '../item';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    NgClass,
     MyColorPickerItem
   ],
   host: {
@@ -32,30 +28,39 @@ export class MyColorPickerPanel {
   private _changeDetector = inject(ChangeDetectorRef);
   paletteColors = fluentPaletteColors;
 
-  private _selectedPalette: FluentPaletteColor | undefined
-  get selectedPalette(): FluentPaletteColor {
-    return this._selectedPalette;
+
+  @Input()
+  set selected(value: FluentPaletteColor) {
+    this._selected = value
+    this._changeDetector.markForCheck()
   }
+  get selected(): FluentPaletteColor {
+    return this._selected;
+  }
+  private _selected: FluentPaletteColor | undefined
+
+
+
 
   @Output()
   onChange = new EventEmitter<FluentPaletteColor>();
 
   isSelected(palette: FluentPaletteColor): boolean {
-    return this.selectedPalette === palette;
+    return this.selected === palette;
   }
 
   _onClick(palette: FluentPaletteColor) {
-    this._selectedPalette = palette;
+    this._selected = palette;
     this._emitChange();
     this._changeDetector.markForCheck()
   }
 
   clear() {
-    this._selectedPalette = undefined
+    this._selected = undefined
   }
 
   private _emitChange() {
-    this.onChange.emit(this._selectedPalette);
+    this.onChange.emit(this._selected);
 
   }
 }

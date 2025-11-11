@@ -1,7 +1,7 @@
 ﻿import {booleanAttribute, ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
 import {capitalizeFirstLetter, FluentPaletteColor} from '../../helpers';
 import {fluentPaletteColorIntlFr} from '../../helpers/fluent-color-palette-intl.fr';
-import {MyColorPickerThumb} from '../color-thumb';
+import {MyColorPickerThumb} from '../color-picker-thumb';
 
 @Component({
   templateUrl: 'color-picker-item.html',
@@ -35,7 +35,7 @@ export class MyColorPickerItem {
   getColorName(): string {
     const name = fluentPaletteColorIntlFr[this.palette];
     if(name) {
-      return capitalizeFirstLetter(this.palette);
+      return capitalizeFirstLetter(name);
     }
     return ''
   }

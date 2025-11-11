@@ -10,6 +10,6 @@
     'class': 'my-tag-dismiss'
   }
 })
-export class TagDismiss {
+export class MyTagDismiss {
 
 }

@@ -83,7 +83,7 @@ export const MY_SELECT_CONTROL_VALUE_ACCESSOR: any = {
     '[class.disabled]': 'disabled',
     '[class.styled]':'!hasParentFormField',
     '[class.field-child]':'hasParentFormField',
-    '[attr.tabindex]': 'disabled? 0 : -1',
+    '[attr.tabindex]': 'disabled ? -1 : 0',
     '[attr.multiple]': 'multiple',
     '(blur)':'_onBlur($event)',
     '(focus)':'_onFocus($event)'
@@ -335,7 +335,7 @@ export class MySelect<T = any> implements OnInit, AfterContentInit, OnDestroy, T
     this._initialized.complete();
 
     this._selectionModel.changed.pipe(takeUntil(this._destroy)).subscribe(event => {
-      console.log(this.selectedValues)
+     // console.log(this.selectedValues)
       event.added.forEach(option => option.select());
       event.removed.forEach(option => option.deselect());
     });
@@ -637,12 +637,10 @@ export class MySelect<T = any> implements OnInit, AfterContentInit, OnDestroy, T
   }
 
   /** `View -> model callback called when value changes` */
-  _onChange: (value: any) => void = () => {
-  };
+  _onChange: (value: any) => void = () => {};
 
   /** `View -> model callback called when select has been touched` */
-  _onTouched = () => {
-  };
+  _onTouched = () => {};
 
   writeValue(obj: any): void {
     this._assignValue(obj);
@@ -674,7 +672,7 @@ export class MySelect<T = any> implements OnInit, AfterContentInit, OnDestroy, T
       overlayX: 'start',
       originY: 'bottom',
       overlayY: 'top',
-      offsetY: -4
+      offsetY: 4
     },
     {
       originX: 'end',

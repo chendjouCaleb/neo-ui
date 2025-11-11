@@ -1,11 +1,11 @@
 ﻿import {Component} from '@angular/core';
-import {MaterialIcon, MyPersonaIcon, MyPersonaImage, MyPersonaText, Persona} from '../../NeoUI';
+import {MaterialIcon, MyPersonaIcon, MyPersonaImage, MyPersonaText, MyPersona} from '../../NeoUI';
 import {NgOptimizedImage} from '@angular/common';
 
 @Component({
     templateUrl: 'persona.page.html',
   imports: [
-    Persona,
+    MyPersona,
     MyPersonaText,
     MyPersonaImage,
     NgOptimizedImage,

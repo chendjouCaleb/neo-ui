@@ -1,10 +1,12 @@
-﻿:host {
+﻿:root {
   --textFieldHeight: 36px;
+  --textFieldLabelBgColor: var(--colorNeutralBackground1)
 }
+
 .my-text-field {
   display: inline-block;
   width: 256px;
-  min-height: var(--textFieldHeight);
+  height: var(--textFieldHeight);
   min-width: 100px;
   position: relative;
   box-sizing: border-box;
@@ -73,7 +75,7 @@
   background: transparent;
   flex-grow: 1;
 
-  padding: 8px;
+  padding: 0 8px;
 
   transition: font-size 200ms ease-in-out, bottom 200ms ease-in-out;
 
@@ -103,14 +105,14 @@
   cursor: text;
 
   &.floating {
-    transform: scale(1) translateY(-16px);
+    transform: scale(1) translateY(-14px);
 
     font-size: 12px;
     line-height: 12px;
     min-height: 12px;
-    padding: 0 2px;
+    padding: 0 4px;
 
-    background-color: var(--colorNeutralBackground1);
+    background-color: var(--textFieldLabelBgColor, var(--colorNeutralBackground1));
     border-radius: 8px;
   }
 
@@ -136,7 +138,7 @@
   width: 100%;
   line-height: 20px;
   box-sizing: border-box;
-
+  height: var(--textFieldHeight);
   padding: 0;
 
 
@@ -161,6 +163,9 @@
 textarea.my-text-field-input {
   font-family: inherit;
   line-height: 20px;
+  box-sizing: border-box;
+  padding-top: 8px;
+  max-width: 100%;
 }
 
 

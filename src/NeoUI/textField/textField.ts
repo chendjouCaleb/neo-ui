@@ -37,6 +37,7 @@ export const MY_TEXT_FIELD = new InjectionToken<MyOptionGroup>('MyTextField');
   },
   providers: [ {provide: MY_TEXT_FIELD, useExisting: TextField} ]
 })
+
 export class TextField<T> implements AfterContentInit, AfterViewInit {
   private _initialized: boolean = false;
 
@@ -103,8 +104,6 @@ export class TextField<T> implements AfterContentInit, AfterViewInit {
   ngAfterViewInit(): void {
     this._initialized = true;
 
-
-
     Promise.resolve().then(() => {
       this.isError = this._isError;
     });
@@ -112,17 +111,20 @@ export class TextField<T> implements AfterContentInit, AfterViewInit {
 
   ngAfterContentInit(): void {
     if (!this.inputField) {
-      throw new Error('The MyTextField must contains a MyTextInputField');
+      throw new Error('The MyTextField must contains a MyTextFieldControl');
     }
 
-    this.inputField.stateChanges.subscribe(() => {
-      this._focused = this.inputField.focused
+    Promise.resolve().then(() => {
+      this.inputField.stateChanges.subscribe(() => {
+        this._focused = this.inputField.focused
+        this._updateLabelFocusState()
+        this.changeDetectorRef.markForCheck()
+      })
+
       this._updateLabelFocusState()
-      this.changeDetectorRef.markForCheck()
+      this.changeDetectorRef.markForCheck();
     })
 
-    this._updateLabelFocusState()
-    this.changeDetectorRef.markForCheck();
   }
 
 

@@ -31,7 +31,7 @@ import {MY_TAG_DEFAULT_OPTIONS, MyTagAppearance, MyTagDefaultOptions, MyTagShape
     '[attr.tabindex]': 'clickable ? 0 : -1'
   }
 })
-export class Tag {
+export class MyTag {
   @Input()
   disabled: boolean = false;
 

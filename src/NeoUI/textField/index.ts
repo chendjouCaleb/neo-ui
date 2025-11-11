@@ -5,3 +5,4 @@ export * from './textFieldHint'
 export * from './textField-trailingContent'
 export * from './textField-leadingContent'
 export * from './message'
+export * from './textFieldControl';

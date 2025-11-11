@@ -1,0 +1,46 @@
+﻿<div class="my-color-picker-input" (click)="open()" [class.styled]="!hasParentFormField"
+     [class.focused]="focused" #triggerElement cdk-overlay-origin>
+  <div class="my-color-picker-input-content">
+    @if (isEmpty && placeholder) {
+      <div class="my-color-picker-input-placeholder">
+        {{ placeholder }}
+      </div>
+    }
+
+    @if (!isEmpty) {
+      <div class="my-color-picker-input-value">
+        <MyColorPickerColorThumb [palette]="selected" size="18"></MyColorPickerColorThumb>
+        {{_getColorName(selected)}}
+      </div>
+    }
+  </div>
+
+  <MyMaterialIcon class="my-color-picker-dropdown-thumb ">arrow_drop_down</MyMaterialIcon>
+
+</div>
+
+
+
+<ng-template cdkConnectedOverlay
+             [cdkConnectedOverlayOrigin]="_overlayOrigin"
+             [cdkConnectedOverlayOpen]="panelOpen"
+             [cdkConnectedOverlayScrollStrategy]="_getScrollStrategy()"
+             [cdkConnectedOverlayWidth]="_getOverlayWidth()"
+             [cdkConnectedOverlayPositions]="_positions"
+             [cdkConnectedOverlayFlexibleDimensions]="true"
+             [cdkConnectedOverlayHasBackdrop]="true"
+             cdkConnectedOverlayLockPosition
+             (detach)="close()"
+             (backdropClick)="close()"
+>
+  <div class="my-color-picker-panel-motion-container">
+    <MyColorPickerPanel [animate.enter]="'enter-motion'"
+                        [animate.leave]="'leave-motion'"
+                        role="listbox"
+                        tabindex="-1"
+                        style="width: 100%"
+                        [selected]="selected"
+                        (onChange)="_panelValueChange($event)"
+    ></MyColorPickerPanel>
+  </div>
+</ng-template>
