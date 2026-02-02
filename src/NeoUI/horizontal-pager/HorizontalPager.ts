@@ -1,17 +1,29 @@
 ﻿import {
-  AfterContentInit, AfterViewInit,
-  Component, ComponentFactoryResolver, ComponentRef,
-  ContentChildren, ElementRef,
-  forwardRef, Injector, Input,
-  QueryList, StaticProvider,
+  AfterContentInit,
+  AfterViewInit,
+  Component,
+  ComponentRef,
+  ContentChildren,
+  ElementRef,
+  EventEmitter,
+  forwardRef,
+  Injector,
+  Input,
+  OnDestroy,
+  Output,
+  QueryList,
+  StaticProvider,
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation
 } from '@angular/core';
-import {PageContentDef, HorizontalPageContext} from './page-content-ref';
+import {HorizontalPageContext, PageContentDef} from './page-content-ref';
 import {PageContent} from './pageContent';
-import {MsMotionSlideDir, MsMotionTimings} from '../motion';
+import {MsMotionSlideDir, MsMotionSlideOptions, MsMotionTimings} from '../motion';
 import {MsMotionFunction} from './pager-motion';
+import {Subject} from 'rxjs';
+
+export type PageChangeDir = 'ltr' | 'rtl';
 
 @Component({
   templateUrl: 'HorizontalPager.html',
@@ -24,13 +36,16 @@ import {MsMotionFunction} from './pager-motion';
     class: 'horizontal-pager'
   }
 })
-export class HorizontalPager implements AfterViewInit {
-  private _initialized: boolean = false;
+export class HorizontalPager implements AfterViewInit, OnDestroy, AfterContentInit {
+  private _initialized = new Subject<void>();
+  private _destroy = new Subject<void>();
+  private _stateChanges = new Subject<void>();
+
 
   @ContentChildren(forwardRef(() => PageContentDef))
   pageList: QueryList<PageContentDef> | undefined;
 
-  @ViewChild('container', { read: ViewContainerRef })
+  @ViewChild('container', {read: ViewContainerRef})
   container: ViewContainerRef;
 
   @ViewChild('layout')
@@ -42,58 +57,104 @@ export class HorizontalPager implements AfterViewInit {
 
   @Input()
   set selectedIndex(index: number) {
-    if(this._initialized) {
-      this.selectIndex(index, true)
-    }else {
-      this._selectedIndex = index
-    }
+    this.selectIndex(index, true)
   }
-  get selectedIndex(): number { return this._selectedIndex }
+
+  get selectedIndex(): number {
+    return this._selectedIndex;
+  }
+
   private _selectedIndex: number = 0;
+
+  @Input()
+  set selectedName(name: string) {
+    this.selectName(name);
+  }
+
+  get selectedName(): string {
+    return this._selectedName;
+  }
+
+  private _selectedName: string = '';
+
+  @Output()
+  pageChange = new EventEmitter<void>();
 
 
   constructor(private _elementRef: ElementRef<HTMLElement>,
-              private parentInjector: Injector,
-
-  ) {
+              private parentInjector: Injector) {
   }
 
   ngAfterViewInit() {
+
     Promise.resolve().then(() => {
-      this.selectIndex(this._selectedIndex, false)
-      this._initialized = true
+      this._initialized.next();
+      this._initialized.complete();
+
+
+      // if (this.selectedName) {
+      //   this.selectName(this.selectedName);
+      // } else {
+      //   this.selectIndex(this.selectedIndex);
+      // }
     })
   }
 
+  ngAfterContentInit() {
+  }
+
+  ngOnDestroy() {
+    this._destroy.next();
+    this._stateChanges.complete();
+    this._destroy.complete();
+  }
+
+
+  selectName(name: string) {
+    const contentDef = this._getPageDefByName(name);
+    this.selectPage(contentDef);
+  }
+
   selectIndex(index: number, animate: boolean = true) {
-    if(index < 0 || index > this.pageList!.length - 1) {
+    if (index < 0 || index > this.pageList!.length - 1) {
       throw new Error("Index is out of bounds")
     }
 
-    if(this._currentContentDef != null) {
-      this.hideCurrent(index).then()
-    }
-
-
     const contentDef = this.pageList!.get(index)!;
+    this.selectPage(contentDef);
 
-    let contentRef = contentDef.contentCache;
-    if(contentRef == null){
-      contentRef = this._createContent(index, contentDef);
-      contentDef.contentCache = contentRef;
-    }else{
-      contentDef.contentCache.instance.host.classList.remove('hidden')
-    }
-    if(animate) {
-      this.animatePageIn(contentDef.contentCache.instance, index).then()
-    }
-    this.boxHeight = contentDef.contentCache.instance.host.offsetHeight
-
-    this._selectedIndex = index;
-    this._currentContentDef = contentDef
   }
 
-  async hideCurrent(index: number):Promise<void> {
+  selectPage(contentDef: PageContentDef, animate: boolean = true) {
+    let dir: PageChangeDir = 'ltr';
+    const index = this._getPageIndex(contentDef);
+    if (this._currentContentDef != null) {
+
+      const currentPageIndex = this._getPageIndex(this._currentContentDef);
+      dir = currentPageIndex > index ? 'rtl' : 'ltr'
+      this.hidePage(this._currentContentDef, dir).then(() => {
+
+      });
+      console.log('hide')
+    }
+
+    let contentRef = contentDef.contentCache;
+    if (contentRef == null) {
+      contentRef = this._createContent(index, contentDef);
+      contentDef.contentCache = contentRef;
+    }
+    contentDef.contentCache.instance.show();
+    contentDef.contentCache.changeDetectorRef.detectChanges();
+    if (animate) {
+      this.animatePageIn(contentDef.contentCache.instance, index).then();
+    }
+    this.boxHeight = contentDef.contentCache.instance.host.offsetHeight;
+
+    this._selectedIndex = index;
+    this._currentContentDef = contentDef;
+  }
+
+  async hideCurrent(index: number): Promise<void> {
     const dir = index < this.selectedIndex ? 'ltr' : 'rtl';
     const contentDef = this._currentContentDef;
     const host = contentDef.contentCache.instance.host;
@@ -106,11 +167,24 @@ export class HorizontalPager implements AfterViewInit {
     });
   }
 
+  async hidePage(contentDef: PageContentDef, dir: 'ltr' | 'rtl'): Promise<void> {
+    const host = contentDef.contentCache.instance.host;
+
+    await  pageAnimateHide(host, {
+      dir,
+      duration: 3000,
+      delay: 0,
+      easing: MsMotionTimings.decelerate
+    });
+    contentDef.contentCache.instance.hide();
+    contentDef.contentCache.changeDetectorRef.detectChanges();
+  }
+
   async animatePageIn(page: PageContent, index: number) {
     const dir = index < this.selectedIndex ? 'ltr' : 'rtl';
     return MsMotionFunction.slideIn(page.host, {
       dir,
-      duration: 300,
+      duration: 3000,
       delay: 50,
       easing: MsMotionTimings.decelerate
     });
@@ -138,7 +212,7 @@ export class HorizontalPager implements AfterViewInit {
 
   private _createContent(index: number, content: PageContentDef): ComponentRef<PageContent> {
     const injector = this._createInjector(index, content);
-    const contentRef = this.container.createComponent<PageContent>(PageContent, { index: 0, injector})
+    const contentRef = this.container.createComponent<PageContent>(PageContent, {index: 0, injector})
     contentRef.changeDetectorRef.detectChanges();
     return contentRef;
   }
@@ -152,6 +226,14 @@ export class HorizontalPager implements AfterViewInit {
     ];
 
     return Injector.create({parent: this.parentInjector, providers});
+  }
+
+  _getPageIndex(contentDef: PageContentDef): number {
+    return this.pageList.toArray().findIndex(page => page === contentDef);
+  }
+
+  _getPageDefByName(name: string): PageContentDef | undefined {
+    return this.pageList.find(p => p.PageDefName.toLowerCase() === name.toLowerCase());
   }
 
   private _animateContentOut(host: HTMLElement, dir: MsMotionSlideDir): Promise<void> {
@@ -171,4 +253,19 @@ export class HorizontalPager implements AfterViewInit {
       easing: MsMotionTimings.decelerate
     });
   }
+}
+
+
+function pageAnimateHide(host: HTMLElement, options: MsMotionSlideOptions): Promise<void> {
+  const keyframes = [
+    {transform: 'scale3d(1, 1, 1)', opacity: 1},
+    {transform: 'scale3d(0.9, 0.9, 1)', opacity: 0}
+  ]
+
+  return new Promise<void>(resolve => {
+    host.animate(keyframes, {duration: options.duration, delay: options.delay, easing: options.easing})
+      .onfinish = () => {
+      resolve();
+    }
+  });
 }

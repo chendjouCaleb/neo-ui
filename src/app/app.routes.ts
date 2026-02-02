@@ -19,10 +19,11 @@ import {ButtonPage} from './button/button.page';
 import {SelectPage} from './select/select.page';
 import {TagPage} from './tag/tag.page';
 import {IconButtonPage} from './icon-button/icon-button.page';
-import {TextFieldPage} from './textField/textField.page';
 import {MenuPage} from './menu/menu.page';
 import {SkeletonPage} from './skeleton/skeleton.page';
 import {ColorPickerPage} from './color-picker/color-picker.page';
+import {TextFieldPage} from './text-field/textField.page';
+import {TablePage} from './table/table.page';
 
 export const routes: Routes = [
   {path: '', component: ButtonPage },
@@ -30,6 +31,7 @@ export const routes: Routes = [
   {path: 'icon-button', component: IconButtonPage },
   {path: 'tag', component: TagPage },
   {path: 'pager', component: PagerPage },
+  {path: 'table', component: TablePage },
   {path: 'tooltip', component: TooltipPage },
   {path: 'switch', component: SwitchPage },
   {path: 'toast', component: ToastPage },

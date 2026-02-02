@@ -227,7 +227,7 @@ export class MyRadio implements AfterContentInit, OnInit, OnDestroy, ControlValu
 
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes)
+
   }
 
 

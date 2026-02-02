@@ -279,7 +279,7 @@ export class MyColorPicker implements AfterViewInit, OnDestroy, OnInit, ControlV
       overlayX: 'end',
       originY: 'top',
       overlayY: 'bottom',
-      offsetY: -8,
+      offsetY: 8,
       panelClass: 'my-select-panel-above',
     },
   ];

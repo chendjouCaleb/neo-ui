@@ -1,0 +1,33 @@
+﻿.my-table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.my-table-head-row {
+  display: table-row;
+}
+
+.my-table-row {
+  display: table-row;
+}
+
+
+.my-table-head-cell {
+  display: table-cell;
+  font-size: 14px;
+  color: var(--colorNeutralForeground3);
+  padding: 8px 16px;
+  font-weight: 500;
+  border-bottom: 1px solid var(--colorNeutralStrokeAlpha);
+}
+
+.my-table-cell {
+  display: table-cell;
+  padding: 8px 16px;
+  font-weight: normal;
+  border-bottom: 1px solid var(--colorNeutralStrokeAlpha);
+  vertical-align: middle;
+  font-size: 14px;
+  color: var(--colorNeutralForeground1);
+}

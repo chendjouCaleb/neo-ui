@@ -20,7 +20,7 @@ import {CdkPortal} from '@angular/cdk/portal';
 import {_IdGenerator} from '@angular/cdk/a11y';
 import {hasModifierKey} from '@angular/cdk/keycodes';
 import {SelectionModel} from '@angular/cdk/collections';
-import {MyOption, MyOptionSelectionChange} from './option';
+import {MY_OPTION_PARENT_COMPONENT, MyOption, MyOptionSelectionChange} from './option';
 import {NgClass} from '@angular/common';
 import {defer, filter, map, merge, Observable, startWith, Subject, switchMap, takeUntil} from 'rxjs';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl} from '@angular/forms';
@@ -94,7 +94,10 @@ export const MY_SELECT_CONTROL_VALUE_ACCESSOR: any = {
     NgClass
   ],
 
-  providers: [MY_SELECT_CONTROL_VALUE_ACCESSOR, {provide: TextFieldControl, useExisting: MySelect}]
+  providers: [MY_SELECT_CONTROL_VALUE_ACCESSOR,
+    {provide: TextFieldControl, useExisting: MySelect},
+    {provide: MY_OPTION_PARENT_COMPONENT, useExisting: MySelect},
+  ],
 
 })
 export class MySelect<T = any> implements OnInit, AfterContentInit, OnDestroy, TextFieldControl<T>, ControlValueAccessor {

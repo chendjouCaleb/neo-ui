@@ -206,7 +206,8 @@ export class MyOption<T = any> implements OnDestroy {
     if (this.disabled) return;
 
     if(this.multiple){
-      this._selected = !this.selected
+      this._selected = !this.selected;
+
     }else if(!this.selected) {
       this._selected = true;
     }else {

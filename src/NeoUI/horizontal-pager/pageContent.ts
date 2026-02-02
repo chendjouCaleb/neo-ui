@@ -1,6 +1,6 @@
 ﻿import {
   AfterViewInit,
-  ChangeDetectionStrategy,
+  ChangeDetectionStrategy, ChangeDetectorRef,
   Component,
   ElementRef,
   ViewChild,
@@ -11,15 +11,14 @@ import {PageContentDef, HorizontalPageContext} from './page-content-ref';
 
 @Component({
   template: `
-    <div class="page-content-container" #layout>
-      <ng-container #element></ng-container>
-    </div>`,
+    <ng-container #element></ng-container>`,
   selector: 'PageContent',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   host: {
-    'class': 'page-content'
+    'class': 'page-content',
+    '[class.my-page-hidden]' : '!visible'
   }
 })
 export class PageContent implements AfterViewInit {
@@ -29,9 +28,12 @@ export class PageContent implements AfterViewInit {
   @ViewChild('layout')
   layoutRef: ElementRef<HTMLElement>;
 
+  protected visible: boolean = true;
+
 
   constructor(private _contentDef: PageContentDef,
               private _elementRef: ElementRef<HTMLElement>,
+              private _changeDetector: ChangeDetectorRef,
               private _context: HorizontalPageContext) {
   }
 
@@ -52,5 +54,19 @@ export class PageContent implements AfterViewInit {
 
   get layoutHost(): HTMLElement {
     return this.layoutRef.nativeElement;
+  }
+
+  hide() {
+    this.visible = false;
+    this._changeDetector.markForCheck();
+  }
+
+  show() {
+    this.visible = true;
+    this._changeDetector.markForCheck();
+  }
+
+  getHeight(): number {
+    return this.host.offsetHeight;
   }
 }

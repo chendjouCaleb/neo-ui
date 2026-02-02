@@ -30,3 +30,5 @@ export * from './material-icon'
 export * from './skeleton'
 export * from './color-picker'
 export * from './select'
+export * from './switch';
+export * from './table'

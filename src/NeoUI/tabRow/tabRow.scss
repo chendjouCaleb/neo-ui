@@ -1,5 +1,6 @@
 ﻿.tab-row {
   position: relative;
+
 }
 
 .tab-row-thumb {
@@ -24,10 +25,14 @@
   font-size: 14px;
   border-radius: 4px;
   font-family: "Noto Sans", sans-serif;
-  color: var(--colorNeutralForeground1);
+  color: var(--colorNeutralForeground2);
   &.active {
     font-weight: 500;
     color: var(--colorBrandForeground1);
+  }
+  &.disabled {
+    opacity: .6;
+    pointer-events: none;
   }
 
   &:hover {

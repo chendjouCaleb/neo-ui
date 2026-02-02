@@ -1,4 +1,4 @@
-﻿import {ComponentRef, Directive, TemplateRef} from '@angular/core';
+﻿import {ComponentRef, Directive, input, Input, TemplateRef} from '@angular/core';
 import {PageContent} from './pageContent';
 
 
@@ -22,6 +22,9 @@ export class HorizontalPageContext {
   selector: '[PageDef]'
 })
 export class PageContentDef {
+
+  @Input()
+  PageDefName : string;
 
   contentCache: ComponentRef<PageContent>
 

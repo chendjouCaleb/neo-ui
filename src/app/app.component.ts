@@ -1,15 +1,11 @@
-import {Component, Inject, DOCUMENT} from '@angular/core';
+import {Component, DOCUMENT, Inject} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
-import {TextFieldPage} from './textField/textField.page';
-import {DropdownPage} from './dropdown/dropdown.page';
-import {ContactPage} from './contact/contact.page';
-import {SelectPage} from './select/select.page';
-import {MySwitch} from '../NeoUI/switch';
+import {MySwitch} from '../NeoUI';
 
 
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet, TextFieldPage, DropdownPage, ContactPage, SelectPage, RouterLink, RouterLinkActive, MySwitch],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, MySwitch],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
     host: {}
