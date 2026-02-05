@@ -1,0 +1,27 @@
+﻿<div class="padding-24">
+  <MyTextField >
+    <MySelect placeholder="Colonnes" [multiple]="true"
+              (selectionChange)="setVisibleColumns($event.value)">
+      <MyOption value="file">File</MyOption>
+      <MyOption value="author">Author</MyOption>
+      <MyOption value="lastUpdated">Last updated</MyOption>
+      <MyOption value="lastUpdate">Last update</MyOption>
+    </MySelect>
+  </MyTextField>
+  <MyTable [data]="items" [visibleColumns]="visibleColumns">
+    <MyTableHeadRow>
+      <MyTableHeadCell *MyTableHeadCellDef="'file'" >File</MyTableHeadCell>
+      <MyTableHeadCell *MyTableHeadCellDef="'author'" >Author</MyTableHeadCell>
+      <MyTableHeadCell *MyTableHeadCellDef="'lastUpdated'">Last updated</MyTableHeadCell>
+      <MyTableHeadCell *MyTableHeadCellDef="'lastUpdate'">Last update</MyTableHeadCell>
+    </MyTableHeadRow>
+
+    <MyTableRow *MyTableRowDef="let value=value">
+      <MyTableCell *MyTableCellDef="'file'">{{value.file.label}}</MyTableCell>
+      <MyTableCell *MyTableCellDef="'author'">{{value.author.label}}</MyTableCell>
+      <MyTableCell *MyTableCellDef="'lastUpdated'">{{value.lastUpdated.label}}</MyTableCell>
+      <MyTableCell *MyTableCellDef="'lastUpdate'">{{value.lastUpdate.label}}</MyTableCell>
+    </MyTableRow>
+  </MyTable>
+</div>
+

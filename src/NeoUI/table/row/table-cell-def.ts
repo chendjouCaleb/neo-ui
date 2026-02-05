@@ -1,13 +1,16 @@
-﻿import {Directive, TemplateRef} from '@angular/core';
+﻿import {Directive, Input, TemplateRef, ViewRef} from '@angular/core';
 
-export interface MyTableCellDefContext {
-
-}
+export class MyTableCellDefContext {}
 
 @Directive({
   selector: '[MyTableCellDef]',
 })
 export class MyTableCellDef {
-  constructor(public readonly templateRef: TemplateRef<any>) {
-  }
+
+  @Input('MyTableCellDef')
+  name: string = '';
+
+  viewRef: ViewRef
+
+  constructor(public readonly templateRef: TemplateRef<MyTableCellDefContext>) {}
 }

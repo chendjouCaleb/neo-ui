@@ -1,26 +1,6 @@
-﻿<div class="padding-24">
-  <MyTextField>
-    <MySelect placeholder="Colonnes" [multiple]="true">
-      <MyOption value="file">File</MyOption>
-      <MyOption value="author">Author</MyOption>
-      <MyOption value="lastUpdated">Last updated</MyOption>
-      <MyOption value="lastUpdate">Last update</MyOption>
-    </MySelect>
-  </MyTextField>
-  <MyTable [data]="items">
-    <MyTableHeadRow>
-      <MyTableHeadCell>File</MyTableHeadCell>
-      <MyTableHeadCell>Author</MyTableHeadCell>
-      <MyTableHeadCell>Last updated</MyTableHeadCell>
-      <MyTableHeadCell>Last update</MyTableHeadCell>
-    </MyTableHeadRow>
+﻿<div BasicTableExample class="padding-24"></div>
 
-    <MyTableRow *MyTableRowDef="let value=value">
-      <MyTableCell *MyTableCellDef>{{value.file.label}}</MyTableCell>
-      <MyTableCell *MyTableCellDef>{{value.author.label}}</MyTableCell>
-      <MyTableCell *MyTableCellDef>{{value.lastUpdated.label}}</MyTableCell>
-      <MyTableCell *MyTableCellDef>{{value.lastUpdate.label}}</MyTableCell>
-    </MyTableRow>
-  </MyTable>
+
+<div class="marginTop-24">
+  <div TableMutableExample></div>
 </div>
-

@@ -94,11 +94,11 @@ export const MY_SELECT_CONTROL_VALUE_ACCESSOR: any = {
     NgClass
   ],
 
-  providers: [MY_SELECT_CONTROL_VALUE_ACCESSOR,
-    {provide: TextFieldControl, useExisting: MySelect},
-    {provide: MY_OPTION_PARENT_COMPONENT, useExisting: MySelect},
-  ],
+  providers: [
 
+    { provide: TextFieldControl, useExisting: MySelect },
+    { provide: MY_OPTION_PARENT_COMPONENT, useExisting: MySelect },
+  ]
 })
 export class MySelect<T = any> implements OnInit, AfterContentInit, OnDestroy, TextFieldControl<T>, ControlValueAccessor {
 
@@ -106,7 +106,7 @@ export class MySelect<T = any> implements OnInit, AfterContentInit, OnDestroy, T
   private _idGenerator = inject(_IdGenerator)
   private _panelOpen: boolean = false;
   private _overlayRef: OverlayRef
-  ngControl = inject(NgControl, {self: true, optional: true})!;
+  ngControl: NgControl = inject(NgControl, {self: true, optional: true})!;
   private _initialized = new Subject<void>();
   private _destroy = new Subject<void>();
   controlName: string;
