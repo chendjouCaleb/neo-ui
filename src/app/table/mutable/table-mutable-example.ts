@@ -1,6 +1,6 @@
 ﻿import {Component} from '@angular/core';
 import {
-  IconButton, MaterialIcon,
+  IconButton, MaterialIcon, MyOption, MySelect,
   MyTable,
   MyTableCell,
   MyTableCellDef,
@@ -8,7 +8,7 @@ import {
   MyTableHeadCellDef,
   MyTableHeadRow,
   MyTableRow,
-  MyTableRowDef
+  MyTableRowDef, TextField
 } from '../../../NeoUI';
 
 
@@ -62,12 +62,19 @@ const items = [
     MyTableRow,
     MyTableRowDef,
     IconButton,
-    MaterialIcon
+    MaterialIcon,
+    MyOption,
+    MySelect,
+    TextField
   ],
   selector: 'TableMutableExample, [TableMutableExample]'
 })
 export class TableMutableExample {
+  visibleColumns: string[] = []
 
+  setVisibleColumns(columns: string[]) {
+    this.visibleColumns = columns;
+  }
   data = [...items ];
 
   push() {

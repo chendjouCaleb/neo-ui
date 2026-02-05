@@ -27,10 +27,9 @@ import {
   selector: 'BasicTableExample, [BasicTableExample]'
 })
 export class BasicTableExample {
-  visibleColumns: string[]
+  visibleColumns: string[] = []
 
   setVisibleColumns(columns: string[]) {
-
     this.visibleColumns = columns;
   }
 

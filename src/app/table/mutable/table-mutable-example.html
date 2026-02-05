@@ -1,4 +1,13 @@
 ﻿<div class="padding-24">
+  <MyTextField >
+    <MySelect placeholder="Colonnes" [multiple]="true"
+              (selectionChange)="setVisibleColumns($event.value)">
+      <MyOption value="file">File</MyOption>
+      <MyOption value="author">Author</MyOption>
+      <MyOption value="lastUpdated">Last updated</MyOption>
+      <MyOption value="lastUpdate">Last update</MyOption>
+    </MySelect>
+  </MyTextField>
   <div>
     <button (click)="unshift()">Unshift data</button>
     <button (click)="push()">Push data</button>
@@ -7,7 +16,7 @@
   <div>
     Length : {{data.length}}
   </div>
-  <MyTable [data]="data" >
+  <MyTable [data]="data" [columns]="visibleColumns" >
     <MyTableHeadRow>
       <MyTableHeadCell *MyTableHeadCellDef="'index'" >#</MyTableHeadCell>
       <MyTableHeadCell *MyTableHeadCellDef="'file'" >File</MyTableHeadCell>

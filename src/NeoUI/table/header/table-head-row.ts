@@ -2,7 +2,7 @@
   AfterContentInit, AfterViewInit,
   ChangeDetectionStrategy,
   Component,
-  ContentChildren,
+  ContentChildren, IterableChanges,
   QueryList,
   ViewChild, ViewContainerRef,
   ViewEncapsulation
@@ -45,6 +45,46 @@ export class MyTableHeadRow implements AfterViewInit{
     }
   }
 
+  applyColumnChanges(changes: IterableChanges<string>) {
+    changes.forEachItem(item => this._visibleColumns.push(item.item));
+    // changes.forEachAddedItem(addition => {
+    //   this._createColumn(addition.item, addition.currentIndex);
+    // });
+    //
+    // changes.forEachRemovedItem(record => {
+    //   console.log(`${record.item} : ${record.previousIndex}`)
+    //   this._removeColumn(record.item);
+    // })
+
+    changes.forEachOperation((record, adjustedPreviousIndex ,currentIndex) => {
+      if(record.previousIndex == null){
+        this._createColumn(record.item, record.currentIndex);
+      }
+      else if(record.currentIndex == undefined) {
+        this._removeColumnAt(adjustedPreviousIndex === null ? undefined : adjustedPreviousIndex);
+      }else if(adjustedPreviousIndex !== null){
+        const view = this.viewContainerRef.get(adjustedPreviousIndex)!;
+        this.viewContainerRef.move(view, currentIndex);
+      }
+    });
+  }
+
+  _createColumn(name: string, index: number){
+    const cellDef = this.cellDefList.find(c => c.name === name);
+    cellDef.viewRef = this.viewContainerRef.createEmbeddedView(cellDef.templateRef, {}, {index});
+    cellDef.viewRef.detectChanges();
+  }
+
+  _removeColumn(name: string ){
+    const cellDef = this.cellDefList.find(c => c.name === name);
+    const index = this.viewContainerRef.indexOf(cellDef.viewRef);
+    this.viewContainerRef.remove(index);
+  }
+
+  _removeColumnAt(index: number){
+    this.viewContainerRef.remove(index);
+  }
+
   private updateVisibleColumns(columns: string[]) {
 
     const cellToHide = this.cellDefList
@@ -76,4 +116,6 @@ export class MyTableHeadRow implements AfterViewInit{
     }
 
   }
+
+
 }

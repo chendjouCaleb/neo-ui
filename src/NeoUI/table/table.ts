@@ -27,27 +27,16 @@ import {MyTableCellDef, MyTableCellDefContext, MyTableRow, MyTableRowDef, MyTabl
 export class MyTable<T> implements AfterViewInit, DoCheck, OnChanges {
   private _injector: Injector = inject(Injector);
   private _differ : IterableDiffer<T>
+  private _columnDiffer: IterableDiffer<string>
 
   constructor(private differs : IterableDiffers) {
   }
 
   @Input()
-  set data(value: T[]) {
-    this._data = value;
-  }
-
-  get data(): T[] {
-    return this._data;
-  }
-
-  private _data: T[];
+  data: T[];
 
   @Input()
-  get visibleColumns(): string[] { return this._visibleColumns; }
-  set visibleColumns(values: string[]) {
-    this.changeVisibleColumns(values);
-  }
-  private _visibleColumns: string[] = [];
+  columns: string[] = []
 
   @ContentChild(MyTableHeadRow)
   headRow: MyTableHeadRow;
@@ -65,27 +54,34 @@ export class MyTable<T> implements AfterViewInit, DoCheck, OnChanges {
 
   ngAfterViewInit() {
     this._differ = this.differs.find(this.data).create();
-    this.render();
+    this._columnDiffer = this.differs.find(this.columns).create();
 
-
+    if(this.columns.length === 0){
+      this.columns = this.headRow.cellDefList.map(c => c.name);
+    }
   }
 
   ngDoCheck() {
-    let changes = this._differ?.diff(this.data);
-    if (changes != null) {
-      console.log("ngDoCheck called, changes detected");
-      console.log(changes)
-      this._applyChanges(changes);
-      // const additionRecords: IterableChangeRecord<T>[] = [];
-      // changes.forEachAddedItem(addition => additionRecords.push(addition));
-      // additionRecords.forEach(addition => {
-      //   this.addRowView(addition.item, addition.currentIndex);
-      // })
+    const columnChanges = this._columnDiffer?.diff(this.columns);
+    if(columnChanges) {
+      console.log('column change')
+      this._applyColumnChanges(columnChanges);
+    }
+    let rowChanges = this._differ?.diff(this.data);
+    if (rowChanges != null) {
+      console.log('row change')
+      this._applyChanges(rowChanges);
     }
   }
 
   ngOnChanges(changes: SimpleChanges) {
 
+  }
+
+  _applyColumnChanges(changes: IterableChanges<string>) {
+    if(this.headRow){
+      this.headRow.applyColumnChanges(changes);
+    }
   }
 
   _applyChanges(changes: IterableChanges<T>) {
@@ -112,7 +108,7 @@ export class MyTable<T> implements AfterViewInit, DoCheck, OnChanges {
 
   changeVisibleColumns(columnNames: string[]) {
     columnNames = columnNames || [];
-    this._visibleColumns = columnNames;
+    this.columns = columnNames;
 
     if(this.headRow) {
       this.headRow.setVisibleColumns(columnNames);
@@ -125,7 +121,7 @@ export class MyTable<T> implements AfterViewInit, DoCheck, OnChanges {
   }
 
   render() {
-    this.headRow.setVisibleColumns(this._visibleColumns);
+    //this.headRow.setVisibleColumns(this._visibleColumns);
   }
 
   private addRowView(value: T, index: number): EmbeddedViewRef<MyTableRowDefContext<T>> {

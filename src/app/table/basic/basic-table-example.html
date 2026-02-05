@@ -8,7 +8,7 @@
       <MyOption value="lastUpdate">Last update</MyOption>
     </MySelect>
   </MyTextField>
-  <MyTable [data]="items" [visibleColumns]="visibleColumns">
+  <MyTable [data]="items" [columns]="visibleColumns">
     <MyTableHeadRow>
       <MyTableHeadCell *MyTableHeadCellDef="'file'" >File</MyTableHeadCell>
       <MyTableHeadCell *MyTableHeadCellDef="'author'" >Author</MyTableHeadCell>
