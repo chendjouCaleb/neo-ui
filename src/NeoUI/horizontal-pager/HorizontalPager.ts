@@ -21,22 +21,22 @@ import {HorizontalPageContext, PageContentDef} from './page-content-ref';
 import {PageContent} from './pageContent';
 import {MsMotionSlideDir, MsMotionSlideOptions, MsMotionTimings} from '../motion';
 import {MsMotionFunction} from './pager-motion';
-import {Subject} from 'rxjs';
+import {Subject, takeUntil} from 'rxjs';
 
 export type PageChangeDir = 'ltr' | 'rtl';
 
 @Component({
   templateUrl: 'HorizontalPager.html',
-  selector: 'HorizontalPager',
+  selector: 'MyHorizontalPager',
   standalone: true,
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['pager.scss'],
   exportAs: 'pager',
   host: {
-    class: 'horizontal-pager'
+    class: 'my-horizontal-pager'
   }
 })
-export class HorizontalPager implements AfterViewInit, OnDestroy, AfterContentInit {
+export class MyHorizontalPager implements AfterViewInit, OnDestroy, AfterContentInit {
   private _initialized = new Subject<void>();
   private _destroy = new Subject<void>();
   private _stateChanges = new Subject<void>();
@@ -48,8 +48,6 @@ export class HorizontalPager implements AfterViewInit, OnDestroy, AfterContentIn
   @ViewChild('container', {read: ViewContainerRef})
   container: ViewContainerRef;
 
-  @ViewChild('layout')
-  layout: ElementRef<HTMLDivElement>;
 
   boxHeight: number = 0;
 
@@ -86,17 +84,15 @@ export class HorizontalPager implements AfterViewInit, OnDestroy, AfterContentIn
   }
 
   ngAfterViewInit() {
+    this._initialized.next();
+    this._initialized.complete();
 
-    Promise.resolve().then(() => {
-      this._initialized.next();
-      this._initialized.complete();
-
-
-      // if (this.selectedName) {
-      //   this.selectName(this.selectedName);
-      // } else {
-      //   this.selectIndex(this.selectedIndex);
-      // }
+    this.pageList.changes.pipe(takeUntil(this._destroy)).subscribe(() => {
+      if(this._selectedName){
+        this.selectName(this.selectedName);
+      }else {
+        this.selectIndex(this.selectedIndex);
+      }
     })
   }
 
@@ -111,18 +107,23 @@ export class HorizontalPager implements AfterViewInit, OnDestroy, AfterContentIn
 
 
   selectName(name: string) {
-    const contentDef = this._getPageDefByName(name);
-    this.selectPage(contentDef);
+    if (!this.pageList) {
+      this._selectedName = name;
+    } else {
+      const contentDef = this._getPageDefByName(name);
+      this.selectPage(contentDef);
+    }
+
   }
 
   selectIndex(index: number, animate: boolean = true) {
-    if (index < 0 || index > this.pageList!.length - 1) {
-      throw new Error("Index is out of bounds")
+    if (!this.pageList) {
+      this._selectedIndex = index;
+    } else {
+      index = this._coerceIndex(index);
+      const contentDef = this.pageList!.get(index)!;
+      this.selectPage(contentDef);
     }
-
-    const contentDef = this.pageList!.get(index)!;
-    this.selectPage(contentDef);
-
   }
 
   selectPage(contentDef: PageContentDef, animate: boolean = true) {
@@ -170,9 +171,9 @@ export class HorizontalPager implements AfterViewInit, OnDestroy, AfterContentIn
   async hidePage(contentDef: PageContentDef, dir: 'ltr' | 'rtl'): Promise<void> {
     const host = contentDef.contentCache.instance.host;
 
-    await  pageAnimateHide(host, {
+    await pageAnimateHide(host, {
       dir,
-      duration: 3000,
+      duration: 300,
       delay: 0,
       easing: MsMotionTimings.decelerate
     });
@@ -184,7 +185,7 @@ export class HorizontalPager implements AfterViewInit, OnDestroy, AfterContentIn
     const dir = index < this.selectedIndex ? 'ltr' : 'rtl';
     return MsMotionFunction.slideIn(page.host, {
       dir,
-      duration: 3000,
+      duration: 300,
       delay: 50,
       easing: MsMotionTimings.decelerate
     });
@@ -234,6 +235,12 @@ export class HorizontalPager implements AfterViewInit, OnDestroy, AfterContentIn
 
   _getPageDefByName(name: string): PageContentDef | undefined {
     return this.pageList.find(p => p.PageDefName.toLowerCase() === name.toLowerCase());
+  }
+
+  _coerceIndex(index: number): number {
+    if (index < 0) return 0;
+    if (index > this.pageList.length - 1) return this.pageList.length - 1;
+    return index;
   }
 
   private _animateContentOut(host: HTMLElement, dir: MsMotionSlideDir): Promise<void> {

@@ -47,14 +47,7 @@ export class MyTableHeadRow implements AfterViewInit{
 
   applyColumnChanges(changes: IterableChanges<string>) {
     changes.forEachItem(item => this._visibleColumns.push(item.item));
-    // changes.forEachAddedItem(addition => {
-    //   this._createColumn(addition.item, addition.currentIndex);
-    // });
-    //
-    // changes.forEachRemovedItem(record => {
-    //   console.log(`${record.item} : ${record.previousIndex}`)
-    //   this._removeColumn(record.item);
-    // })
+
 
     changes.forEachOperation((record, adjustedPreviousIndex ,currentIndex) => {
       if(record.previousIndex == null){

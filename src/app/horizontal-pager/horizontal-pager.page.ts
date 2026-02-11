@@ -1,10 +1,10 @@
 ﻿import {Component} from '@angular/core';
-import {HorizontalPager, PageContentDef, TabRow, TabRowItem} from '../../NeoUI';
+import { MyHorizontalPager, PageContentDef, TabRow, TabRowItem} from '../../NeoUI';
 
 @Component({
     selector: 'PagerPage',
     templateUrl: 'horizontal-pager.page.html',
-    imports: [TabRow, TabRowItem, HorizontalPager, PageContentDef]
+  imports: [TabRow, TabRowItem,  PageContentDef, MyHorizontalPager]
 })
 export class HorizontalPagerPage {
 

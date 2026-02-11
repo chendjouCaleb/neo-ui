@@ -1,4 +1,4 @@
-﻿import {Component} from '@angular/core';
+﻿import {Component, NgIterable} from '@angular/core';
 import {
   IconButton, MaterialIcon, MyOption, MySelect,
   MyTable,
@@ -8,11 +8,16 @@ import {
   MyTableHeadCellDef,
   MyTableHeadRow,
   MyTableRow,
-  MyTableRowDef, TextField
+  MyTableRowDef, MyTableRowDefContext, TextField
 } from '../../../NeoUI';
 
-
-const items = [
+interface Operation {
+  file: {label: string, icon: string },
+  author: {label: string, status: string },
+  lastUpdated: {label: string, timestamp: number },
+  lastUpdate: {label: string, icon: string },
+}
+const items: Operation[] = [
   {
     file: { label: "Meeting notes", icon: 'Document' },
     author: { label: "Max Mustermann", status: "available" },
@@ -91,6 +96,13 @@ export class TableMutableExample {
 
   delete(index: number){
     this.data.splice(index, 1);
+  }
+
+  static ngTemplateContextGuard(
+    dir: MyTableRowDef<Operation>,
+    ctx: any,
+  ): ctx is MyTableRowDefContext<Operation> {
+    return true;
   }
 }
 

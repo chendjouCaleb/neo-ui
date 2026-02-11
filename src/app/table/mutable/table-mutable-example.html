@@ -16,7 +16,7 @@
   <div>
     Length : {{data.length}}
   </div>
-  <MyTable [data]="data" [columns]="visibleColumns" >
+  <MyTable [columns]="visibleColumns" >
     <MyTableHeadRow>
       <MyTableHeadCell *MyTableHeadCellDef="'index'" >#</MyTableHeadCell>
       <MyTableHeadCell *MyTableHeadCellDef="'file'" >File</MyTableHeadCell>
@@ -26,7 +26,7 @@
       <MyTableHeadCell *MyTableHeadCellDef="'action'"> </MyTableHeadCell>
     </MyTableHeadRow>
 
-    <MyTableRow *MyTableRowDef="let value=value; index as i">
+    <MyTableRow *MyTableRowDef="let value of data; index as i">
       <MyTableCell *MyTableCellDef="'index'">{{i}}</MyTableCell>
       <MyTableCell *MyTableCellDef="'file'">{{value.file.label}}</MyTableCell>
       <MyTableCell *MyTableCellDef="'author'">{{value.author.label}}</MyTableCell>
