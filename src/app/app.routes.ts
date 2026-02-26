@@ -24,12 +24,14 @@ import {SkeletonPage} from './skeleton/skeleton.page';
 import {ColorPickerPage} from './color-picker/color-picker.page';
 import {TextFieldPage} from './text-field/textField.page';
 import {TablePage} from './table/table.page';
+import {BadgePage} from './badge/badge.page';
 
 export const routes: Routes = [
   {path: '', component: ButtonPage },
   {path: 'button', component: ButtonPage },
   {path: 'icon-button', component: IconButtonPage },
   {path: 'tag', component: TagPage },
+  {path: 'badge', component: BadgePage },
   {path: 'pager', component: PagerPage },
   {path: 'table', component: TablePage },
   {path: 'tooltip', component: TooltipPage },

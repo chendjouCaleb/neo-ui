@@ -167,6 +167,7 @@ export class TabRow implements AfterContentInit, OnDestroy {
 
     this.domStateChanges.pipe(takeUntil(changeOrDestroyed)).subscribe(() => {
       if (this._activeTabRowItem) {
+        console.log('move rect')
         this._moveThumbRect(this._activeTabRowItem);
         this._changeDetectorRef.markForCheck();
       }
@@ -174,7 +175,6 @@ export class TabRow implements AfterContentInit, OnDestroy {
 
     this.focusChanges.pipe(takeUntil(changeOrDestroyed)).subscribe((t) => {
       this._focusedIndex = this._indexOf(t);
-      console.log(t.host.innerText)
     })
   }
 
@@ -244,14 +244,14 @@ export class TabRow implements AfterContentInit, OnDestroy {
   }
 
   _getThumbLeft(tabRowItem: TabRowItem): number {
-    if (tabRowItem.hovered || tabRowItem.focused) {
+    if (tabRowItem.hovered) {
       return tabRowItem.host.offsetLeft!;
     }
     return tabRowItem.innerBoxHost?.offsetLeft! || 0;
   }
 
   _getThumbWidth(tabRowItem: TabRowItem): number {
-    if (tabRowItem.hovered || tabRowItem.focused) {
+    if (tabRowItem.hovered) {
       return tabRowItem.host.offsetWidth!
     }
     return tabRowItem.innerBoxHost?.offsetWidth! || 0;
@@ -282,7 +282,7 @@ export class TabRow implements AfterContentInit, OnDestroy {
   }
 
   _handleKeydown(event: KeyboardEvent): void {
-    console.log(event.key)
+
     if (!hasModifierKey(event)) {
       if(event.key === 'Home'){
         this._keyHome();

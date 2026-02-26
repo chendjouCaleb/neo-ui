@@ -1,10 +1,22 @@
 .my-badge {
-  font-size: 12px;
+
   font-weight: 500;
   border-radius: 16px;
-  padding: 2px 8px;
+
   box-sizing: border-box;
   display: inline-block;
+
+  &.size-small {
+    font-size: 12px;
+    line-height: 16px;
+    padding: 4px 8px;
+  }
+
+  &.size-medium {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 6px 10px;
+  }
 
   .my-badge-layout {
     align-items: center;
@@ -15,26 +27,46 @@
   &.primary {
     color: var(--colorNeutralForegroundOnBrand);
     background-color: var(--colorBrandBackground3Static);
+
+    .my-material-icon {
+      color: var(--colorNeutralForegroundOnBrand)
+    }
   }
 
   &.error {
     color: var(--colorPaletteRedForeground1);
     background-color: var(--colorPaletteRedBackground1);
+
+    .my-material-icon {
+      color: var(--colorPaletteRedForeground1)
+    }
   }
 
   &.neutral {
-    color: var(--colorNeutralBackground1);
-    background-color: var(--colorNeutralForeground1);
+    color: var(--colorNeutralForeground3);
+    background-color: var(--colorNeutralBackground3);
+
+    .my-material-icon {
+      color: var(--colorNeutralForeground3)
+    }
   }
 
   &.success {
     color: var(--colorPaletteGreenForeground1);
     background-color: var(--colorPaletteGreenBackground1);
+
+    .my-material-icon {
+      color: var(--colorPaletteGreenForeground1)
+    }
   }
 
   &.warn {
     color: var(--colorPaletteDarkOrangeForeground1);
     background-color: var(--colorPaletteDarkOrangeBackground1);
+
+    .my-material-icon {
+      color: var(--colorPaletteDarkOrangeForeground1)
+    }
   }
 }
 
